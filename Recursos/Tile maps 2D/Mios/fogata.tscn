@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0fjub8sy4axo"]
+
+[ext_resource type="Texture2D" uid="uid://3iekmr0j8fam" path="res://Recursos/Tile maps 2D/Mios/fogata.png" id="1_5yn8y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7drfw"]
+atlas = ExtResource("1_5yn8y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0cck"]
+atlas = ExtResource("1_5yn8y")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmr8l"]
+atlas = ExtResource("1_5yn8y")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7idj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7drfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0cck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmr8l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="Environment" id="Environment_2q8q4"]
+glow_enabled = true
+glow_intensity = 2.19
+glow_bloom = 0.26
+glow_hdr_threshold = 0.4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+modulate = Color(1.5, 1, 1, 1)
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_n7idj")
+autoplay = "default"
+frame_progress = 0.131161
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2q8q4")

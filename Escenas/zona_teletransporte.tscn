@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpk52x6vlbigp"]
+
+[ext_resource type="Script" path="res://Scripts/zona_teletransporte.gd" id="1_w467p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0gqy"]
+size = Vector2(20, 60)
+
+[node name="Zona_teletransporte" type="Node2D"]
+script = ExtResource("1_w467p")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_h0gqy")

@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx0lcionbsmmb"]
+
+[ext_resource type="PackedScene" uid="uid://s0df0jrgku3s" path="res://Escenas/2D/niveles/Nvl_1_Tilemap.tscn" id="1_cqc8s"]
+[ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="2_lwgjs"]
+[ext_resource type="PackedScene" uid="uid://ca1kpbde4ghl2" path="res://Escenas/2D/Enemigo_bien_hecho_XDDDDDDDD.tscn" id="4_6v0vv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5se0"]
+size = Vector2(112, 20)
+
+[node name="level_1" type="Node2D"]
+
+[node name="Sombras" type="DirectionalLight2D" parent="."]
+position = Vector2(331, 26)
+color = Color(0.72549, 0.72549, 0.72549, 1)
+blend_mode = 1
+
+[node name="TileMap" parent="." instance=ExtResource("1_cqc8s")]
+
+[node name="Goku" parent="." instance=ExtResource("2_lwgjs")]
+position = Vector2(1194, 435)
+
+[node name="Enemigos" type="Node2D" parent="." groups=["enemigos"]]
+position = Vector2(757, 425)
+
+[node name="murcielagos" type="Node2D" parent="Enemigos"]
+
+[node name="Coso raro" parent="Enemigos/murcielagos" node_paths=PackedStringArray("nav_agent") instance=ExtResource("4_6v0vv")]
+position = Vector2(16, -1)
+nav_agent = NodePath("navigation/NavigationAgent2D")
+
+[node name="Coso raro2" parent="Enemigos/murcielagos" node_paths=PackedStringArray("nav_agent") instance=ExtResource("4_6v0vv")]
+position = Vector2(1, -2)
+nav_agent = NodePath("navigation/NavigationAgent2D")
+
+[node name="Coso raro3" parent="Enemigos/murcielagos" node_paths=PackedStringArray("nav_agent") instance=ExtResource("4_6v0vv")]
+position = Vector2(36, -2)
+nav_agent = NodePath("navigation/NavigationAgent2D")
+
+[node name="Coso raro4" parent="Enemigos/murcielagos" node_paths=PackedStringArray("nav_agent") instance=ExtResource("4_6v0vv")]
+position = Vector2(54, -2)
+nav_agent = NodePath("navigation/NavigationAgent2D")
+
+[node name="Coso raro5" parent="Enemigos/murcielagos" node_paths=PackedStringArray("nav_agent") instance=ExtResource("4_6v0vv")]
+position = Vector2(-17, -2)
+nav_agent = NodePath("navigation/NavigationAgent2D")
+
+[node name="Coso raro6" parent="Enemigos/murcielagos" node_paths=PackedStringArray("nav_agent") instance=ExtResource("4_6v0vv")]
+position = Vector2(72, -2)
+nav_agent = NodePath("navigation/NavigationAgent2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(43, -11)
+shape = SubResource("RectangleShape2D_c5se0")

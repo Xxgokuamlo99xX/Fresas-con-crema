@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://bd64qoj6wt37j"]
+
+[ext_resource type="Script" path="res://Scripts/enemigos/slime_ia.gd" id="1_15ktd"]
+[ext_resource type="Texture2D" uid="uid://k80ftkt3l2w1" path="res://Recursos/Sprites/Enemigo/Slime_pj_spriteseheet.png" id="2_2lbt5"]
+[ext_resource type="Script" path="res://Scripts/Jugador/pupass.gd" id="3_ui4pc"]
+[ext_resource type="PackedScene" uid="uid://neqju1hdl3fc" path="res://Escenas/vainas/damage_pupo_enemigos.tscn" id="4_edc4q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f27c8"]
+radius = 6.0
+height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxp74"]
+size = Vector2(11, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1ri7"]
+size = Vector2(44, 20)
+
+[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("colision", "hitbox", "raycast", "invul")]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_15ktd")
+colision = NodePath("CollisionShape2D")
+hitbox = NodePath("Hitbox")
+raycast = NodePath("RayCast_vertical")
+invul = NodePath("invul")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2lbt5")
+hframes = 8
+vframes = 4
+frame = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -2)
+shape = SubResource("CapsuleShape2D_f27c8")
+
+[node name="hurbo" type="Area2D" parent="."]
+position = Vector2(0, -1)
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurbo"]
+position = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_gxp74")
+debug_color = Color(0, 0.643971, 0.290014, 0.42)
+
+[node name="Hitbox" type="Area2D" parent="." groups=["enemigo"]]
+position = Vector2(0, -1)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_i1ri7")
+debug_color = Color(0.997079, 0, 0.17371, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="RayCast_vertical" type="RayCast2D" parent="."]
+position = Vector2(6, 0)
+target_position = Vector2(0, 12)
+collision_mask = 8
+
+[node name="Marker2D" type="Marker2D" parent="."]
+script = ExtResource("3_ui4pc")
+damage_node = ExtResource("4_edc4q")
+
+[node name="invul" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="body_entered" from="hurbo" to="." method="_on_hurbo_body_entered"]

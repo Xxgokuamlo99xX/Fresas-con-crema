@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://cg8j746w8pb7i"
+path="res://.godot/imported/knight_idle_anim_f0.png-e8f5a55d03e3d306326a8c0b5db85dd2.image"
+
+[deps]
+
+source_file="res://addons/projectiles_plugin/test_scene/assets/v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_idle_anim_f0.png"
+dest_files=["res://.godot/imported/knight_idle_anim_f0.png-e8f5a55d03e3d306326a8c0b5db85dd2.image"]
+
+[params]
+

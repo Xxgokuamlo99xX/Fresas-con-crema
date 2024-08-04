@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://byeqby3mx64fb"]
+
+[ext_resource type="Script" path="res://Scripts/enemigos/dummy.gd" id="1_0ub6q"]
+[ext_resource type="Script" path="res://Scripts/Jugador/pupass.gd" id="2_lupdg"]
+[ext_resource type="PackedScene" uid="uid://neqju1hdl3fc" path="res://Escenas/vainas/damage_pupo_enemigos.tscn" id="3_urmj6"]
+[ext_resource type="Texture2D" uid="uid://u0myeoah64sr" path="res://Recursos/Sprites/Prota/Charactert-sheet.png" id="4_mg7vd"]
+[ext_resource type="FontFile" uid="uid://cgkd4e7kies82" path="res://Recursos/Fuentes de texto/ZeldaOracles.ttf" id="5_bah2u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpot7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_66y2u"]
+font = ExtResource("5_bah2u")
+
+[node name="Dummy" type="CharacterBody2D" groups=["Enemigos"]]
+collision_layer = 32
+collision_mask = 0
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_0ub6q")
+
+[node name="colision normal" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bpot7")
+debug_color = Color(0.979159, 0, 0.390329, 0.42)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+script = ExtResource("2_lupdg")
+damage_node = ExtResource("3_urmj6")
+
+[node name="Charactert-sheet" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("4_mg7vd")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(1888, 18, 16, 29)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -8.0
+offset_top = -26.0
+offset_right = 32.0
+offset_bottom = -3.0
+scale = Vector2(0.376679, 0.342541)
+text = "Vida:"
+label_settings = SubResource("LabelSettings_66y2u")
+horizontal_alignment = 1
+
+[node name="invulnerable" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="me_dieron_enemigo" from="." to="." method="_on_me_dieron_enemigo"]

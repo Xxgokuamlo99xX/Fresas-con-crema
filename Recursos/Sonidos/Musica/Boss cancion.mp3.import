@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bl503135rie5x"
+path="res://.godot/imported/Boss cancion.mp3-7f7f09fe5a9c56af610fe448317be3ef.mp3str"
+
+[deps]
+
+source_file="res://Recursos/Sonidos/Musica/Boss cancion.mp3"
+dest_files=["res://.godot/imported/Boss cancion.mp3-7f7f09fe5a9c56af610fe448317be3ef.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

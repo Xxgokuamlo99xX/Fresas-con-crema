@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmveltrbhvqn8"]
+
+[ext_resource type="Script" path="res://Scripts/Varios/npc_script_basico.gd" id="1_0y2n4"]
+[ext_resource type="Texture2D" uid="uid://757wxq1aejjt" path="res://Imagens_personajes/xgoku sprite.png" id="2_18fqn"]
+[ext_resource type="Texture2D" uid="uid://b53io3yxqcnjh" path="res://Imagens_personajes/Tecla Z.png" id="3_014dd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40jkw"]
+size = Vector2(190, 67.5)
+
+[node name="Npc_1" type="Node2D" node_paths=PackedStringArray("area2d", "noti_de_uso")]
+script = ExtResource("1_0y2n4")
+area2d = NodePath("Area2D")
+noti_de_uso = NodePath("Notificacion de uso")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_18fqn")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(68, 18, 62, 98)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 17.25)
+shape = SubResource("RectangleShape2D_40jkw")
+
+[node name="Notificacion de uso" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(0, -81)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_014dd")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cif3l6l6cqenh"]
+
+[ext_resource type="Shader" path="res://shaders/agua_superficie.gdshader" id="1_2kafo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tignb"]
+shader = ExtResource("1_2kafo")
+shader_parameter/horizon = 0.104
+shader_parameter/wave_frequency = 6.25
+shader_parameter/wave_magnitude = 0.04
+shader_parameter/tides_magnitude = 0.0
+shader_parameter/noise_wave = 0.729
+shader_parameter/tides_speed = 0.0
+shader_parameter/wave_speed = 1.908
+shader_parameter/shine_position = null
+shader_parameter/shine_intensity = null
+shader_parameter/shine_width = null
+shader_parameter/shine_color = null
+shader_parameter/water_color = Color(0, 0.203922, 0.815686, 0.341176)
+
+[node name="Agua_superficie" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_tignb")
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+pivot_offset = Vector2(8, 8)
+metadata/_edit_use_anchors_ = true
