@@ -1,30 +1,34 @@
-Npc_1: Hola!, soy Godku
-- Eres goku?
-	Npc_1: Si eso es lo que dije
-Npc_1: Deberias avanzar hacia la cueva y ver que encuentras.
-Npc_1: Talvez el final....
-Samantha: Espera, porque me dices esto?
-Npc_1: Nose asi es el juego.
-Npc_1: alguna otra pregunta?
-label Pregunta
-- Es enserio que eres goku?
-	Npc_1: Si ya te lo habia dicho, eres sorda o algo?
-	Samantha: Waos
-	jump Algo mas
-- Cual cueva?
-	Npc_1: Pues la que tienes enfrente...
-	Npc_1: De verdad estas segura que no eres ciega?
-	Samantha: La verdad que no se, la pantalla no llega esta alla  \:(
-	jump Algo mas
-- Tienes algun consejo?
-	Npc_1: eeeeeeeeeeeeeeeeeeem, si.
-	Npc_1: Sabias que si te atacan tu vida bajara o que puedes atacar con "X" y "C"
-	Samantha: Wow no me digas .-.
-	jump Algo mas
-- Nop.
-	Npc_1: Ok, bay
+if {GlobalVar.mision_actual} == "Ninguna":
+	Npc_1: Hola!, soy Godku
+	- Eres goku?
+		Npc_1: Si eso es lo que dije
+	Npc_1: Deberias avanzar hacia la cueva y ver que encuentras.
+	Npc_1: Talvez el final....
+	Samantha: Espera, porque me dices esto?
+	Npc_1: Nose asi es el juego.
+	Npc_1: alguna otra pregunta?
+	label Pregunta
+	- Es enserio que eres goku?
+		Npc_1: Si ya te lo habia dicho, eres sorda o algo?
+		Samantha: Waos
+		jump Algo mas
+	- Cual cueva?
+		Npc_1: Pues la que tienes enfrente...
+		Npc_1: De verdad estas segura que no eres ciega?
+		Samantha: La verdad que no se, la pantalla no llega esta alla  \:(
+		jump Algo mas
+	- Tienes algun consejo?
+		Npc_1: eeeeeeeeeeeeeeeeeeem, si.
+		Npc_1: Sabias que si te atacan tu vida bajara o que puedes atacar con "X" y "C"
+		Samantha: Wow no me digas .-.
+		jump Algo mas
+	- Nop.
+		Npc_1: Ok, bay
+		do Misiones.aceptar_mision("La cueva", "-Entra e investiga la dichosa cueva")
+		[end_timeline]
+	label Algo mas
+	Npc_1: Algo mas?
+	jump Pregunta
+else:
+	Npc_1: Bueno ya sabes que hacer, que esperas?
 	[end_timeline]
-[end_timeline]
-label Algo mas
-Npc_1: Algo mas?
-jump Pregunta

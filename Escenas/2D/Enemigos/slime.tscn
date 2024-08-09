@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bd64qoj6wt37j"]
+[gd_scene load_steps=10 format=3 uid="uid://bd64qoj6wt37j"]
 
 [ext_resource type="Script" path="res://Scripts/enemigos/slime_ia.gd" id="1_15ktd"]
 [ext_resource type="Texture2D" uid="uid://k80ftkt3l2w1" path="res://Recursos/Sprites/Enemigo/Slime_pj_spriteseheet.png" id="2_2lbt5"]
+[ext_resource type="PackedScene" uid="uid://cld8iecoty7uh" path="res://Escenas/vainas/moneida.tscn" id="2_s8k3t"]
+[ext_resource type="PackedScene" uid="uid://v536h5v5gas1" path="res://Escenas/vainas/corazon.tscn" id="3_q5kbr"]
 [ext_resource type="Script" path="res://Scripts/Jugador/pupass.gd" id="3_ui4pc"]
 [ext_resource type="PackedScene" uid="uid://neqju1hdl3fc" path="res://Escenas/vainas/damage_pupo_enemigos.tscn" id="4_edc4q"]
 
@@ -13,16 +15,15 @@ height = 16.0
 size = Vector2(11, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1ri7"]
-size = Vector2(44, 20)
 
-[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("colision", "hitbox", "raycast", "invul")]
+[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("raycast", "marker", "invul")]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_15ktd")
-colision = NodePath("CollisionShape2D")
-hitbox = NodePath("Hitbox")
 raycast = NodePath("RayCast_vertical")
+marker = NodePath("Marker2D")
 invul = NodePath("invul")
+loot = Array[PackedScene]([ExtResource("2_s8k3t"), ExtResource("3_q5kbr")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_2lbt5")

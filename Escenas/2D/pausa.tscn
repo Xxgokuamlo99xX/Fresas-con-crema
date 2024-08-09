@@ -11,6 +11,8 @@ outline_size = 35
 outline_color = Color(0, 0, 0, 1)
 
 [node name="pausa" type="CanvasLayer"]
+process_mode = 3
+layer = 128
 script = ExtResource("1_00pje")
 
 [node name="ColorRect" type="ColorRect" parent="."]

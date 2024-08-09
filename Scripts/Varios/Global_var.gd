@@ -14,15 +14,16 @@ var disparado_jugador : bool = false
 var mana : int = 50
 var mana_max : int = 100
 var puede_moverse : bool = true 
+var eter : float
 
 var enemigo_damage_taken
 
 var boss_1_alive : bool = false
 var current_boss_life : int
 
-var puntos : int
+var mision_actual : String = "Ninguna"
 
-var monedas : int
+
 
 #FIXME Arreglar el rendimiento de esta basura
 var style: DialogicStyle = load("res://Estilos_dialogic/estilo_1.tres")
@@ -34,5 +35,6 @@ func _enter_tree() -> void:
 
 	
 func _process(delta):
-	vida_jugador = clampi(vida_jugador,0,vida_max)
+	if vida_jugador > vida_max:
+		vida_jugador = vida_max
 	mana = clampi(mana,0,mana_max)

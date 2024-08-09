@@ -6,7 +6,7 @@
 "custom_info": {
 "sound_mood_default": "",
 "sound_moods": {},
-"style": ""
+"style": "Estilo_3"
 },
 "default_portrait": "normal",
 "description": "",
@@ -17,11 +17,12 @@
 "portraits": {
 "normal": {
 "export_overrides": {
-"image": "\"res://Imagens_personajes/gokuxd.png\""
+"image": "\"res://Imagens_personajes/xgoku sprite.png\""
 },
-"mirror": false,
+"ignore_char_scale": false,
+"mirror": true,
 "offset": Vector2(0, 0),
-"scale": 1,
+"scale": 1.0,
 "scene": ""
 }
 },

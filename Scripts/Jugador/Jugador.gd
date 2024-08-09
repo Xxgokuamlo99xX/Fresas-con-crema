@@ -29,7 +29,8 @@ func _physics_process(delta):
 	recargar_mana()
 	recividor_inputs()
 	cambiar_hechizo()
-	clampf(velocity.y,0,98)
+	
+	velocity.y = clampf(velocity.y,-240,240)
 
 
 func Ataque():
@@ -50,7 +51,7 @@ func _ready():
 	
 func animaciones():
 	#Correr
-	if dir.x != 0:
+	if velocity.x != 0:
 		state_machine.travel("Correr")
 	else:
 		state_machine.travel("Idle")
@@ -100,6 +101,7 @@ func recividor_inputs():
 	else:
 		velocity = Vector2.ZERO
 		
+	
 func _damage():
 	if $Invulnerable.is_stopped():
 		$Invulnerable.start()
@@ -108,7 +110,6 @@ func _damage():
 		$"Daño_pupap"._pupa()
 		if GlobalVar.vida_jugador == 0:
 			queue_free()
-	
 	
 func _on_curarse() -> void:
 	$curarse.play()

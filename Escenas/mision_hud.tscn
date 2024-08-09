@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://kuvvv62x1for"]
+
+[ext_resource type="Script" path="res://Scripts/Varios/mision_hud.gd" id="1_438w4"]
+[ext_resource type="FontFile" uid="uid://8khbwkhjgd2r" path="res://Recursos/Fuentes de texto/FSEX300.ttf" id="1_yykhl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xw7jj"]
+bg_color = Color(0, 0, 0, 0.756863)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_qxn0m"]
+font = ExtResource("1_yykhl")
+font_size = 20
+font_color = Color(1, 1, 0.219608, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0fxmh"]
+font = ExtResource("1_yykhl")
+font_size = 15
+
+[node name="Mision_hud" type="CanvasLayer"]
+script = ExtResource("1_438w4")
+
+[node name="mision_resumen" type="Panel" parent="."]
+offset_left = 864.0
+offset_top = 80.0
+offset_right = 1080.0
+offset_bottom = 208.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xw7jj")
+
+[node name="Nombre_mision_resumen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 436.0
+offset_top = -16.0
+offset_right = 436.0
+offset_bottom = -16.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="Nombre_mision_resumen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = 104.0
+offset_right = 39.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nombre Mision"
+label_settings = SubResource("LabelSettings_qxn0m")
+uppercase = true
+
+[node name="Resumen_mision" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 476.0
+offset_top = -64.0
+offset_right = 516.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="Resumen_mision"]
+layout_mode = 0
+offset_left = -136.0
+offset_top = -144.0
+offset_right = 48.0
+offset_bottom = -56.0
+text = "Descripcion mision
+"
+label_settings = SubResource("LabelSettings_0fxmh")
+autowrap_mode = 3

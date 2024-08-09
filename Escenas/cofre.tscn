@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://wvl1hitv6lgm"]
+
+[ext_resource type="Script" path="res://Scripts/Varios/npc_script_basico.gd" id="1_vlbsd"]
+[ext_resource type="Resource" path="res://Timelines/cofres.dtl" id="2_3p50u"]
+[ext_resource type="Texture2D" uid="uid://dlyd5m5m6a6mr" path="res://Recursos/Sprites/Misc/cofre1.png" id="2_wc7t8"]
+[ext_resource type="Texture2D" uid="uid://b53io3yxqcnjh" path="res://Imagens_personajes/Tecla Z.png" id="4_qoe7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reo87"]
+
+[node name="Cofre" type="Node2D" node_paths=PackedStringArray("area2d", "noti_de_uso")]
+script = ExtResource("1_vlbsd")
+Timeline_ = ExtResource("2_3p50u")
+area2d = NodePath("Area2D")
+noti_de_uso = NodePath("Sprite2D2")
+cofre = true
+recompensa = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wc7t8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -25)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_qoe7b")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_reo87")

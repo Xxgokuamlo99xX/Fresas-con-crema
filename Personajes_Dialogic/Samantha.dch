@@ -6,7 +6,7 @@
 "custom_info": {
 "sound_mood_default": "",
 "sound_moods": {},
-"style": ""
+"style": "Estilo_3"
 },
 "default_portrait": "Normal",
 "description": "",
@@ -17,7 +17,7 @@
 "portraits": {
 "Normal": {
 "export_overrides": {
-"image": "\"res://Imagens_personajes/Prota_dilogo.png\""
+"image": "\"res://Recursos/Sprites/Prota/prota dialogo.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

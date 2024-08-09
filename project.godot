@@ -14,13 +14,16 @@ config/name="Fresas con crema"
 run/main_scene="res://Escenas/2D/niveles/lvl_1(prueba).tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
-boot_splash/image="res://Recursos/Rec. juego/April-Tweets-71-1024x576.png"
+boot_splash/bg_color=Color(0.292442, 0, 0.0228105, 1)
+boot_splash/image="res://Recursos/xd.png"
 config/icon="res://Recursos/Rec. juego/Icono_juego.png"
 
 [autoload]
 
 GlobalVar="*res://Scripts/Varios/Global_var.gd"
 cambiar_escena="*res://Escenas/transicion.tscn"
+Misiones="*res://Escenas/mision_hud.tscn"
+pausa="*res://Escenas/2D/pausa.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
@@ -31,7 +34,9 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "Inicio del juego": "res://Timelines/Inicio del juego.dtl",
-"Npc_1": "res://Timelines/Npc_1.dtl"
+"Npc_1": "res://Timelines/Npc_1.dtl",
+"Npc_cueva": "res://Timelines/Npc_cueva.dtl",
+"cofres": "res://Timelines/cofres.dtl"
 }
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
@@ -51,10 +56,18 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/input_action="usar"
 text/autopauses={}
-layout/style_list=["res://Estilos_dialogic/estilo_1.tres"]
-layout/default_style="res://Estilos_dialogic/estilo_1.tres"
+layout/style_list=["res://Estilos_dialogic/Estilo_3.tres", "res://Estilos_dialogic/estilo_1.tres"]
+layout/default_style="res://Estilos_dialogic/Estilo_3.tres"
 glossary/default_case_sensitive=true
-variables={}
+variables={
+"Cant_loot": 0
+}
+translation/enabled=false
+translation/original_locale="es"
+translation/file_mode=1
+translation/translation_folder=""
+translation/save_mode=0
+translation/add_separator=false
 
 [display]
 

@@ -1,16 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://cld8iecoty7uh"]
+[gd_scene load_steps=8 format=3 uid="uid://cld8iecoty7uh"]
 
 [ext_resource type="Script" path="res://Scripts/Varios/moneida.gd" id="1_thn8p"]
-[ext_resource type="Texture2D" uid="uid://b1me63utcqaa6" path="res://Recursos/Sprites/cosas/brillitos.png" id="2_ea0tk"]
+[ext_resource type="Texture2D" uid="uid://c57accc2xur6i" path="res://Recursos/Sprites/Misc/Eter.png" id="2_p13cl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hiico"]
+atlas = ExtResource("2_p13cl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtkqt"]
+atlas = ExtResource("2_p13cl")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5aap5"]
+atlas = ExtResource("2_p13cl")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3a1iu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hiico")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtkqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5aap5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xnnuj"]
 
 [node name="moneida" type="Node2D"]
 script = ExtResource("1_thn8p")
 
-[node name="Crosshair" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("2_ea0tk")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3a1iu")
+autoplay = "default"
+frame_progress = 0.977716
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -1,0 +1,17 @@
+if {GlobalVar.mision_actual} == "La cueva":
+	Samantha: Tu otra vez?!!?
+	Npc_1: Como que yo otra vez
+	Samantha: .......
+	Npc_1: Esque el que hizo esto no tiene para mas personajes
+	Npc_1: De cualquier forma
+	Npc_1: Deberias tomar lo que esta en este cofre
+	Npc_1: Si es que aun no lo has hecho ._.
+	Samantha: \:v
+	Npc_1: Talvez eso te ayude para...
+	Npc_1: despues.
+	do Misiones.completar_mision()
+	do Misiones.aceptar_mision("El despues...", "No sabes que habra en el futuro!!!")
+else:
+	Npc_1: Ya has abierto el cofre?
+	[end_timeline]
+[end_timeline]

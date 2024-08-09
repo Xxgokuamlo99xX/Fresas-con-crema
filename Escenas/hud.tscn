@@ -1,16 +1,41 @@
-[gd_scene load_steps=13 format=3 uid="uid://bwdmbdwfnah6q"]
+[gd_scene load_steps=16 format=3 uid="uid://bwdmbdwfnah6q"]
 
 [ext_resource type="Texture2D" uid="uid://flbwwemqugw" path="res://Recursos/Sprites/Misc/Corazon_vacio_ui.png" id="2_gx73d"]
+[ext_resource type="LabelSettings" uid="uid://bfbkkbnsj01vt" path="res://Recursos/Fuentes de texto/hud.tres" id="2_k2tf8"]
+[ext_resource type="Texture2D" uid="uid://c57accc2xur6i" path="res://Recursos/Sprites/Misc/Eter.png" id="2_yhoym"]
 [ext_resource type="Script" path="res://Scripts/Jugador/Stats.gd" id="3_6x4kx"]
 [ext_resource type="Texture2D" uid="uid://btksvn75hpt7t" path="res://Recursos/Sprites/Misc/Corazon_lleno_ui.png" id="3_jm7qv"]
-[ext_resource type="FontFile" uid="uid://cgkd4e7kies82" path="res://Recursos/Fuentes de texto/ZeldaOracles.ttf" id="4_x1h8q"]
-[ext_resource type="PackedScene" uid="uid://brjugeonmbmq4" path="res://Escenas/2D/pausa.tscn" id="5_6g57u"]
 [ext_resource type="Texture2D" uid="uid://cpfrueqmyf6gj" path="res://Recursos/Sprites/Misc/barra_mana1.png" id="5_atj2d"]
 [ext_resource type="Texture2D" uid="uid://hq8lvky81roo" path="res://Recursos/Sprites/Misc/barra_mana2.png" id="6_ea065"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_y4ny7"]
-font = ExtResource("4_x1h8q")
-font_size = 14
+[sub_resource type="AtlasTexture" id="AtlasTexture_al5i6"]
+atlas = ExtResource("2_yhoym")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygrkm"]
+atlas = ExtResource("2_yhoym")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rcbj"]
+atlas = ExtResource("2_yhoym")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ctayr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al5i6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygrkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rcbj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_5my2t"]
 length = 0.001
@@ -69,8 +94,16 @@ _data = {
 process_mode = 3
 script = ExtResource("3_6x4kx")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+z_index = -1
+offset_right = 1080.0
+offset_bottom = 59.0
+scale = Vector2(1.00219, 1.34801)
+color = Color(0, 0, 0, 1)
+
 [node name="Stats" type="Control" parent="."]
-top_level = true
+process_mode = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = 580.0
@@ -79,39 +112,46 @@ offset_right = 580.0
 offset_bottom = 327.0
 scale = Vector2(0.5, 0.5)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Stats"]
-
-[node name="Fps" type="Label" parent="Stats/CanvasLayer"]
-offset_left = 6.0
-offset_top = 617.0
-offset_right = 46.0
-offset_bottom = 640.0
+[node name="Fps" type="Label" parent="Stats"]
+layout_mode = 0
+offset_left = -1148.0
+offset_top = 550.0
+offset_right = -1113.0
+offset_bottom = 573.0
+scale = Vector2(2.63084, 2.75866)
 text = "Fps: "
 
-[node name="Estado" type="Label" parent="Stats/CanvasLayer"]
-visible = false
-offset_left = 5.0
-offset_top = 595.0
-offset_right = 66.0
-offset_bottom = 618.0
-text = "Estado: "
+[node name="Eter" type="Label" parent="Stats"]
+z_index = 100
+layout_mode = 0
+offset_top = -578.0
+offset_right = 89.0
+offset_bottom = -555.0
+scale = Vector2(2.30412, 2.4409)
+text = "Eter:"
+label_settings = ExtResource("2_k2tf8")
 
-[node name="puntos" type="Label" parent="Stats/CanvasLayer"]
-offset_left = 6.0
-offset_top = 600.0
-offset_right = 95.0
-offset_bottom = 623.0
-text = "Puntuacion"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stats/Eter"]
+position = Vector2(23.4362, -12.2905)
+scale = Vector2(2.27002, 2.30166)
+sprite_frames = SubResource("SpriteFrames_ctayr")
+autoplay = "default"
+frame_progress = 0.590427
 
 [node name="vida" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-scale = Vector2(1.5, 1.5)
+offset_left = 32.0
+offset_top = 5.0
+offset_right = 32.0
+offset_bottom = 5.0
+scale = Vector2(1.491, 1.57133)
 
 [node name="Vida_vacia" type="TextureRect" parent="vida"]
 layout_mode = 1
+offset_top = 18.6588
 offset_right = 100.0
-offset_bottom = 19.0
+offset_bottom = 37.6588
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_gx73d")
 expand_mode = 1
@@ -119,6 +159,8 @@ stretch_mode = 1
 
 [node name="Vida_llena" type="TextureRect" parent="vida"]
 layout_mode = 0
+offset_top = 18.6588
+offset_bottom = 18.6588
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_jm7qv")
 expand_mode = 1
@@ -128,39 +170,47 @@ stretch_mode = 1
 texture_filter = 1
 layout_direction = 1
 layout_mode = 0
-offset_left = 33.3333
-offset_top = 24.0
-offset_right = 87.3333
-offset_bottom = 40.0
+offset_left = 38.2295
+offset_top = -3.18202
+offset_right = 82.2295
+offset_bottom = 19.818
 size_flags_horizontal = 4
-text = "60/100"
-label_settings = SubResource("LabelSettings_y4ny7")
+text = "Vida"
+label_settings = ExtResource("2_k2tf8")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="mana" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 60.0
-offset_right = 40.0
-offset_bottom = 100.0
+offset_left = 249.0
+offset_right = 289.0
+offset_bottom = 40.0
+scale = Vector2(1.10735, 0.956976)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="mana"]
 layout_mode = 0
-offset_left = -39.0
-offset_top = 12.0
-offset_right = 1.0
-offset_bottom = 52.0
-scale = Vector2(4, 4)
+offset_left = 131.049
+offset_top = -8.95874
+offset_right = 171.049
+offset_bottom = 31.0413
+rotation = 1.5708
+scale = Vector2(3.70126, 4.1203)
 value = 52.0
 fill_mode = 3
 texture_over = ExtResource("5_atj2d")
 texture_progress = ExtResource("6_ea065")
 
+[node name="Label" type="Label" parent="mana"]
+layout_mode = 0
+offset_left = 31.8767
+offset_right = 75.8767
+offset_bottom = 23.0
+scale = Vector2(1.4, 1.4)
+text = "Mana"
+label_settings = ExtResource("2_k2tf8")
+
 [node name="daño_vida" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_v7p1m")
 }
-
-[node name="pausa" parent="." instance=ExtResource("5_6g57u")]
-visible = false

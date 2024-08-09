@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsej80iq11bvn"
-path="res://.godot/imported/PJSprite_sheet.png-67acc3fe1b2c6cdab80fb8b58c136d53.ctex"
+uid="uid://c57accc2xur6i"
+path="res://.godot/imported/Eter.png-38f4f0a0662c37b15eb87334fac65536.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Recursos/Sprites/Prota/PJSprite_sheet.png"
-dest_files=["res://.godot/imported/PJSprite_sheet.png-67acc3fe1b2c6cdab80fb8b58c136d53.ctex"]
+source_file="res://Recursos/Sprites/Misc/Eter.png"
+dest_files=["res://.godot/imported/Eter.png-38f4f0a0662c37b15eb87334fac65536.ctex"]
 
 [params]
 

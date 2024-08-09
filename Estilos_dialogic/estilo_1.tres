@@ -1,59 +1,15 @@
-[gd_resource type="Resource" script_class="DialogicStyle" load_steps=17 format=3 uid="uid://djx82k2s7xd6a"]
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=4 format=3 uid="uid://djx82k2s7xd6a"]
 
+[ext_resource type="PackedScene" uid="uid://cqpb3ie51rwl5" path="res://Estilos_dialogic/CustomEstilo1/custom_estilo_1.tscn" id="1_a1mjq"]
 [ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_evy3s"]
-[ext_resource type="PackedScene" uid="uid://c1k5m0w3r40xf" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn" id="2_gx2y1"]
-[ext_resource type="PackedScene" uid="uid://d1ejvw7k2uykk" path="res://Estilos_dialogic/TextboxWithPortrait/custom_textbox_with_speaker_portrait.tscn" id="3_fa8pi"]
-[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="4_fhol3"]
-[ext_resource type="PackedScene" uid="uid://dsbwnp5hegnu3" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn" id="5_d38bu"]
-[ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="6_su4uf"]
-[ext_resource type="PackedScene" uid="uid://cvgf4c6gg0tsy" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.tscn" id="7_581oc"]
-[ext_resource type="PackedScene" uid="uid://lx24i8fl6uo" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.tscn" id="8_7152u"]
 [ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="9_ye20a"]
-
-[sub_resource type="Resource" id="Resource_kpym7"]
-script = ExtResource("1_evy3s")
-scene = ExtResource("2_gx2y1")
-overrides = {}
-
-[sub_resource type="Resource" id="Resource_dklp3"]
-script = ExtResource("1_evy3s")
-scene = ExtResource("3_fa8pi")
-overrides = {
-"box_modulate_custom_color": "Color(0.0976563, 0.0808716, 0.0808716, 1)",
-"box_panel": "\"res://Estilos_dialogic/TextboxWithPortrait/Caja de dialogo.tres\"",
-"name_label_color_mode": "1"
-}
-
-[sub_resource type="Resource" id="Resource_dsnsc"]
-script = ExtResource("1_evy3s")
-scene = ExtResource("4_fhol3")
-overrides = {}
-
-[sub_resource type="Resource" id="Resource_khlje"]
-script = ExtResource("1_evy3s")
-scene = ExtResource("5_d38bu")
-overrides = {}
-
-[sub_resource type="Resource" id="Resource_je0ns"]
-script = ExtResource("1_evy3s")
-scene = ExtResource("6_su4uf")
-overrides = {}
-
-[sub_resource type="Resource" id="Resource_ljt8o"]
-script = ExtResource("1_evy3s")
-scene = ExtResource("7_581oc")
-overrides = {}
-
-[sub_resource type="Resource" id="Resource_j6lh5"]
-script = ExtResource("1_evy3s")
-scene = ExtResource("8_7152u")
-overrides = {}
 
 [resource]
 script = ExtResource("9_ye20a")
 name = "estilo_1"
+base_scene = ExtResource("1_a1mjq")
 base_overrides = {
 "global_bg_color": "Color(0, 0, 0, 0.901961)"
 }
-layers = Array[ExtResource("1_evy3s")]([SubResource("Resource_kpym7"), SubResource("Resource_dklp3"), SubResource("Resource_dsnsc"), SubResource("Resource_khlje"), SubResource("Resource_je0ns"), SubResource("Resource_ljt8o"), SubResource("Resource_j6lh5")])
-metadata/_latest_layer = 1
+layers = Array[ExtResource("1_evy3s")]([])
+metadata/_latest_layer = -1

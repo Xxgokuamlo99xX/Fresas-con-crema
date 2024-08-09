@@ -167,6 +167,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_s7m4l"]
 resource_name = "Idle"
+length = 1.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -175,7 +176,7 @@ tracks/0/path = NodePath("Voltear/PJ:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2664, 0.5328, 0.8325),
+"times": PackedFloat32Array(0, 0.433333, 0.766667, 1.16667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
@@ -518,12 +519,13 @@ libraries = {
 
 [node name="damage" type="AudioStreamPlayer" parent="Invulnerable"]
 stream = ExtResource("8_h7jby")
+volume_db = -4.386
 pitch_scale = 0.6
 
 [node name="Camera" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 visibility_layer = 5
-position = Vector2(20, -10)
+position = Vector2(20, -30)
 zoom = Vector2(2.5, 2.5)
 script = ExtResource("6_dqhve")
 
@@ -547,7 +549,7 @@ texture = SubResource("GradientTexture2D_paqth")
 script = ExtResource("7_85cwe")
 
 [node name="Jugador" type="Node2D" parent="Camaras" node_paths=PackedStringArray("follow_target")]
-position = Vector2(20, -10)
+position = Vector2(20, -30)
 script = ExtResource("6_xwngx")
 priority = 1
 follow_mode = 2
@@ -555,7 +557,7 @@ follow_target = NodePath("../..")
 zoom = Vector2(2.5, 2.5)
 tween_resource = SubResource("Resource_2adnc")
 tween_on_load = false
-follow_offset = Vector2(20, -10)
+follow_offset = Vector2(20, -30)
 follow_damping_value = Vector2(2, 2)
 
 [node name="Daño_pupap" type="Marker2D" parent="."]

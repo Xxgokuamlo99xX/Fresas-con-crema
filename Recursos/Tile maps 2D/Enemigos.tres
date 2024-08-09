@@ -1,0 +1,10 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://djoirjiu4wccu"]
+
+[ext_resource type="PackedScene" uid="uid://bd64qoj6wt37j" path="res://Escenas/2D/Enemigos/slime.tscn" id="1_6dmjl"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fswpx"]
+resource_name = "Slimes"
+scenes/1/scene = ExtResource("1_6dmjl")
+
+[resource]
+sources/0 = SubResource("TileSetScenesCollectionSource_fswpx")
