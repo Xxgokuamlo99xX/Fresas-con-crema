@@ -29,13 +29,16 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"Guardia_npc_generico": "res://Personajes_Dialogic/Guardia_npc_generico.dch",
 "Npc_1": "res://Personajes_Dialogic/Npc_1.dch",
 "Samantha": "res://Personajes_Dialogic/Samantha.dch"
 }
 directories/dtl_directory={
+"Cinematica_castillo_2": "res://Timelines/Cinematicas/Cinematica_castillo_2.dtl",
 "Inicio del juego": "res://Timelines/Inicio del juego.dtl",
 "Npc_1": "res://Timelines/Npc_1.dtl",
 "Npc_cueva": "res://Timelines/Npc_cueva.dtl",
+"cinematica_castillo": "res://Timelines/cinematica_castillo.dtl",
 "cofres": "res://Timelines/cofres.dtl"
 }
 text/letter_speed=0.01
@@ -202,6 +205,7 @@ dialogic_default_action={
 2d_physics/layer_6="damage enemigos"
 2d_physics/layer_7="pinchos"
 2d_physics/layer_9="Plataformas_bajables"
+2d_physics/layer_10="Interacciones"
 
 [rendering]
 

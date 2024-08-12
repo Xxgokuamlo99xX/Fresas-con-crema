@@ -290,7 +290,7 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uw6ge"]
 states/Ataque_2/node = SubResource("AnimationNodeAnimation_oyy3e")
-states/Ataque_2/position = Vector2(488, 260)
+states/Ataque_2/position = Vector2(698, 282)
 states/Ataque_magico/node = SubResource("AnimationNodeAnimation_dchro")
 states/Ataque_magico/position = Vector2(514, 14)
 states/Caida/node = SubResource("AnimationNodeAnimation_o1olp")
@@ -302,7 +302,7 @@ states/Idle/position = Vector2(514, 105)
 states/Salto_inicio/node = SubResource("AnimationNodeAnimation_rvj03")
 states/Salto_inicio/position = Vector2(146, 247)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_x120j"), "Idle", "Salto_inicio", SubResource("AnimationNodeStateMachineTransition_o8lt6"), "Salto_inicio", "Caida", SubResource("AnimationNodeStateMachineTransition_hidhq"), "Caida", "Idle", SubResource("AnimationNodeStateMachineTransition_7odnv"), "Idle", "Correr", SubResource("AnimationNodeStateMachineTransition_c7ota"), "Correr", "Idle", SubResource("AnimationNodeStateMachineTransition_dnmic"), "Idle", "Ataque_magico", SubResource("AnimationNodeStateMachineTransition_0afsw"), "Ataque_magico", "Idle", SubResource("AnimationNodeStateMachineTransition_ixwed"), "Ataque_2", "Idle", SubResource("AnimationNodeStateMachineTransition_eyfk6"), "Idle", "Ataque_2", SubResource("AnimationNodeStateMachineTransition_gl4t6"), "Correr", "Ataque_magico", SubResource("AnimationNodeStateMachineTransition_lyynh"), "Correr", "Ataque_2", SubResource("AnimationNodeStateMachineTransition_8x441"), "Ataque_2", "Correr", SubResource("AnimationNodeStateMachineTransition_8w4ff"), "Ataque_magico", "Correr", SubResource("AnimationNodeStateMachineTransition_v6p8s")]
-graph_offset = Vector2(-28, 54)
+graph_offset = Vector2(37, 136)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfjcq"]
 size = Vector2(28, 30)
@@ -457,8 +457,8 @@ ease = 2
 
 [node name="Goku" type="CharacterBody2D" groups=["Jugador"]]
 process_mode = 1
-collision_layer = 37
-collision_mask = 33
+collision_layer = 549
+collision_mask = 545
 script = ExtResource("1_cjokg")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]

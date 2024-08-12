@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bd64qoj6wt37j"]
+[gd_scene load_steps=23 format=3 uid="uid://bd64qoj6wt37j"]
 
 [ext_resource type="Script" path="res://Scripts/enemigos/slime_ia.gd" id="1_15ktd"]
 [ext_resource type="Texture2D" uid="uid://k80ftkt3l2w1" path="res://Recursos/Sprites/Enemigo/Slime_pj_spriteseheet.png" id="2_2lbt5"]
@@ -6,6 +6,108 @@
 [ext_resource type="PackedScene" uid="uid://v536h5v5gas1" path="res://Escenas/vainas/corazon.tscn" id="3_q5kbr"]
 [ext_resource type="Script" path="res://Scripts/Jugador/pupass.gd" id="3_ui4pc"]
 [ext_resource type="PackedScene" uid="uid://neqju1hdl3fc" path="res://Escenas/vainas/damage_pupo_enemigos.tscn" id="4_edc4q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ykqd"]
+atlas = ExtResource("2_2lbt5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu12u"]
+atlas = ExtResource("2_2lbt5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl57o"]
+atlas = ExtResource("2_2lbt5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0hxm"]
+atlas = ExtResource("2_2lbt5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t57s8"]
+atlas = ExtResource("2_2lbt5")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvyou"]
+atlas = ExtResource("2_2lbt5")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gw2r"]
+atlas = ExtResource("2_2lbt5")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7ecd"]
+atlas = ExtResource("2_2lbt5")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca32m"]
+atlas = ExtResource("2_2lbt5")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aog8g"]
+atlas = ExtResource("2_2lbt5")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq2cl"]
+atlas = ExtResource("2_2lbt5")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeljl"]
+atlas = ExtResource("2_2lbt5")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iuuyj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ykqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eu12u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl57o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0hxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t57s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvyou")
+}],
+"loop": true,
+"name": &"caminar",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gw2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7ecd")
+}],
+"loop": false,
+"name": &"golpe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca32m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aog8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq2cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeljl")
+}],
+"loop": false,
+"name": &"morir",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f27c8"]
 radius = 6.0
@@ -16,20 +118,24 @@ size = Vector2(11, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1ri7"]
 
-[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("raycast", "marker", "invul")]
+[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("raycast", "marker", "invul", "sprite", "hurbo", "hitbox")]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_15ktd")
 raycast = NodePath("RayCast_vertical")
 marker = NodePath("Marker2D")
 invul = NodePath("invul")
+sprite = NodePath("Sprite2D")
+hurbo = NodePath("hurbo")
+hitbox = NodePath("Hitbox")
+velocidad = 30
 loot = Array[PackedScene]([ExtResource("2_s8k3t"), ExtResource("3_q5kbr")])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_2lbt5")
-hframes = 8
-vframes = 4
-frame = 15
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iuuyj")
+animation = &"caminar"
+autoplay = "caminar"
+frame_progress = 0.360171
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -2)
@@ -54,8 +160,6 @@ collision_mask = 0
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_i1ri7")
 debug_color = Color(0.997079, 0, 0.17371, 0.42)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="RayCast_vertical" type="RayCast2D" parent="."]
 position = Vector2(6, 0)

@@ -24,7 +24,7 @@ gradient = SubResource("Gradient_f35jr")
 script = ExtResource("1_2e6lr")
 
 [node name="Goku" parent="." instance=ExtResource("3_dxhip")]
-position = Vector2(206, 353)
+position = Vector2(136, 399)
 
 [node name="ParallaxBackground" type="Node2D" parent="Goku"]
 z_index = -100

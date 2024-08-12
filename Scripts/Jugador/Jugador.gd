@@ -101,7 +101,6 @@ func recividor_inputs():
 	else:
 		velocity = Vector2.ZERO
 		
-	
 func _damage():
 	if $Invulnerable.is_stopped():
 		$Invulnerable.start()
@@ -141,3 +140,4 @@ func _on_ataque_magia() -> void:
 func _on_hitbox_arma_area_entered(area: Area2D) -> void:
 	GlobalVar.enemigo_damage_taken = damage
 	area.get_parent().sus()
+	
