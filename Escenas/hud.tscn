@@ -97,20 +97,21 @@ script = ExtResource("3_6x4kx")
 [node name="ColorRect" type="ColorRect" parent="."]
 show_behind_parent = true
 z_index = -1
-offset_right = 1080.0
-offset_bottom = 59.0
+offset_right = 320.0
+offset_bottom = 18.0
 scale = Vector2(1.00219, 1.34801)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Stats" type="Control" parent="."]
 process_mode = 1
 layout_mode = 3
 anchors_preset = 0
-offset_left = 580.0
-offset_top = 327.0
-offset_right = 580.0
-offset_bottom = 327.0
-scale = Vector2(0.5, 0.5)
+offset_left = 240.0
+offset_top = 56.0
+offset_right = 240.0
+offset_bottom = 56.0
+scale = Vector2(0.2, 0.2)
 
 [node name="Fps" type="Label" parent="Stats"]
 layout_mode = 0
@@ -124,9 +125,10 @@ text = "Fps: "
 [node name="Eter" type="Label" parent="Stats"]
 z_index = 100
 layout_mode = 0
-offset_top = -578.0
-offset_right = 89.0
-offset_bottom = -555.0
+offset_left = -440.0
+offset_top = -215.0
+offset_right = -351.0
+offset_bottom = -192.0
 scale = Vector2(2.30412, 2.4409)
 text = "Eter:"
 label_settings = ExtResource("2_k2tf8")
@@ -141,11 +143,11 @@ frame_progress = 0.590427
 [node name="vida" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 32.0
-offset_top = 5.0
-offset_right = 32.0
-offset_bottom = 5.0
-scale = Vector2(1.491, 1.57133)
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 6.0
+offset_bottom = 2.0
+scale = Vector2(0.5, 0.5)
 
 [node name="Vida_vacia" type="TextureRect" parent="vida"]
 layout_mode = 1
@@ -183,10 +185,11 @@ vertical_alignment = 1
 [node name="mana" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 249.0
-offset_right = 289.0
-offset_bottom = 40.0
-scale = Vector2(1.10735, 0.956976)
+offset_left = 80.0
+offset_top = -1.0
+offset_right = 120.0
+offset_bottom = 39.0
+scale = Vector2(0.4, 0.345)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="mana"]
 layout_mode = 0

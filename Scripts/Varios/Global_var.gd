@@ -21,10 +21,6 @@ var enemigo_damage_taken
 var boss_1_alive : bool = false
 var current_boss_life : int
 
-var mision_actual : String = "Ninguna"
-
-
-
 #FIXME Arreglar el rendimiento de esta basura
 var style: DialogicStyle = load("res://Estilos_dialogic/estilo_1.tres")
 	
@@ -38,3 +34,10 @@ func _process(delta):
 	if vida_jugador > vida_max:
 		vida_jugador = vida_max
 	mana = clampi(mana,0,mana_max)
+
+func _ready():
+	Dialogic.signal_event.connect(_on_dialogic_signal)
+
+func _on_dialogic_signal(argument:String):
+	if argument == "Cerrar_juego":
+		get_tree().quit()

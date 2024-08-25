@@ -1,4 +1,4 @@
-if {GlobalVar.mision_actual} == "La cueva":
+if Ids.mision_act_id == 1:
 	Samantha: Tu otra vez?!!?
 	Npc_1: Como que yo otra vez
 	Samantha: .......
@@ -10,7 +10,7 @@ if {GlobalVar.mision_actual} == "La cueva":
 	Npc_1: Talvez eso te ayude para...
 	Npc_1: despues.
 	do Misiones.completar_mision()
-	do Misiones.aceptar_mision("El despues...", "No sabes que habra en el futuro!!!")
+	do Misiones.aceptar_mision(2.0)
 else:
 	Npc_1: Ya has abierto el cofre?
 	[end_timeline]

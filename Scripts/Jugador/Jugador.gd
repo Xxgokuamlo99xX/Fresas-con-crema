@@ -5,8 +5,10 @@ extends CharacterBody2D
 @export var SPEED : int = 150
 @export var GRAVITY : float = 9.8
 @export var JUMP_FORCE : int = 250  
-@onready var hechizo = $Voltear/Hechizo
+var ataque_num : int = 3
 @export var damage : int = 5
+
+@onready var hechizo = $Voltear/Hechizo
 @onready var hitobx_arma = $Voltear/Hitbox_arma
 var dir = Vector2.ZERO
 var state_machine
@@ -16,6 +18,7 @@ signal recive_damage
 signal curarse 
 signal ataque_magia
 signal morixd
+
 
 var arma_actual : int = 0
 var bola_fuego = preload("res://armas/Bola_de_fuego.tscn")
@@ -32,8 +35,7 @@ func _physics_process(delta):
 	
 	velocity.y = clampf(velocity.y,-240,240)
 
-
-func Ataque():
+func Ataque():   # Esta funcion se llama en el anim_player del jugador
 	match arma_actual:
 		0:
 			hechizo.shoot(200,10,rotacion)
@@ -41,7 +43,7 @@ func Ataque():
 		1:
 			hechizo.shoot(300,20,rotacion)
 			
-	ataque_magia.emit()
+	ataque_magia.emit() # Nose si funcione cambiandolo por un await get_tree().create_timer().timeout
 		
 func _ready():
 	
@@ -64,21 +66,42 @@ func animaciones():
 			state_machine.travel("Caida")
 			
 	#Ataque_magico
-	if Input.is_action_just_pressed("Ataque_magico") && GlobalVar.mana != 0 && is_on_floor():
+	if InputBuffer.is_action_press_buffered("Ataque_magico") && GlobalVar.mana != 0 && is_on_floor():
 		await get_tree().create_timer(0.01).timeout
 		state_machine.travel("Ataque_magico")
 		GlobalVar.puede_moverse = false
 		await $AnimationTree.animation_finished
 		GlobalVar.puede_moverse = true
 		
-	#Ataque_melee
-	if Input.is_action_just_pressed("Ataque_melee") && is_on_floor():
+	#Ataque_melee - Ataques consecutivos
+	if InputBuffer.is_action_press_buffered("Ataque_melee") && is_on_floor():
+
 		await get_tree().create_timer(0.01).timeout
-		state_machine.travel("Ataque_2")
-		GlobalVar.puede_moverse = false
-		await $AnimationTree.animation_finished
-		GlobalVar.puede_moverse = true
-		
+		match ataque_num:
+			3:
+				ataque_num -= 1
+				damage = 5
+				state_machine.travel("Ataque_1")
+				GlobalVar.puede_moverse = false
+				await $AnimationTree.animation_finished
+				GlobalVar.puede_moverse = true
+				
+			2:
+				ataque_num -= 1
+				damage = 10
+				state_machine.travel("Ataque_2")
+				GlobalVar.puede_moverse = false
+				await $AnimationTree.animation_finished
+				GlobalVar.puede_moverse = true
+				
+			1:
+				ataque_num = 3 
+				damage = 15
+				state_machine.travel("Ataque_3")
+				GlobalVar.puede_moverse = false
+				await $AnimationTree.animation_finished
+				GlobalVar.puede_moverse = true
+
 func flip():
 	if dir.x == -1:
 		$Voltear.scale = Vector2(-1,1)
@@ -91,7 +114,7 @@ func recividor_inputs():
 	if GlobalVar.puede_moverse == true:
 		dir.x = Input.get_action_strength("move_der") - Input.get_action_strength("move_izq")
 		
-		if Input.is_action_just_pressed("salto") and is_on_floor():
+		if InputBuffer.is_action_press_buffered("salto") and is_on_floor():
 				velocity.y -= JUMP_FORCE 
 				
 		velocity.x = dir.x * SPEED

@@ -1,11 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3t1avw4c0qgi"]
+[gd_scene load_steps=4 format=3 uid="uid://c3t1avw4c0qgi"]
 
 [ext_resource type="Script" path="res://Scripts/Puerta.gd" id="1_5u4ej"]
+[ext_resource type="Texture2D" uid="uid://b53io3yxqcnjh" path="res://Imagens_personajes/Tecla Z.png" id="2_tg6c2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nawv7"]
 size = Vector2(2.66667, 7.66667)
 
-[node name="Puerta_cueva" type="Node2D"]
+[node name="Puerta" type="Node2D"]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_5u4ej")
 
@@ -16,4 +17,6 @@ position = Vector2(0, 9.16667)
 shape = SubResource("RectangleShape2D_nawv7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(0, -20)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tg6c2")

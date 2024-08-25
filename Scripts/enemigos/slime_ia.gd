@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var raycast : RayCast2D
 @export var marker : Marker2D
 @export var invul : Timer
-@export var sprite : AnimatedSprite2D
+@onready var sprite : AnimationPlayer = $AnimationPlayer
 @export var hurbo : Area2D
 @export var hitbox : Area2D
 
@@ -52,7 +52,7 @@ func sus():
 		invul.start()
 		vida -= GlobalVar.enemigo_damage_taken
 		marker._pupa()
-		sprite.play("golpe")
+		sprite.play("hit")
 		if vida <= 0:
 			soltar_loot()
 		

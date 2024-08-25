@@ -1,4 +1,4 @@
-if {GlobalVar.mision_actual} == "Ninguna":
+if Ids.mision_act_id == 0:
 	Npc_1: Hola!, soy Godku
 	- Eres goku?
 		Npc_1: Si eso es lo que dije
@@ -24,7 +24,7 @@ if {GlobalVar.mision_actual} == "Ninguna":
 		jump Algo mas
 	- Nop.
 		Npc_1: Ok, bay
-		do Misiones.aceptar_mision("La cueva", "-Entra e investiga la dichosa cueva")
+		do Misiones.aceptar_mision(1.0)
 		[end_timeline]
 	label Algo mas
 	Npc_1: Algo mas?

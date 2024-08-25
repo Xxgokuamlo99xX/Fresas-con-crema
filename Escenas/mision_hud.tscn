@@ -27,6 +27,7 @@ offset_left = 864.0
 offset_top = 80.0
 offset_right = 1080.0
 offset_bottom = 208.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xw7jj")
 
 [node name="Nombre_mision_resumen" type="Control" parent="."]
@@ -40,6 +41,7 @@ offset_right = 436.0
 offset_bottom = -16.0
 grow_horizontal = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Nombre_mision_resumen"]
 layout_mode = 1
@@ -71,6 +73,7 @@ offset_right = 516.0
 offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label2" type="Label" parent="Resumen_mision"]
 layout_mode = 0

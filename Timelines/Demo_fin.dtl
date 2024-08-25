@@ -1,0 +1,18 @@
+Samantha: Dios mio este tipo otra vez. 
+Npc_1: Grosera
+Samantha: Bueno ahora que quieres?
+Npc_1: Pues decirte que este es el fin
+Samantha: Que!?
+Samantha: Tan pronto?
+Npc_1: Bueno nose que esperabas esto lo esta haciendo una sola persona
+Npc_1: No vez que nisiquiera hay fondo aqui
+Samantha: Awww, justo cuando se empezaba a poner padre
+Npc_1: Literalmente solo hubo una cinematica 
+Samantha: Bueno pero y no tiene amigos que lo ayuden?
+Npc_1: ...
+Samantha: Vaya... 
+Npc_1: Bueno jugador se va a cerrar el juego para que ya sigas con tu vida y de paso dile lo que no te a gustado al que hizo esto
+Gracias por probar esta prueba \:)
+bay.
+[signal arg="Cerrar_juego"]
+[end_timeline]

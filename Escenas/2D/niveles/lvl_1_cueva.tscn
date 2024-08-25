@@ -149,9 +149,6 @@ scale = Vector2(5, 5)
 energy = 8.0
 texture = SubResource("GradientTexture2D_q2lk3")
 
-[node name="lvl_1 Pos" type="Marker2D" parent="."]
-position = Vector2(176, -16)
-
 [node name="luz" type="Node2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="luz"]
@@ -192,12 +189,17 @@ texture = SubResource("GradientTexture1D_g5chh")
 
 [node name="Void_out" parent="." node_paths=PackedStringArray("Posicion_rec") instance=ExtResource("11_kmjyo")]
 position = Vector2(1486, 1280)
-Posicion_rec = NodePath("../Marker2D")
+Posicion_rec = NodePath("../Markers_pos/Void_marker")
 
 [node name="CollisionShape2D" parent="Void_out" index="0"]
 position = Vector2(285, 28.5)
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Markers_pos" type="Node2D" parent="."]
+
+[node name="Void_marker" type="Marker2D" parent="Markers_pos"]
 position = Vector2(1570, 1009)
+
+[node name="lvl_1 Pos" type="Marker2D" parent="Markers_pos"]
+position = Vector2(176, -16)
 
 [editable path="Void_out"]

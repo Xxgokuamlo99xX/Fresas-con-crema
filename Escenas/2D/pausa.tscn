@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://brjugeonmbmq4"]
+[gd_scene load_steps=7 format=3 uid="uid://brjugeonmbmq4"]
 
 [ext_resource type="Script" path="res://Scripts/Varios/pausa.gd" id="1_00pje"]
 [ext_resource type="FontFile" uid="uid://cgkd4e7kies82" path="res://Recursos/Fuentes de texto/ZeldaOracles.ttf" id="3_fc8ke"]
 [ext_resource type="Script" path="res://Scripts/Varios/Volume_bar.gd" id="4_6evri"]
+[ext_resource type="Script" path="res://Scripts/Utilidades/debug.gd" id="4_htb8i"]
+[ext_resource type="LabelSettings" uid="uid://bfbkkbnsj01vt" path="res://Recursos/Fuentes de texto/hud.tres" id="5_jtq72"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_obm2r"]
 font = ExtResource("3_fc8ke")
@@ -147,6 +149,45 @@ scale = Vector2(2.5, 2.5)
 text = "Salir
 "
 
+[node name="debug" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_htb8i")
+
+[node name="bebug" type="Label" parent="debug"]
+offset_left = 873.0
+offset_top = 353.0
+offset_right = 928.0
+offset_bottom = 376.0
+text = "Debug"
+label_settings = ExtResource("5_jtq72")
+
+[node name="bebug2" type="Label" parent="debug"]
+offset_left = 858.0
+offset_top = 439.0
+offset_right = 957.0
+offset_bottom = 462.0
+text = "Mision Id"
+label_settings = ExtResource("5_jtq72")
+
+[node name="cambio mision boton" type="Button" parent="debug"]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 501.0
+offset_right = 939.0
+offset_bottom = 532.0
+text = "Aceptar
+"
+
+[node name="LineEdit" type="LineEdit" parent="debug"]
+layout_mode = 0
+offset_left = 871.0
+offset_top = 465.0
+offset_right = 938.063
+offset_bottom = 496.0
+
 [connection signal="value_changed" from="Volumenscrols/Master" to="Volumenscrols/Master" method="_on_value_changed"]
 [connection signal="value_changed" from="Volumenscrols/Musica" to="Volumenscrols/Musica" method="_on_value_changed"]
 [connection signal="value_changed" from="Volumenscrols/SFX" to="Volumenscrols/SFX" method="_on_value_changed"]
@@ -154,3 +195,4 @@ text = "Salir
 [connection signal="mouse_entered" from="botones/Button2" to="." method="_on_button_2_mouse_entered"]
 [connection signal="mouse_exited" from="botones/Button2" to="." method="_on_button_2_mouse_exited"]
 [connection signal="pressed" from="botones/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="debug/cambio mision boton" to="debug" method="_on_apply_button_pressed"]

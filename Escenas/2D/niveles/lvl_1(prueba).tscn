@@ -24,7 +24,7 @@ gradient = SubResource("Gradient_f35jr")
 script = ExtResource("1_2e6lr")
 
 [node name="Goku" parent="." instance=ExtResource("3_dxhip")]
-position = Vector2(136, 399)
+position = Vector2(3302, 329)
 
 [node name="ParallaxBackground" type="Node2D" parent="Goku"]
 z_index = -100
@@ -108,6 +108,8 @@ position = Vector2(3467, 336)
 [node name="Zona_teletransporte" parent="Teletransportes" instance=ExtResource("8_ptalj")]
 escena_cambio = &"res://Escenas/2D/niveles/lvl_1_cueva.tscn"
 
-[node name="lvl_1-cueva Pos" type="Marker2D" parent="."]
+[node name="Markers_pos" type="Node2D" parent="."]
+
+[node name="lvl_1-cueva Pos" type="Marker2D" parent="Markers_pos"]
 position = Vector2(3408, 356)
 scale = Vector2(0.38, 0.38)

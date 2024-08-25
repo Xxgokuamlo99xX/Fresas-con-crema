@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Fresas con crema"
-run/main_scene="res://Escenas/2D/niveles/lvl_1(prueba).tscn"
+run/main_scene="res://Escenas/pantalla_de_inicio.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.292442, 0, 0.0228105, 1)
@@ -20,10 +20,12 @@ config/icon="res://Recursos/Rec. juego/Icono_juego.png"
 
 [autoload]
 
+InputBuffer="*res://Scripts/input_buffer.gd"
 GlobalVar="*res://Scripts/Varios/Global_var.gd"
 cambiar_escena="*res://Escenas/transicion.tscn"
-Misiones="*res://Escenas/mision_hud.tscn"
 pausa="*res://Escenas/2D/pausa.tscn"
+Ids="*res://Scripts/Global/Ids.gd"
+Misiones="*res://Escenas/mision_hud.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
@@ -35,15 +37,17 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "Cinematica_castillo_2": "res://Timelines/Cinematicas/Cinematica_castillo_2.dtl",
+"Demo_fin": "res://Timelines/Demo_fin.dtl",
 "Inicio del juego": "res://Timelines/Inicio del juego.dtl",
 "Npc_1": "res://Timelines/Npc_1.dtl",
 "Npc_cueva": "res://Timelines/Npc_cueva.dtl",
+"Rey_goku_encuentro": "res://Timelines/Rey_goku_encuentro.dtl",
 "cinematica_castillo": "res://Timelines/cinematica_castillo.dtl",
 "cofres": "res://Timelines/cofres.dtl"
 }
-text/letter_speed=0.01
-text/initial_text_reveal_skippable=true
-text/text_reveal_skip_delay=0.1
+text/letter_speed=0.02
+text/initial_text_reveal_skippable=false
+text/text_reveal_skip_delay=1.0
 text/advance_delay=0.1
 text/autoadvance_per_character_delay=0.1
 text/autoadvance_ignored_characters_enabled=true
@@ -74,9 +78,11 @@ translation/add_separator=false
 
 [display]
 
-window/size/viewport_width=1080
-window/size/viewport_height=640
+window/size/viewport_width=320
+window/size/viewport_height=180
 window/size/always_on_top=true
+window/size/window_width_override=1080
+window/size/window_height_override=640
 window/stretch/mode="canvas_items"
 
 [dotnet]
@@ -135,6 +141,7 @@ salto={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194320,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":11,"pressure":0.0,"pressed":true,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194320,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 abajo={
@@ -145,7 +152,7 @@ abajo={
 }
 Ataque_magico={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":67,"physical_keycode":0,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":3,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
@@ -157,7 +164,7 @@ opciones={
 }
 Ataque_melee={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":88,"key_label":0,"unicode":120,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":88,"physical_keycode":0,"key_label":0,"unicode":120,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":2,"pressure":0.0,"pressed":true,"script":null)
 ]
 }

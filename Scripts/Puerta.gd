@@ -1,11 +1,7 @@
 extends Node2D
 
-@export var sprite : Texture2D
+@onready var sprite : Sprite2D = $Sprite2D
 @export var escena_cambio : StringName
-
-
-func _ready() -> void:
-	$Sprite2D.texture = sprite
 
 func _process(delta: float) -> void:
 	deteccion()
@@ -15,8 +11,11 @@ func cambio_de_escena():
 
 func deteccion():
 	for body in $Area2D.get_overlapping_bodies():
-		if body.is_in_group("Jugador") && Input.is_action_just_pressed("usar"):
-			GlobalVar.puede_moverse = false
-			cambio_de_escena()
-
+		if body.is_in_group("Jugador"):
+			sprite.show()
+			if Input.is_action_just_pressed("usar"):
+				GlobalVar.puede_moverse = false
+				cambio_de_escena()
+		else:
+			sprite.hide()
 		GlobalVar.nivel_anterior = get_parent().get_parent().name

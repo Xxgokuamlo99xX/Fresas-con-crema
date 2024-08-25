@@ -28,7 +28,6 @@ func _on_fullscreen_toggled(toggled_on):
 	elif toggled_on == false:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
-
 func _on_button_2_pressed() -> void:
 	get_tree().quit()
 

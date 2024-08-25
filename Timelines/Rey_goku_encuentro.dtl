@@ -1,0 +1,33 @@
+if Ids.mision_act_id == 2:
+	Samantha: Okey esto ya es exagerado.
+	Npc_1: Que?
+	Samantha: De verdad no alguien con quien mas remplazarte?
+	Samantha: Nose que el creador se ponga a dibujar un rey o algo.
+	Npc_1: Pues a mi no me molestaria
+	Npc_1: de todas formas nadie lee esto, solo estas aqui por alguna mision no?
+	Samantha: Bueno si...
+	Npc_1: Entonces de que te estas quejando?
+	Npc_1: De cualquier forma, es mejor que vayas empezando con la mision.
+	Npc_1: Tu primera mision sera ir al desierto.
+	Samantha: Para que?
+	Npc_1: Porque asi quiso el que hizo esto deja de quejarte
+	Samantha: Bueno, para alla ire.
+	Samantha: Espero no encontrarme contigo otra vez
+	do Misiones.completar_mision()
+	do Misiones.aceptar_mision(3)
+else:
+	Npc_1: Que esperas?
+	Samantha: Pues nose.
+	Se te olvido que tenias que hacer o no leiste nada?
+	- No leei nada y soy mala persona
+		La verdad nose porque escribo todo esto si nadie lo lee.
+		Npc_1: Te dije que tenias que ir al desierto, hasta sale la mision ahi arriba >\:(
+		[end_timeline]
+	- Se me olvido que hacer
+		Npc_1: Como se te va a olvidar si la mision sale ahi arriba?
+		[end_timeline]
+	- Solo estaba viendo
+		Npc_1: Pues vete de una vez, que tengo "Asuntos" que atender.
+		Samantha: Si claro. -_-
+		[end_timeline]
+[end_timeline]
