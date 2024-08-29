@@ -174,7 +174,7 @@ flip_h = true
 
 [node name="Goku" parent="." instance=ExtResource("1_syc5n")]
 z_index = 1
-position = Vector2(2920, -27)
+position = Vector2(79, -20)
 
 [node name="Tilemap" type="Node2D" parent="."]
 z_index = -1
@@ -205,6 +205,9 @@ tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAABAAEAAAACAAAAAAACAAEAAAACAAA
 tile_set = ExtResource("1_auw8m")
 
 [node name="Markers_pos" type="Node2D" parent="."]
+
+[node name="lvl_1-cueva Pos" type="Marker2D" parent="Markers_pos"]
+position = Vector2(58, 6)
 
 [node name="Castillo_tienda Pos" type="Marker2D" parent="Markers_pos"]
 position = Vector2(1174, 6)

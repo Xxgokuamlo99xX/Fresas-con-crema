@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctq215tdn0uon"]
+[gd_scene load_steps=4 format=3 uid="uid://ctq215tdn0uon"]
 
 [ext_resource type="Script" path="res://Scripts/Armas-objetos/Proyectil_magico.gd" id="1_ktn4y"]
 [ext_resource type="PackedScene" uid="uid://cssodavd2u0nb" path="res://Escenas/VFX/fuego_proyectil.tscn" id="2_5jlph"]
@@ -6,35 +6,20 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icg38"]
 size = Vector2(14.2857, 8.57143)
 
-[sub_resource type="Gradient" id="Gradient_r858x"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_abjkt"]
-gradient = SubResource("Gradient_r858x")
-fill = 1
-fill_from = Vector2(0.512821, 0.474359)
-fill_to = Vector2(0.820513, 0.0897436)
-
 [node name="Bola_fuego" type="Area2D"]
 top_level = true
 collision_layer = 0
-collision_mask = 24
+collision_mask = 80
 script = ExtResource("1_ktn4y")
 damage = 10
 
 [node name="Fuego_proyectil" parent="." instance=ExtResource("2_5jlph")]
-position = Vector2(1, 3.55271e-15)
-scale = Vector2(0.1, 0.1)
+position = Vector2(-3, 5)
+scale = Vector2(0.9, 0.9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
 scale = Vector2(0.7, 0.7)
 shape = SubResource("RectangleShape2D_icg38")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-2, 0)
-color = Color(0.937255, 0.909804, 0, 1)
-energy = 2.0
-texture = SubResource("GradientTexture2D_abjkt")
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

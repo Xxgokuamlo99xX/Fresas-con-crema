@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs8sijb0qyxoo"]
+
+[ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="1_n7q7t"]
+
+[node name="Nombre del nivel" type="Node"]
+
+[node name="Goku" parent="." instance=ExtResource("1_n7q7t")]
+
+[node name="Tilemap" type="Node2D" parent="."]
+
+[node name="Markers_pos" type="Node2D" parent="."]
+
+[node name="Puertas" type="Node2D" parent="."]
+
+[node name="Parallax" type="Node2D" parent="."]

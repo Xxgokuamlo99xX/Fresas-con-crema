@@ -24,6 +24,7 @@ InputBuffer="*res://Scripts/input_buffer.gd"
 GlobalVar="*res://Scripts/Varios/Global_var.gd"
 cambiar_escena="*res://Escenas/transicion.tscn"
 pausa="*res://Escenas/2D/pausa.tscn"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Ids="*res://Scripts/Global/Ids.gd"
 Misiones="*res://Escenas/mision_hud.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
@@ -84,6 +85,7 @@ window/size/always_on_top=true
 window/size/window_width_override=1080
 window/size/window_height_override=640
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -91,7 +93,7 @@ project/assembly_name="Juego"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Fire Bullets/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/input_controller/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/input_controller/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [input]
 
@@ -210,9 +212,13 @@ dialogic_default_action={
 2d_physics/layer_3="Enemigos"
 2d_physics/layer_4="Parede Enemigos"
 2d_physics/layer_6="damage enemigos"
-2d_physics/layer_7="pinchos"
+2d_physics/layer_7="Bola de fuego"
 2d_physics/layer_9="Plataformas_bajables"
 2d_physics/layer_10="Interacciones"
+
+[physics]
+
+common/physics_interpolation=true
 
 [rendering]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bg2ufmmb0wokf"]
+[gd_scene load_steps=72 format=3 uid="uid://bg2ufmmb0wokf"]
 
 [ext_resource type="Script" path="res://Scripts/Jugador/Jugador.gd" id="1_cjokg"]
 [ext_resource type="AudioStream" uid="uid://clduykdkia2fk" path="res://Recursos/Sonidos/SFX/bola de fuego.wav" id="2_3yuse"]
@@ -6,14 +6,14 @@
 [ext_resource type="Script" path="res://addons/Fire Bullets/scripts/Gun.gd" id="6_5738t"]
 [ext_resource type="Script" path="res://Scripts/Varios/Camera_things.gd" id="6_dqhve"]
 [ext_resource type="PackedScene" uid="uid://ctq215tdn0uon" path="res://armas/Bola_de_fuego.tscn" id="6_mvyox"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_xwngx"]
-[ext_resource type="Script" path="res://Scripts/Varios/Camara_control.gd" id="7_85cwe"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_ucths"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_4rtqi"]
 [ext_resource type="AudioStream" uid="uid://b2r4gbatjyq72" path="res://Recursos/Sonidos/SFX/hitHurt.wav" id="8_h7jby"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_pkwh4"]
 [ext_resource type="PackedScene" uid="uid://bwdmbdwfnah6q" path="res://Escenas/hud.tscn" id="11_cq534"]
+[ext_resource type="PackedScene" uid="uid://c4go60ufvmid7" path="res://Recursos/Sprites/Prota/cosas_muerte.tscn" id="12_8d0ns"]
 [ext_resource type="Script" path="res://Scripts/Jugador/pupass.gd" id="12_kqqtw"]
 [ext_resource type="PackedScene" uid="uid://cvn85npnemdxs" path="res://Escenas/vainas/damage_pupo.tscn" id="13_luuqx"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="13_u5vqy"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="14_g6uss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_invyv"]
 size = Vector2(14, 29)
@@ -284,6 +284,42 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D/Cosas_muerte:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [545]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:collision_layer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [549]
+}
 
 [sub_resource type="Animation" id="Animation_4r27m"]
 resource_name = "Salto_inicio"
@@ -301,6 +337,86 @@ tracks/0/keys = {
 "values": [14, 15, 16, 17]
 }
 
+[sub_resource type="Animation" id="Animation_nd17k"]
+resource_name = "morir"
+length = 6.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Voltear/PJ:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.98023e-08, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4, 4.4, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [66, 67, 68, 67, 68, 67, 68, 67, 68, 67, 68, 67, 68]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D/Cosas_muerte/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 5.4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D/Cosas_muerte:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:collision_mask")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:collision_layer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio_player")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_h7jby")
+}],
+"times": PackedFloat32Array(5)
+}
+tracks/5/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o8n4h"]
 _data = {
 "Ataque_1": SubResource("Animation_17dev"),
@@ -311,7 +427,8 @@ _data = {
 "Correr": SubResource("Animation_cgj25"),
 "Idle": SubResource("Animation_s7m4l"),
 "RESET": SubResource("Animation_t6bxg"),
-"Salto_inicio": SubResource("Animation_4r27m")
+"Salto_inicio": SubResource("Animation_4r27m"),
+"morir": SubResource("Animation_nd17k")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vp76j"]
@@ -337,6 +454,9 @@ animation = &"Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rvj03"]
 animation = &"Salto_inicio"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n7lie"]
+animation = &"morir"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x120j"]
 
@@ -386,6 +506,22 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o5u75"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_732wk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ee658"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pn2x7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q37uj"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vet7e"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3bijl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7pxip"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_esgps"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uw6ge"]
 states/Ataque_1/node = SubResource("AnimationNodeAnimation_vp76j")
 states/Ataque_1/position = Vector2(448, 356)
@@ -398,13 +534,16 @@ states/Ataque_magico/position = Vector2(514, 14)
 states/Caida/node = SubResource("AnimationNodeAnimation_o1olp")
 states/Caida/position = Vector2(319, 247)
 states/Correr/node = SubResource("AnimationNodeAnimation_swqkc")
-states/Correr/position = Vector2(783, 137)
+states/Correr/position = Vector2(774, 196)
+states/End/position = Vector2(1131, 125)
 states/Idle/node = SubResource("AnimationNodeAnimation_rg5i0")
 states/Idle/position = Vector2(514, 146)
 states/Salto_inicio/node = SubResource("AnimationNodeAnimation_rvj03")
 states/Salto_inicio/position = Vector2(146, 247)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_x120j"), "Idle", "Salto_inicio", SubResource("AnimationNodeStateMachineTransition_o8lt6"), "Salto_inicio", "Caida", SubResource("AnimationNodeStateMachineTransition_hidhq"), "Caida", "Idle", SubResource("AnimationNodeStateMachineTransition_7odnv"), "Idle", "Correr", SubResource("AnimationNodeStateMachineTransition_c7ota"), "Correr", "Idle", SubResource("AnimationNodeStateMachineTransition_dnmic"), "Idle", "Ataque_magico", SubResource("AnimationNodeStateMachineTransition_0afsw"), "Ataque_magico", "Idle", SubResource("AnimationNodeStateMachineTransition_ixwed"), "Correr", "Ataque_magico", SubResource("AnimationNodeStateMachineTransition_lyynh"), "Ataque_2", "Correr", SubResource("AnimationNodeStateMachineTransition_8w4ff"), "Ataque_magico", "Correr", SubResource("AnimationNodeStateMachineTransition_v6p8s"), "Idle", "Ataque_1", SubResource("AnimationNodeStateMachineTransition_o5lmd"), "Ataque_1", "Ataque_2", SubResource("AnimationNodeStateMachineTransition_qeqe5"), "Ataque_2", "Ataque_3", SubResource("AnimationNodeStateMachineTransition_sqgev"), "Ataque_1", "Idle", SubResource("AnimationNodeStateMachineTransition_cwokg"), "Ataque_3", "Idle", SubResource("AnimationNodeStateMachineTransition_s44fr"), "Ataque_1", "Correr", SubResource("AnimationNodeStateMachineTransition_sqov3"), "Ataque_3", "Correr", SubResource("AnimationNodeStateMachineTransition_yewm6"), "Ataque_2", "Idle", SubResource("AnimationNodeStateMachineTransition_eyfk6"), "Correr", "Ataque_1", SubResource("AnimationNodeStateMachineTransition_o5u75")]
-graph_offset = Vector2(-22.6163, 127)
+states/morir/node = SubResource("AnimationNodeAnimation_n7lie")
+states/morir/position = Vector2(960.384, 130)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_x120j"), "Idle", "Salto_inicio", SubResource("AnimationNodeStateMachineTransition_o8lt6"), "Salto_inicio", "Caida", SubResource("AnimationNodeStateMachineTransition_hidhq"), "Caida", "Idle", SubResource("AnimationNodeStateMachineTransition_7odnv"), "Idle", "Correr", SubResource("AnimationNodeStateMachineTransition_c7ota"), "Correr", "Idle", SubResource("AnimationNodeStateMachineTransition_dnmic"), "Idle", "Ataque_magico", SubResource("AnimationNodeStateMachineTransition_0afsw"), "Ataque_magico", "Idle", SubResource("AnimationNodeStateMachineTransition_ixwed"), "Correr", "Ataque_magico", SubResource("AnimationNodeStateMachineTransition_lyynh"), "Ataque_2", "Correr", SubResource("AnimationNodeStateMachineTransition_8w4ff"), "Ataque_magico", "Correr", SubResource("AnimationNodeStateMachineTransition_v6p8s"), "Idle", "Ataque_1", SubResource("AnimationNodeStateMachineTransition_o5lmd"), "Ataque_1", "Ataque_2", SubResource("AnimationNodeStateMachineTransition_qeqe5"), "Ataque_2", "Ataque_3", SubResource("AnimationNodeStateMachineTransition_sqgev"), "Ataque_1", "Idle", SubResource("AnimationNodeStateMachineTransition_cwokg"), "Ataque_3", "Idle", SubResource("AnimationNodeStateMachineTransition_s44fr"), "Ataque_1", "Correr", SubResource("AnimationNodeStateMachineTransition_sqov3"), "Ataque_3", "Correr", SubResource("AnimationNodeStateMachineTransition_yewm6"), "Ataque_2", "Idle", SubResource("AnimationNodeStateMachineTransition_eyfk6"), "Correr", "Ataque_1", SubResource("AnimationNodeStateMachineTransition_o5u75"), "Idle", "morir", SubResource("AnimationNodeStateMachineTransition_732wk"), "Ataque_magico", "morir", SubResource("AnimationNodeStateMachineTransition_ee658"), "Correr", "morir", SubResource("AnimationNodeStateMachineTransition_pn2x7"), "Ataque_3", "morir", SubResource("AnimationNodeStateMachineTransition_q37uj"), "Ataque_2", "morir", SubResource("AnimationNodeStateMachineTransition_vet7e"), "Ataque_1", "morir", SubResource("AnimationNodeStateMachineTransition_3bijl"), "Caida", "morir", SubResource("AnimationNodeStateMachineTransition_7pxip"), "Salto_inicio", "morir", SubResource("AnimationNodeStateMachineTransition_esgps")]
+graph_offset = Vector2(262.384, 77)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfjcq"]
 size = Vector2(28, 30)
@@ -438,7 +577,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Camera/damage_screen:modulate")
+tracks/2/path = NodePath("../Camera2D/damage_screen:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -450,7 +589,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Camera/damage_screen:self_modulate")
+tracks/3/path = NodePath("../Camera2D/damage_screen:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -501,7 +640,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Camera/damage_screen:modulate")
+tracks/2/path = NodePath("../Camera2D/damage_screen:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -513,7 +652,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Camera/damage_screen:self_modulate")
+tracks/3/path = NodePath("../Camera2D/damage_screen:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -551,10 +690,10 @@ fill = 1
 fill_from = Vector2(0.5, 0.474359)
 fill_to = Vector2(0.982906, 0.0042735)
 
-[sub_resource type="Resource" id="Resource_2adnc"]
-script = ExtResource("7_ucths")
-duration = 0.5
-transition = 8
+[sub_resource type="Resource" id="Resource_nmpqv"]
+script = ExtResource("14_g6uss")
+duration = 1.0
+transition = 1
 ease = 2
 
 [node name="Goku" type="CharacterBody2D" groups=["Jugador"]]
@@ -620,21 +759,21 @@ stream = ExtResource("8_h7jby")
 volume_db = -4.386
 pitch_scale = 0.6
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 visibility_layer = 5
-position = Vector2(20, -30)
-zoom = Vector2(0.8, 0.8)
+position = Vector2(0, -25)
+zoom = Vector2(0.85, 0.85)
 editor_draw_drag_margin = true
 script = ExtResource("6_dqhve")
 
-[node name="PhantomCameraHost" type="Node" parent="Camera"]
-script = ExtResource("8_pkwh4")
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("8_4rtqi")
 
-[node name="HUD" parent="Camera" instance=ExtResource("11_cq534")]
+[node name="HUD" parent="Camera2D" instance=ExtResource("11_cq534")]
 visible = false
 
-[node name="damage_screen" type="TextureRect" parent="Camera"]
+[node name="damage_screen" type="TextureRect" parent="Camera2D"]
 modulate = Color(1, 0.0901961, 0.0588235, 1)
 self_modulate = Color(1, 1, 1, 0)
 z_index = 100
@@ -644,22 +783,23 @@ offset_right = 240.0
 offset_bottom = 128.0
 texture = SubResource("GradientTexture2D_paqth")
 
-[node name="Camaras" type="Node2D" parent="."]
-script = ExtResource("7_85cwe")
+[node name="Cosas_muerte" parent="Camera2D" instance=ExtResource("12_8d0ns")]
+visible = false
 
-[node name="Jugador" type="Node2D" parent="Camaras" node_paths=PackedStringArray("follow_target")]
-position = Vector2(20, -30)
-script = ExtResource("6_xwngx")
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+position = Vector2(0, -25)
+script = ExtResource("13_u5vqy")
 priority = 1
 follow_mode = 2
-follow_target = NodePath("../..")
-zoom = Vector2(0.8, 0.8)
-tween_resource = SubResource("Resource_2adnc")
-tween_on_load = false
-follow_offset = Vector2(20, -30)
-follow_damping_value = Vector2(2, 2)
-dead_zone_width = 0.514
-dead_zone_height = 0.56
+follow_target = NodePath("..")
+zoom = Vector2(0.85, 0.85)
+tween_resource = SubResource("Resource_nmpqv")
+follow_offset = Vector2(0, -25)
+follow_damping = true
+follow_damping_value = Vector2(0.5, 0.1)
+dead_zone_width = 0.532
+dead_zone_height = 0.367
+show_viewfinder_in_play = true
 
 [node name="Daño_pupap" type="Marker2D" parent="."]
 position = Vector2(0, -15)

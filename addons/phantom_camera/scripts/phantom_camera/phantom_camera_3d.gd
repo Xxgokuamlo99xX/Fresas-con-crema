@@ -147,6 +147,12 @@ var _is_active: bool = false
 		else:
 			if  dead_zone_changed.is_connected(_on_dead_zone_changed):
 				dead_zone_changed.disconnect(_on_dead_zone_changed)
+
+		if follow_mode == FollowMode.NONE:
+			_should_follow = false
+		elif follow_mode == FollowMode.GROUP and follow_targets or follow_target:
+			_should_follow = true
+
 		notify_property_list_changed()
 	get:
 		return follow_mode
@@ -187,6 +193,12 @@ var _has_multiple_follow_targets: bool = false
 		look_at_mode = value
 		if look_at_target is Node3D:
 			_should_look_at = true
+
+		if look_at_mode == LookAtMode.NONE:
+			_should_look_at = false
+		elif  look_at_mode == LookAtMode.GROUP and look_at_targets or look_at_target:
+			_should_look_at = true
+
 		notify_property_list_changed()
 	get:
 		return look_at_mode
@@ -217,7 +229,19 @@ var _valid_look_at_targets: Array[Node3D] = []
 @export var tween_resource: PhantomCameraTween = PhantomCameraTween.new():
 	set = set_tween_resource,
 	get = get_tween_resource
-var _has_tweened: bool = false
+var _tween_skip: bool = false
+
+var tween_duration: float:
+	set = set_tween_duration,
+	get = get_tween_duration
+
+var tween_transition: PhantomCameraTween.TransitionType:
+	set = set_tween_transition,
+	get = get_tween_transition
+
+var tween_ease: PhantomCameraTween.EaseType:
+	set = set_tween_ease,
+	get = get_tween_ease
 
 ## If enabled, the moment a [param PhantomCamera3D] is instantiated into
 ## a scene, and has the highest priority, it will perform its tween transition.
@@ -243,6 +267,54 @@ var _has_tweened: bool = false
 @export var camera_3d_resource: Camera3DResource = Camera3DResource.new():
 	set = set_camera_3d_resource,
 	get = get_camera_3d_resource
+
+#region Camera3DResouce property getters
+var cull_mask: int:
+	set = set_cull_mask,
+	get = get_cull_mask
+
+var h_offset: float:
+	set = set_h_offset,
+	get = get_h_offset
+	
+var v_offset: float:
+	set = set_v_offset,
+	get = get_v_offset
+
+var projection: Camera3DResource.ProjectionType:
+	set = set_projection,
+	get = get_projection
+
+var fov: float:
+	set = set_fov,
+	get = get_fov
+
+var size: float:
+	set = set_size,
+	get = get_size
+
+var frustum_offset: Vector2:
+	set = set_frustum_offset,
+	get = get_frustum_offset
+	
+var far: float:
+	set = set_far,
+	get = get_far
+	
+var near: float:
+	set = set_near,
+	get = get_near
+#endregion
+
+## Overrides the [member Camera3D.environment] resource property.
+@export var environment: Environment = null:
+	set = set_environment,
+	get = get_environment
+
+## Overrides the [member Camera3D.attribuets] resource property.
+@export var attributes: CameraAttributes = null:
+	set = set_attributes,
+	get = get_attributes
 
 @export_group("Follow Parameters")
 ## Offsets the [member follow_target] position.
@@ -393,6 +465,9 @@ var _current_rotation: Vector3
 
 #endregion
 
+# NOTE - Temp solution until Godot has better plugin autoload recognition out-of-the-box.
+var _phantom_camera_manager: Node
+
 
 #region Property Validator
 
@@ -507,11 +582,15 @@ func _validate_property(property: Dictionary) -> void:
 #region Private Functions
 
 func _enter_tree() -> void:
-	add_to_group(_constants.PCAM_GROUP_NAME)
+	_phantom_camera_manager = get_tree().root.get_node(_constants.PCAM_MANAGER_NODE_NAME)
 
-	var pcam_host: Array[Node] = get_tree().get_nodes_in_group("phantom_camera_host_group")
-	if pcam_host.size() > 0:
-		set_pcam_host_owner(pcam_host[0])
+	_phantom_camera_manager.pcam_added(self)
+
+	if not _phantom_camera_manager.get_phantom_camera_hosts().is_empty():
+		set_pcam_host_owner(_phantom_camera_manager.get_phantom_camera_hosts()[0])
+
+	if not visibility_changed.is_connected(_check_visibility):
+		visibility_changed.connect(_check_visibility)
 
 	#if not get_parent() is SpringArm3D:
 		#if look_at_target:
@@ -526,10 +605,11 @@ func _enter_tree() -> void:
 
 
 func _exit_tree() -> void:
+	_phantom_camera_manager.pcam_removed(self)
+
 	if _has_valid_pcam_owner():
 		get_pcam_host_owner().pcam_removed_from_scene(self)
 
-	remove_from_group(_constants.PCAM_GROUP_NAME)
 
 
 func _ready():
@@ -544,8 +624,6 @@ func _ready():
 				_follow_spring_arm.collision_mask = collision_mask
 				_follow_spring_arm.shape = shape
 				_follow_spring_arm.margin = margin
-				if not tween_on_load:
-					_has_tweened = true
 				get_parent().add_child.call_deferred(_follow_spring_arm)
 				reparent.call_deferred(_follow_spring_arm)
 	if follow_mode == FollowMode.FRAMED:
@@ -569,15 +647,23 @@ func _process_logic(delta: float) -> void:
 		match inactive_update_mode:
 			InactiveUpdateMode.NEVER:	return
 			# InactiveUpdateMode.EXPONENTIALLY:
-			# TODO - Trigger positional updates less frequently as more Pcams gets added
+			# TODO - Trigger positional updates less frequently as more PCams gets added
 	if _should_follow:
+		if not follow_mode == FollowMode.GROUP:
+			if follow_target.is_queued_for_deletion():
+				follow_target = null
+				return
 		_follow(delta)
 	if _should_look_at:
+		if look_at_target.is_queued_for_deletion():
+			look_at_target = null
+			return
 		_look_at() # TODO - Delta needs to be applied, pending Godot's 3D Physics Interpolation to be implemented
 
 
 func _follow(delta: float) -> void:
 	var follow_position: Vector3
+
 	var follow_target_node: Node3D = self
 
 	match follow_mode:
@@ -694,11 +780,11 @@ func _follow(delta: float) -> void:
 					if is_instance_valid(follow_target) and is_instance_valid(_follow_spring_arm):
 						follow_position = _get_target_position_offset()
 						follow_target_node = _follow_spring_arm
-
 				else:
-					global_position = _get_position_offset_distance()
+					follow_position = _get_position_offset_distance()
 
 	_interpolate_position(follow_position, delta, follow_target_node)
+
 
 func _look_at() -> void:
 	match look_at_mode:
@@ -850,6 +936,11 @@ func _has_valid_pcam_owner() -> bool:
 	if not is_instance_valid(get_pcam_host_owner().camera_3d): return false
 	return true
 
+
+func _check_visibility() -> void:
+	if not is_instance_valid(pcam_host_owner): return
+	pcam_host_owner.refresh_pcam_list_priorty()
+
 #endregion
 
 # TBD
@@ -880,14 +971,14 @@ func _has_valid_pcam_owner() -> bool:
 ## Assigns the value of the [param has_tweened] property.[br]
 ## [b][color=yellow]Important:[/color][/b] This value can only be changed
 ## from the [PhantomCameraHost] script.
-func set_has_tweened(caller: Node, value: bool) -> void:
+func set_tween_skip(caller: Node, value: bool) -> void:
 	if is_instance_of(caller, PhantomCameraHost):
-		_has_tweened = value
+		_tween_skip = value
 	else:
 		printerr("Can only be called PhantomCameraHost class")
 ## Returns the current [param has_tweened] value.
-func get_has_tweened() -> bool:
-	return _has_tweened
+func get_tween_skip() -> bool:
+	return _tween_skip
 
 
 ## Assigns the [param PhantomCamera3D] to a new [PhantomCameraHost].[br]
@@ -1430,6 +1521,24 @@ func get_cull_mask() -> int:
 	return camera_3d_resource.cull_mask
 
 
+## Assigns a new [Environment] resource to the [Camera3DResource].
+func set_environment(value: Environment):
+	environment = value
+
+## Gets the [Camera3D.environment] value assigned to the [Camera3DResource].
+func get_environment() -> Environment:
+	return environment
+
+
+## Assigns a new [CameraAttributes] resource to the [Camera3DResource].
+func set_attributes(value: CameraAttributes):
+	attributes = value
+
+## Gets the [Camera3D.attributes] value assigned to the [Camera3DResource].
+func get_attributes() -> CameraAttributes:
+	return attributes
+
+
 ## Assigns a new [member Camera3D.h_offset] value.[br]
 ## [b]Note:[/b] This will override and make the [param Camera3DResource] unique to
 ## this [param PhantomCamera3D].
@@ -1449,9 +1558,21 @@ func set_v_offset(value: float) -> void:
 	camera_3d_resource.v_offset = value
 	if _is_active: get_pcam_host_owner().camera_3d.v_offset = value
 
-## Gets the Camera3D fov value assigned to the [param Camera3DResource].
+## Gets the [member Camera3D.v_offset] value assigned to the [param Camera3DResource].
 func get_v_offset() -> float:
 	return camera_3d_resource.v_offset
+
+
+## Assigns a new [Camera3D.projection] value.[br]
+## [b]Note:[/b] This will override and make the [param Camera3DResource] unique to
+## this [param PhantomCamera3D].
+func set_projection(value: int) -> void:
+	camera_3d_resource.projection = value
+	if _is_active: get_pcam_host_owner().camera_3d.projection = value
+
+## Gets the [member Camera3D.projection] value assigned to the [param Camera3DResource].
+func get_projection() -> int:
+	return camera_3d_resource.projection
 
 
 ## Assigns a new [member Camera3D.fov] value.[br]
@@ -1466,6 +1587,54 @@ func get_fov() -> float:
 	return camera_3d_resource.fov
 
 
+## Assigns a new [member Camera3D.size] value.[br]
+## [b]Note:[/b] This will override and make the [param Camera3DResource] unique to
+## this [param PhantomCamera3D].
+func set_size(value: float) -> void:
+	camera_3d_resource.size = value
+	if _is_active: get_pcam_host_owner().camera_3d.size = value
+
+## Gets the [member Camera3D.size] value assigned to the [param Camera3DResource].
+func get_size() -> float:
+	return camera_3d_resource.size
+
+
+## Assigns a new [member Camera3D.frustum_offset] value.[br]
+## [b]Note:[/b] This will override and make the [param Camera3DResource] unique to
+## this [param PhantomCamera3D].
+func set_frustum_offset(value: Vector2) -> void:
+	camera_3d_resource.frustum_offset = value
+	if _is_active: get_pcam_host_owner().camera_3d.frustum_offset = value
+
+## Gets the [member Camera3D.frustum_offset] value assigned to the [param Camera3DResource].
+func get_frustum_offset() -> Vector2:
+	return camera_3d_resource.frustum_offset
+
+
+## Assigns a new [member Camera3D.near] value.[br]
+## [b]Note:[/b] This will override and make the [param Camera3DResource] unique to
+## this [param PhantomCamera3D].
+func set_near(value: float) -> void:
+	camera_3d_resource.near = value
+	if _is_active: get_pcam_host_owner().camera_3d.near = value
+
+## Gets the [member Camera3D.near] value assigned to the [param Camera3DResource].
+func get_near() -> float:
+	return camera_3d_resource.near
+
+
+## Assigns a new [member Camera3D.far] value.[br]
+## [b]Note:[/b] This will override and make the [param Camera3DResource] unique to
+## this [param PhantomCamera3D].
+func set_far(value: float) -> void:
+	camera_3d_resource.far = value
+	if _is_active: get_pcam_host_owner().camera_3d.far = value
+
+## Gets the [member Camera3D.far] value assigned to the [param Camera3DResource].
+func get_far() -> float:
+	return camera_3d_resource.far
+
+
 func set_follow_target_physics_based(value: bool, caller: Node) -> void:
 	if is_instance_of(caller, PhantomCameraHost):
 		_follow_target_physics_based = value
@@ -1474,5 +1643,13 @@ func set_follow_target_physics_based(value: bool, caller: Node) -> void:
 
 func get_follow_target_physics_based() -> bool:
 	return _follow_target_physics_based
+
+
+func get_class() -> String:
+	return "PhantomCamera3D"
+
+
+func is_class(value) -> bool:
+	return value == "PhantomCamera3D"
 
 #endregion

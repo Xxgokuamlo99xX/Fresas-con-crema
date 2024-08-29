@@ -1,70 +1,75 @@
-[gd_scene load_steps=7 format=4 uid="uid://c6p7msp1bq6xj"]
+[gd_scene load_steps=8 format=4 uid="uid://c6p7msp1bq6xj"]
 
 [ext_resource type="Script" path="res://Scripts/Varios/pantalla_de_inicio.gd" id="1_7uykf"]
-[ext_resource type="LabelSettings" uid="uid://bfbkkbnsj01vt" path="res://Recursos/Fuentes de texto/hud.tres" id="2_1emhu"]
 [ext_resource type="Texture2D" uid="uid://c7muoygh5bo5t" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_Guide.png" id="2_1ntbg"]
 [ext_resource type="TileSet" uid="uid://bqnl5uywfyg13" path="res://Recursos/Tile maps 2D/Prados.tres" id="3_r3pve"]
 [ext_resource type="TileSet" uid="uid://cxn7dw8g4db6s" path="res://Recursos/Tile maps 2D/Agua.tres" id="4_xhom1"]
 [ext_resource type="Texture2D" uid="uid://bgoni6s3w6jmy" path="res://Recursos/Sprites/Prota/Player Spritesheet.png" id="5_11a0w"]
+[ext_resource type="FontFile" uid="uid://8khbwkhjgd2r" path="res://Recursos/Fuentes de texto/FSEX300.ttf" id="6_ie0on"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3jo61"]
+font = ExtResource("6_ie0on")
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Pantalla de inicio" type="Node2D"]
 script = ExtResource("1_7uykf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(581, 287)
-scale = Vector2(3.91033, 3.71154)
+position = Vector2(156, 94)
 texture = ExtResource("2_1ntbg")
 
 [node name="Charactert" type="Sprite2D" parent="."]
-position = Vector2(365, 487)
-scale = Vector2(2.58, 2.58)
+position = Vector2(70, 128)
 texture = ExtResource("5_11a0w")
 region_enabled = true
 region_rect = Rect2(15, 5, 17, 31)
 
 [node name="suelo" type="TileMapLayer" parent="."]
-scale = Vector2(3, 3)
+position = Vector2(-32, -32)
 tile_map_data = PackedByteArray("AAAAAAsAAAACAAAAAAABAAsAAAABAAAAAAACAAsAAAACAAAAAAADAAsAAAABAAAAAAAEAAsAAAACAAAAAAAFAAsAAAABAAAAAAAGAAsAAAACAAAAAAAHAAsAAAABAAAAAAAIAAsAAAACAAAAAAAJAAsAAAABAAAAAAAKAAsAAAACAAAAAAALAAsAAAABAAAAAAAMAAsAAAACAAAAAAANAAsAAAABAAAAAAAOAAsAAAACAAAAAAAPAAsAAAABAAAAAAAQAAsAAAADAAAAAAAVAAsAAAAAAAAAAAAWAAsAAAACAAAAAAAXAAsAAAABAAAAAAAAAAwAAAABAAEAAAAAAA0AAAABAAEAAAABAA0AAAABAAEAAAACAA0AAAABAAEAAAACAAwAAAABAAEAAAABAAwAAAABAAEAAAADAAwAAAABAAEAAAADAA0AAAABAAEAAAAEAAwAAAABAAEAAAAEAA0AAAABAAEAAAAFAAwAAAABAAEAAAAFAA0AAAABAAEAAAAGAAwAAAABAAEAAAAGAA0AAAABAAEAAAAHAAwAAAABAAEAAAAHAA0AAAABAAEAAAAIAAwAAAABAAEAAAAIAA0AAAABAAEAAAAJAAwAAAABAAEAAAAJAA0AAAABAAEAAAAKAAwAAAABAAEAAAAKAA0AAAABAAEAAAALAAwAAAABAAEAAAALAA0AAAABAAEAAAAMAAwAAAABAAEAAAAMAA0AAAABAAEAAAANAAwAAAABAAEAAAANAA0AAAABAAEAAAAOAAwAAAABAAEAAAAOAA0AAAABAAEAAAAPAAwAAAABAAEAAAAPAA0AAAABAAEAAAAQAAwAAAAFAAAAAAAQAA0AAAABAAEAAAARAA0AAAAFAAAAAAASAA0AAAACAAAAAAATAA0AAAACAAAAAAAUAAwAAAAAAAAAAAAUAA0AAAAEAAAAAAAVAAwAAAAEAAAAAAAVAA0AAAABAAEAAAAWAAwAAAABAAEAAAAWAA0AAAABAAEAAAAXAAwAAAABAAEAAAAXAA0AAAABAAEAAAD9/wsAAAABAAAAAAD9/wwAAAABAAEAAAD9/w0AAAABAAEAAAD+/wsAAAACAAAAAAD+/wwAAAABAAEAAAD+/w0AAAABAAEAAAD//wsAAAABAAAAAAD//wwAAAABAAEAAAD//w0AAAABAAEAAAAYAAsAAAACAAAAAAAYAAwAAAABAAEAAAAYAA0AAAABAAEAAAAZAAsAAAABAAAAAAAZAAwAAAABAAEAAAAZAA0AAAABAAEAAAAaAAsAAAACAAAAAAAaAAwAAAABAAEAAAAaAA0AAAABAAEAAAARAAwAAAADAAAAAAA=")
 tile_set = ExtResource("3_r3pve")
 
 [node name="suelo2" type="TileMapLayer" parent="."]
-scale = Vector2(3, 3)
+position = Vector2(-32, -32)
 tile_map_data = PackedByteArray("AAACAAYAAAADAAAAABACAAcAAAADAAEAABACAAgAAAADAAIAABACAAkAAAADAAMAABADAAYAAAACAAAAABADAAcAAAACAAEAABADAAgAAAACAAIAABADAAkAAAACAAMAABADAAoAAAACAAQAABAEAAYAAAABAAAAABAEAAcAAAABAAEAABAEAAgAAAABAAIAABAEAAkAAAABAAMAABAEAAoAAAABAAQAABAFAAYAAAAAAAAAABAFAAcAAAAAAAEAABAFAAgAAAAAAAIAABAFAAkAAAAAAAMAABAXAAYAAAADAAAAAAAWAAYAAAACAAAAAAAVAAYAAAABAAAAAAAUAAYAAAAAAAAAAAAXAAcAAAADAAEAAAAWAAcAAAACAAEAAAAVAAcAAAABAAEAAAAUAAcAAAAAAAEAAAAXAAgAAAADAAIAAAAWAAgAAAACAAIAAAAVAAgAAAABAAIAAAAUAAgAAAAAAAIAAAAXAAkAAAADAAMAAAAWAAkAAAACAAMAAAAVAAkAAAABAAMAAAAUAAkAAAAAAAMAAAAWAAoAAAACAAQAAAAVAAoAAAABAAQAAAARAAsAAQAAAAAAAwASAAsAAQAAAAAAAwATAAsAAQAAAAAAAwAUAAsAAQAAAAAAAwASAAwAAQAAAAAAAwATAAwAAQAAAAAAAwA=")
 tile_set = ExtResource("4_xhom1")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 248.0
-offset_top = 123.0
-offset_right = 567.0
-offset_bottom = 198.0
-scale = Vector2(2, 2)
+offset_left = 5.0
+offset_top = 8.0
+offset_right = 324.0
+offset_bottom = 83.0
 text = "Fresas con Crema: 
 La venganza
                            "
-label_settings = ExtResource("2_1emhu")
+label_settings = SubResource("LabelSettings_3jo61")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="."]
-offset_left = 502.0
-offset_top = 272.0
-offset_right = 618.0
-offset_bottom = 340.0
+offset_left = 143.0
+offset_top = 66.0
+offset_right = 192.0
+offset_bottom = 97.0
+scale = Vector2(0.8, 0.8)
 text = "Jugar"
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 502.0
-offset_top = 349.0
-offset_right = 618.0
-offset_bottom = 417.0
+offset_left = 145.0
+offset_top = 99.0
+offset_right = 187.0
+offset_bottom = 130.0
+scale = Vector2(0.8, 0.8)
 text = "Salir
 "
 
 [node name="CheckButton" type="CheckButton" parent="."]
-offset_left = 465.0
-offset_top = 403.0
-offset_right = 664.0
-offset_bottom = 466.0
+offset_left = 204.0
+offset_top = 58.0
+offset_right = 403.0
+offset_bottom = 121.0
+scale = Vector2(0.5, 0.5)
 text = "Pantalla completa"
 
 [node name="ColorRect" type="ColorRect" parent="CheckButton"]

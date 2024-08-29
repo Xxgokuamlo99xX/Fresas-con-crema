@@ -1,16 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://brjugeonmbmq4"]
+[gd_scene load_steps=5 format=3 uid="uid://brjugeonmbmq4"]
 
 [ext_resource type="Script" path="res://Scripts/Varios/pausa.gd" id="1_00pje"]
-[ext_resource type="FontFile" uid="uid://cgkd4e7kies82" path="res://Recursos/Fuentes de texto/ZeldaOracles.ttf" id="3_fc8ke"]
 [ext_resource type="Script" path="res://Scripts/Varios/Volume_bar.gd" id="4_6evri"]
 [ext_resource type="Script" path="res://Scripts/Utilidades/debug.gd" id="4_htb8i"]
 [ext_resource type="LabelSettings" uid="uid://bfbkkbnsj01vt" path="res://Recursos/Fuentes de texto/hud.tres" id="5_jtq72"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_obm2r"]
-font = ExtResource("3_fc8ke")
-font_size = 181
-outline_size = 35
-outline_color = Color(0, 0, 0, 1)
 
 [node name="pausa" type="CanvasLayer"]
 process_mode = 3
@@ -18,8 +11,8 @@ layer = 128
 script = ExtResource("1_00pje")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 11.0
+offset_bottom = 11.0
 scale = Vector2(29.6599, 16.732)
 color = Color(0, 0, 0, 0.517647)
 
@@ -28,17 +21,19 @@ texture_filter = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -310.0
-offset_right = 310.0
-offset_bottom = 203.0
+offset_left = -37.0
+offset_top = 19.0
+offset_right = 18.0
+offset_bottom = 42.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "PAUSA"
-label_settings = SubResource("LabelSettings_obm2r")
+label_settings = ExtResource("5_jtq72")
 
 [node name="Volumenscrols" type="Node2D" parent="."]
-position = Vector2(20, 23)
+position = Vector2(5, 5)
+scale = Vector2(0.3, 0.3)
 
 [node name="Master" type="HSlider" parent="Volumenscrols"]
 offset_left = 128.0
@@ -117,6 +112,8 @@ theme_override_constants/outline_size = 5
 text = "Volumen"
 
 [node name="botones" type="Node2D" parent="."]
+position = Vector2(-25, -10)
+scale = Vector2(0.3, 0.3)
 
 [node name="Fullscreen" type="CheckButton" parent="botones"]
 anchors_preset = 8
@@ -152,11 +149,15 @@ text = "Salir
 [node name="debug" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -18.0
+offset_top = -5.0
+offset_right = 22.0
+offset_bottom = 35.0
+scale = Vector2(0.3, 0.3)
 script = ExtResource("4_htb8i")
 
 [node name="bebug" type="Label" parent="debug"]
+layout_mode = 0
 offset_left = 873.0
 offset_top = 353.0
 offset_right = 928.0
@@ -165,6 +166,7 @@ text = "Debug"
 label_settings = ExtResource("5_jtq72")
 
 [node name="bebug2" type="Label" parent="debug"]
+layout_mode = 0
 offset_left = 858.0
 offset_top = 439.0
 offset_right = 957.0

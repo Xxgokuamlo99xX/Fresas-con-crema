@@ -84,9 +84,10 @@ color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 917.0
-offset_top = 610.0
-offset_right = 1005.0
-offset_bottom = 633.0
+offset_left = 252.0
+offset_top = 164.0
+offset_right = 384.0
+offset_bottom = 187.0
+scale = Vector2(0.5, 0.5)
 text = "Cargando"
 label_settings = ExtResource("2_k50d5")

@@ -241,7 +241,7 @@ libraries = {
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 40
+collision_mask = 16
 script = ExtResource("4_q2wbo")
 damage = 20
 

@@ -10,6 +10,7 @@ var ataque_num : int = 3
 
 @onready var hechizo = $Voltear/Hechizo
 @onready var hitobx_arma = $Voltear/Hitbox_arma
+@onready var state_machine_2 = $AnimationTree
 var dir = Vector2.ZERO
 var state_machine
 var fps
@@ -130,14 +131,16 @@ func _damage():
 		GlobalVar.vida_jugador -= GlobalVar.player_damage_taken
 		$Invulnerable/AnimationPlayer.play("invul_time")
 		$"Daño_pupap"._pupa()
-		if GlobalVar.vida_jugador == 0:
+		if GlobalVar.vida_jugador <= 0:
+			GlobalVar.puede_moverse = false
+			state_machine.travel("morir")
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			await $animaciones.animation_finished
 			queue_free()
+
 	
 func _on_curarse() -> void:
 	$curarse.play()
-
-func _on_morixd() -> void:
-	queue_free()
 
 func cambiar_hechizo():
 	

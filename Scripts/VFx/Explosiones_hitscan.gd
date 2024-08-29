@@ -11,7 +11,6 @@ func deteccion():
 		hit(area)
 		
 func hit(area):
-	print("di")
 	if area.is_in_group("Enemigos"):
 		area.life -= damage
 		GlobalVar.enemigo_damage_taken = damage

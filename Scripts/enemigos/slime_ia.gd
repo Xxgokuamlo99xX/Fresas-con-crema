@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export_category("Utiles")
+
 @export var raycast : RayCast2D
 @export var marker : Marker2D
 @export var invul : Timer
@@ -7,29 +9,32 @@ extends CharacterBody2D
 @export var hurbo : Area2D
 @export var hitbox : Area2D
 
+@export_category("Stats")
 
 @export var vida : int = 20
 @export var damage : int = 10
-@export var velocidad : int = 50                                                                                                                                                                                                                                             
+@export var velocidad : int = 50
+@export var defensa : int = 1
+
 var probabilidad : int = randi_range(1,2)
 @export var loot : Array [PackedScene]
 
 var dir : int 
 var gravedad : float = 9.8
+var puede_moverse : bool = true
 
 
 func _physics_process(delta: float) -> void:
 	if vida <= 0:
-		hurbo.monitorable = false
 		hurbo.monitoring = false
+		hurbo.monitorable = false
 		hitbox.monitorable = false
-		hitbox.monitoring = false
-		velocity = Vector2.ZERO
+		puede_moverse = false
 		sprite.play("morir")
 		await sprite.animation_finished
 		queue_free()
 		
-	if not invul.is_stopped():
+	if puede_moverse == false:
 		velocity = Vector2.ZERO 
 			
 	else:
@@ -49,10 +54,13 @@ func cambio_dir():
 
 func sus():
 	if invul.is_stopped():
+		puede_moverse = false
 		invul.start()
-		vida -= GlobalVar.enemigo_damage_taken
+		vida -= (GlobalVar.enemigo_damage_taken / defensa)
 		marker._pupa()
 		sprite.play("hit")
+		await $AnimationPlayer.animation_finished
+		puede_moverse = true
 		if vida <= 0:
 			soltar_loot()
 		
