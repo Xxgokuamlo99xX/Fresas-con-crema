@@ -8,6 +8,8 @@
 script = ExtResource("10_mxuxb")
 name = "Estilo_2"
 base_scene = ExtResource("1_rtjmh")
-base_overrides = {}
+base_overrides = {
+"global_font": "\"res://Recursos/Fuentes de texto/FSEX300.ttf\""
+}
 layers = Array[ExtResource("1_a8mt7")]([])
 metadata/_latest_layer = -1

@@ -30,6 +30,7 @@ func _physics_process(delta: float) -> void:
 		hurbo.monitorable = false
 		hitbox.monitorable = false
 		puede_moverse = false
+		invul.start()
 		sprite.play("morir")
 		await sprite.animation_finished
 		queue_free()
@@ -52,7 +53,7 @@ func cambio_dir():
 		scale.x *= -1 
 		velocidad *= -1 
 
-func sus():
+func enemigo_hit():
 	if invul.is_stopped():
 		puede_moverse = false
 		invul.start()
@@ -71,8 +72,12 @@ func soltar_loot():
 			lut_soltado = loot[0].instantiate()
 			
 		else:
-			lut_soltado = loot[1].instantiate()
-			
+			match randi_range(1,2):
+				1:
+					lut_soltado = loot[1].instantiate()
+				2:
+					lut_soltado = loot[2].instantiate()
+				
 		lut_soltado.global_position = global_position
 		get_parent().add_child(lut_soltado)
 		

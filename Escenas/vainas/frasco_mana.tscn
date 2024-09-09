@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5pdkcplnpi61"]
+
+[ext_resource type="PackedScene" uid="uid://6y2xclnktvrc" path="res://Escenas/Utilidades/Item_hitbox.tscn" id="1_sn8ar"]
+[ext_resource type="Texture2D" uid="uid://dungevywje6qa" path="res://Recursos/Sprites/Misc/Frasco_mana.png" id="2_mwidd"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_pkxoi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yr470"]
+shader = ExtResource("2_pkxoi")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.063
+
+[node name="Frasco mana" type="Node2D"]
+
+[node name="itme_hitboc" parent="." instance=ExtResource("1_sn8ar")]
+Id_item = 2
+
+[node name="FrascoMana" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_yr470")
+texture = ExtResource("2_mwidd")

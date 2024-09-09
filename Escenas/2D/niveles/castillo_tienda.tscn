@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=4 uid="uid://dftucn3xhlnav"]
+[gd_scene load_steps=13 format=4 uid="uid://dftucn3xhlnav"]
 
 [ext_resource type="TileSet" uid="uid://criqbdoht4sry" path="res://Recursos/Tile maps 2D/Castillo.tres" id="1_83rcc"]
 [ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="1_hegxg"]
 [ext_resource type="Script" path="res://Scripts/posicion_manager.gd" id="1_jkmao"]
 [ext_resource type="TileSet" uid="uid://nsajdd0o08hd" path="res://Recursos/Tile maps 2D/Castilo_decos.tres" id="2_uc4w3"]
 [ext_resource type="PackedScene" uid="uid://c3t1avw4c0qgi" path="res://Escenas/2D/puerta.tscn" id="3_3ovcu"]
+[ext_resource type="PackedScene" uid="uid://de3px83i7g8ck" path="res://Escenas/Utilidades/mejora_vida_compra.tscn" id="5_bg780"]
+[ext_resource type="Script" path="res://Scripts/Varios/npc_script_basico.gd" id="6_6wh3k"]
+[ext_resource type="Resource" path="res://Timelines/Comprar objeto.dtl" id="7_hqtkw"]
+[ext_resource type="Texture2D" uid="uid://dungevywje6qa" path="res://Recursos/Sprites/Misc/Frasco_mana.png" id="8_jxgno"]
+[ext_resource type="Texture2D" uid="uid://b53io3yxqcnjh" path="res://Imagens_personajes/Tecla Z.png" id="9_2rsje"]
+[ext_resource type="Texture2D" uid="uid://be6aqvijd4vq5" path="res://Recursos/Sprites/Prota/epada.png" id="10_sqrfr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjk65"]
+size = Vector2(20, 81)
 
 [node name="Castillo_tienda" type="Node"]
 script = ExtResource("1_jkmao")
@@ -31,6 +40,56 @@ z_index = 1
 position = Vector2(66, -18)
 
 [node name="Productos" type="Node2D" parent="."]
+
+[node name="Mejora_vida_compra" parent="Productos" instance=ExtResource("5_bg780")]
+position = Vector2(447, -26)
+
+[node name="Mana" type="Node2D" parent="Productos" node_paths=PackedStringArray("area2d", "noti_de_uso")]
+position = Vector2(530, -26)
+script = ExtResource("6_6wh3k")
+Timeline_ = ExtResource("7_hqtkw")
+area2d = NodePath("Area2D")
+noti_de_uso = NodePath("TeclaZ")
+tipo_rec = 2
+Obj_tienda = true
+precio = 350
+
+[node name="CorazonLlenoUi" type="Sprite2D" parent="Productos/Mana"]
+texture = ExtResource("8_jxgno")
+
+[node name="TeclaZ" type="Sprite2D" parent="Productos/Mana"]
+position = Vector2(0, -27)
+texture = ExtResource("9_2rsje")
+
+[node name="Area2D" type="Area2D" parent="Productos/Mana"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Productos/Mana/Area2D"]
+position = Vector2(0, 30.5)
+shape = SubResource("RectangleShape2D_xjk65")
+
+[node name="espada" type="Node2D" parent="Productos" node_paths=PackedStringArray("area2d", "noti_de_uso")]
+position = Vector2(614, -27)
+script = ExtResource("6_6wh3k")
+Timeline_ = ExtResource("7_hqtkw")
+area2d = NodePath("Area2D")
+noti_de_uso = NodePath("TeclaZ")
+tipo_rec = 3
+Obj_tienda = true
+precio = 500
+
+[node name="CorazonLlenoUi" type="Sprite2D" parent="Productos/espada"]
+position = Vector2(5, -2)
+texture = ExtResource("10_sqrfr")
+
+[node name="TeclaZ" type="Sprite2D" parent="Productos/espada"]
+position = Vector2(0, -27)
+texture = ExtResource("9_2rsje")
+
+[node name="Area2D" type="Area2D" parent="Productos/espada"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Productos/espada/Area2D"]
+position = Vector2(0, 30.5)
+shape = SubResource("RectangleShape2D_xjk65")
 
 [node name="Markers_pos" type="Node2D" parent="."]
 

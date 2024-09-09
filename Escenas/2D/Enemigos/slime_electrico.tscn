@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://dx8oqde61tosv"]
+[gd_scene load_steps=20 format=3 uid="uid://dx8oqde61tosv"]
 
 [ext_resource type="Script" path="res://Scripts/enemigos/slime_electrico.gd" id="1_1iyc0"]
 [ext_resource type="PackedScene" uid="uid://cld8iecoty7uh" path="res://Escenas/vainas/moneida.tscn" id="2_pehoq"]
 [ext_resource type="PackedScene" uid="uid://v536h5v5gas1" path="res://Escenas/vainas/corazon.tscn" id="3_notdx"]
 [ext_resource type="Texture2D" uid="uid://dab0swsl28yku" path="res://Recursos/Sprites/Enemigo/Slime_electrico_spriteseheet.png" id="4_b65rl"]
+[ext_resource type="PackedScene" uid="uid://c5pdkcplnpi61" path="res://Escenas/vainas/frasco_mana.tscn" id="4_eergb"]
 [ext_resource type="AudioStream" uid="uid://cpqdub3t128nh" path="res://Recursos/Sonidos/SFX/slime_hit.wav" id="5_gdnix"]
 [ext_resource type="AudioStream" uid="uid://b8uyw8nqcywll" path="res://Recursos/Sonidos/SFX/slime_muerte.wav" id="6_3h2gh"]
 [ext_resource type="Script" path="res://Scripts/Jugador/pupass.gd" id="7_kyp2a"]
@@ -297,7 +298,7 @@ hitbox = NodePath("Hitbox")
 vida = 30
 damage = 20
 velocidad = 30
-loot = Array[PackedScene]([ExtResource("2_pehoq"), ExtResource("3_notdx")])
+loot = Array[PackedScene]([ExtResource("2_pehoq"), ExtResource("3_notdx"), ExtResource("4_eergb")])
 
 [node name="ataque_cooldown" type="Timer" parent="."]
 wait_time = 7.0

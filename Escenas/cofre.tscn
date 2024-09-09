@@ -13,7 +13,6 @@ Timeline_ = ExtResource("2_3p50u")
 area2d = NodePath("Area2D")
 noti_de_uso = NodePath("Sprite2D2")
 cofre = true
-recompensa = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_wc7t8")

@@ -1,10 +1,21 @@
 extends Node2D
 
+@export_category("Comun")
 @export var Timeline_ : DialogicTimeline
 @export var area2d : Area2D
 @export var noti_de_uso : Sprite2D
+
+@export_category("cofre")
 @export var cofre : bool
-@export var recompensa : int
+@export var tipo_rec : loot_posible
+@export var Cant_recompensa : int 
+
+@export_category("Objeto de tienda")
+@export var Obj_tienda : bool
+@export var precio : int
+
+enum loot_posible {eter,contenerdor_corazon,mas_mana,mejora_damage}
+
 var hablando : bool = false
 
 	
@@ -14,12 +25,26 @@ func _process(delta: float) -> void:
 			if Input.is_action_just_pressed("usar") && hablando == false:
 				body.state_machine.travel("Idle")
 				hablar()
-				if cofre == true:
-					Dialogic.VAR.Cant_loot = recompensa
-					await Dialogic.timeline_ended  
+				if cofre:
+					Dialogic.VAR.Cant_loot = Cant_recompensa
+					Dialogic.VAR.Tipo_loot = str(loot_posible)
+					await Dialogic.timeline_ended 
+					recompesa()
 					GlobalVar.puede_moverse = true
 					queue_free()
 					
+				if Obj_tienda:
+					Dialogic.VAR.Tipo_loot = str(loot_posible)
+					Dialogic.VAR.Precio = precio
+					await Dialogic.timeline_ended
+					if GlobalVar.eter >= precio:
+						recompesa()
+						GlobalVar.eter -= precio
+						GlobalVar.puede_moverse = true
+						queue_free()
+					else:
+						return
+						
 			if hablando == false:
 				noti_de_uso.show()
 		else:
@@ -34,3 +59,16 @@ func hablar():
 	hablando = false
 	GlobalVar.puede_moverse = true
 	
+func recompesa(): # ("eter", "contenedor_corazon", "Mana_max")
+	match tipo_rec:
+		loot_posible.eter:
+			GlobalVar.eter += Cant_recompensa
+			
+		loot_posible.contenerdor_corazon:
+			GlobalVar.vida_max += 20
+			
+		loot_posible.mas_mana:
+			GlobalVar.mana_max += 40
+			
+		loot_posible.mejora_damage:
+			GlobalVar.multi_damage += 0.5

@@ -47,7 +47,7 @@ func hit(area):
 	
 	if area.is_in_group("enemigo"):
 		GlobalVar.enemigo_damage_taken = damage
-		area.get_parent().sus()
+		area.get_parent().enemigo_hit()
 			
 			
 	

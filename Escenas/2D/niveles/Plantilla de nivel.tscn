@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="1_n7q7t"]
 
-[node name="Nombre del nivel" type="Node"]
+[node name="Plantilla_nivel" type="Node"]
 
 [node name="Goku" parent="." instance=ExtResource("1_n7q7t")]
 

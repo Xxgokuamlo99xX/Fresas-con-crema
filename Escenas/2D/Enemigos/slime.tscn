@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bd64qoj6wt37j"]
+[gd_scene load_steps=19 format=3 uid="uid://bd64qoj6wt37j"]
 
 [ext_resource type="Script" path="res://Scripts/enemigos/slime_ia.gd" id="1_15ktd"]
 [ext_resource type="Texture2D" uid="uid://k80ftkt3l2w1" path="res://Recursos/Sprites/Enemigo/Slime_pj_spriteseheet.png" id="2_2lbt5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://v536h5v5gas1" path="res://Escenas/vainas/corazon.tscn" id="3_q5kbr"]
 [ext_resource type="Script" path="res://Scripts/Jugador/pupass.gd" id="3_ui4pc"]
 [ext_resource type="PackedScene" uid="uid://neqju1hdl3fc" path="res://Escenas/vainas/damage_pupo_enemigos.tscn" id="4_edc4q"]
+[ext_resource type="PackedScene" uid="uid://c5pdkcplnpi61" path="res://Escenas/vainas/frasco_mana.tscn" id="4_vs4cy"]
 [ext_resource type="AudioStream" uid="uid://cpqdub3t128nh" path="res://Recursos/Sonidos/SFX/slime_hit.wav" id="5_rmbf2"]
 [ext_resource type="AudioStream" uid="uid://b8uyw8nqcywll" path="res://Recursos/Sonidos/SFX/slime_muerte.wav" id="6_r81l1"]
 [ext_resource type="Texture2D" uid="uid://b80qpkns6lxyb" path="res://addons/projectiles_plugin/test_scene/assets/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/hit_effect_anim_f1.png" id="9_wcxkt"]
@@ -156,7 +157,7 @@ invul = NodePath("invul")
 hurbo = NodePath("hurbo")
 hitbox = NodePath("Hitbox")
 velocidad = 30
-loot = Array[PackedScene]([ExtResource("2_s8k3t"), ExtResource("3_q5kbr")])
+loot = Array[PackedScene]([ExtResource("2_s8k3t"), ExtResource("3_q5kbr"), ExtResource("4_vs4cy")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_2lbt5")

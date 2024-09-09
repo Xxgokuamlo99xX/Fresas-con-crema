@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://eywhijro6nyw"]
+
+[ext_resource type="Script" path="res://Scripts/Armas-objetos/esfera_electrica.gd" id="1_u2hfr"]
+[ext_resource type="Texture2D" uid="uid://dab0swsl28yku" path="res://Recursos/Sprites/Enemigo/Slime_electrico_spriteseheet.png" id="2_bgaac"]
+[ext_resource type="Script" path="res://Scripts/Utilidades/hitbox.gd" id="3_4db6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ntyi"]
+size = Vector2(22, 22)
+
+[node name="Esfera_electrica" type="Node2D"]
+script = ExtResource("1_u2hfr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bgaac")
+region_enabled = true
+region_rect = Rect2(64, 64, 32, 31)
+
+[node name="hitbox" type="Area2D" parent="."]
+position = Vector2(-1, 11)
+script = ExtResource("3_4db6j")
+damage = 20
+borrar_en_hit = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(1, -11)
+shape = SubResource("RectangleShape2D_5ntyi")
+
+[connection signal="body_entered" from="hitbox" to="hitbox" method="_on_body_entered"]

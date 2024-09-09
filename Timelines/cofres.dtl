@@ -1,9 +1,8 @@
-Es un Cofre...
+Samantha: Es un Cofre...
 Lo quieres abrir?
 label pregunta
 - Si
-	set {GlobalVar.eter} += {Cant_loot}
-	Has encontrado {Cant_loot} de eter
+	Has encontrado {Cant_loot} de {Tipo_loot}
 	[end_timeline]
 - No
 	Samantha: Pero porque?

@@ -1,0 +1,83 @@
+[gd_scene load_steps=16 format=4 uid="uid://ddaduwb6wq6l2"]
+
+[ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="1_8xn4t"]
+[ext_resource type="PackedScene" uid="uid://l24p3n2khr04" path="res://Escenas/Utilidades/agua_deteccion.tscn" id="2_03luj"]
+[ext_resource type="TileSet" uid="uid://d1mkqxq3spowu" path="res://Recursos/Tile maps 2D/Tile_map_universal.tres" id="2_4bfog"]
+[ext_resource type="PackedScene" uid="uid://v536h5v5gas1" path="res://Escenas/vainas/corazon.tscn" id="3_vbx4s"]
+[ext_resource type="PackedScene" uid="uid://c5pdkcplnpi61" path="res://Escenas/vainas/frasco_mana.tscn" id="4_ske4k"]
+[ext_resource type="PackedScene" uid="uid://cld8iecoty7uh" path="res://Escenas/vainas/moneida.tscn" id="5_ewndk"]
+[ext_resource type="Material" uid="uid://bqeu7rqot7x3v" path="res://shaders/Agua.tres" id="7_4gok2"]
+[ext_resource type="TileSet" uid="uid://bqnl5uywfyg13" path="res://Recursos/Tile maps 2D/Prados.tres" id="8_7f4wu"]
+[ext_resource type="TileSet" uid="uid://djoirjiu4wccu" path="res://Recursos/Tile maps 2D/Enemigos.tres" id="9_mwhxa"]
+[ext_resource type="PackedScene" uid="uid://wvl1hitv6lgm" path="res://Escenas/cofre.tscn" id="10_mwl45"]
+[ext_resource type="PackedScene" uid="uid://bmveltrbhvqn8" path="res://Escenas/2D/Personajes/npc_1.tscn" id="10_vcdm1"]
+[ext_resource type="Resource" path="res://Timelines/debug_timeline.dtl" id="11_20uls"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kbas"]
+size = Vector2(81, 73)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_na6pt"]
+scenes/1/scene = ExtResource("3_vbx4s")
+scenes/2/scene = ExtResource("4_ske4k")
+scenes/3/scene = ExtResource("5_ewndk")
+
+[sub_resource type="TileSet" id="TileSet_u4uk1"]
+sources/0 = SubResource("TileSetScenesCollectionSource_na6pt")
+
+[node name="Debug" type="Node"]
+
+[node name="Agua_deteccion" parent="." instance=ExtResource("2_03luj")]
+position = Vector2(-109, 223)
+
+[node name="CollisionShape2D" parent="Agua_deteccion" index="0"]
+position = Vector2(-11.5, -8.5)
+shape = SubResource("RectangleShape2D_6kbas")
+
+[node name="Tilemap" type="Node2D" parent="."]
+
+[node name="Coleccionables" type="TileMapLayer" parent="Tilemap"]
+tile_map_data = PackedByteArray("AAAKAAgAAAAAAAAAAQAJAAgAAAAAAAAAAQAIAAgAAAAAAAAAAQANAAgAAAAAAAAAAgAOAAgAAAAAAAAAAgAPAAgAAAAAAAAAAgASAAgAAAAAAAAAAwATAAgAAAAAAAAAAwAUAAgAAAAAAAAAAwA=")
+tile_set = SubResource("TileSet_u4uk1")
+
+[node name="Suelo" type="TileMapLayer" parent="Tilemap"]
+tile_map_data = PackedByteArray("AAAAAAsABwABAAAAAAABAAsABwABAAAAAAACAAsABwABAAAAAAADAAsABwABAAAAAAAEAAsABgACAAAAAAAFAAsABgACAAAAAAAGAAsABgACAAAAAAAHAAsABgACAAAAAAAIAAsABQABAAAAAAAJAAsABQABAAAAAAAKAAsABQABAAAAAAALAAsABQABAAAAAAAMAAsABAABAAAAAAANAAsABAABAAAAAAAOAAsABAABAAAAAAAPAAsABAABAAAAAAAQAAsAAwABAAAAAAARAAsAAwABAAAAAAASAAsAAwABAAAAAAATAAsAAwABAAAAAAAUAAsAAgACAAAAAAAVAAsAAgACAAAAAAAWAAsAAgACAAAAAAAXAAsAAgACAAAAAAD//wsAAQACAAAAAAD+/wsAAQACAAAAAAD9/wsAAQACAAAAAAD8/wsAAQACAAAAAAAYAAsAAAABAAAAAAAZAAsAAAABAAAAAAAaAAsAAAABAAAAAAAbAAsAAAABAAAAAAD7/wsABwABAAAAAAD7/wwABwABAAAAAAD7/w0ABwABAAAAAAD6/w4ABwABAAAAAAD5/w4ABwABAAAAAAD4/w4ABwABAAAAAAD3/w4ABwABAAAAAAD2/w4ABwABAAAAAAD1/wwABwABAAAAAAD1/w0ABwABAAAAAAD1/wsABwABAAAAAAAIAAkAAgABAAYAAAAJAAkAAgACAAYAAAAKAAkAAgADAAYAAAANAAkAAgABAAYAAAAOAAkAAgACAAYAAAAPAAkAAgADAAYAAAASAAkAAgABAAYAAAATAAkAAgACAAYAAAAUAAkAAgADAAYAAAD//wkAAgADAAYAAAD+/wkAAgACAAYAAAD9/wkAAgABAAYAAAABAAkAAgABAAYAAAACAAkAAgACAAYAAAADAAkAAgADAAYAAAAcAAsABwABAAAAAAAdAAsABwABAAAAAAAeAAsABwABAAAAAAAfAAsABwABAAAAAAAgAAsABwABAAAAAAAhAAsABwABAAAAAAAiAAsABwABAAAAAAAjAAsABwABAAAAAAAkAAsABwABAAAAAAAlAAsABwABAAAAAAAmAAsABwABAAAAAAAnAAsABwABAAAAAAAoAAsABwABAAAAAAApAAsABwABAAAAAAA=")
+tile_set = ExtResource("2_4bfog")
+
+[node name="Agua" type="TileMapLayer" parent="Tilemap"]
+z_index = 8
+material = ExtResource("7_4gok2")
+tile_map_data = PackedByteArray("AAD6/wsAAAACAAQAAAD5/wsAAAACAAQAAAD4/wsAAAACAAQAAAD3/wsAAAACAAQAAAD2/wsAAAACAAQAAAD2/wwAAAACAAQAAAD3/wwAAAACAAQAAAD4/wwAAAACAAQAAAD5/wwAAAACAAQAAAD6/wwAAAACAAQAAAD6/w0AAAACAAQAAAD5/w0AAAACAAQAAAD4/w0AAAACAAQAAAD3/w0AAAACAAQAAAD2/w0AAAACAAQAAAA=")
+tile_set = ExtResource("8_7f4wu")
+
+[node name="enemigos" type="TileMapLayer" parent="Tilemap"]
+tile_map_data = PackedByteArray("AAACAAgAAAAAAAAAAgD+/wgAAAAAAAAAAQA=")
+tile_set = ExtResource("9_mwhxa")
+
+[node name="Markers_pos" type="Node2D" parent="."]
+
+[node name="Puertas" type="Node2D" parent="."]
+
+[node name="Parallax" type="Node2D" parent="."]
+
+[node name="Goku" parent="." instance=ExtResource("1_8xn4t")]
+position = Vector2(409, 142)
+
+[node name="Npc_1" parent="." instance=ExtResource("10_vcdm1")]
+position = Vector2(568, 157)
+Timeline_ = ExtResource("11_20uls")
+
+[node name="Cofre" parent="." instance=ExtResource("10_mwl45")]
+position = Vector2(504, 167)
+Cant_recompensa = 500
+
+[node name="Cofre2" parent="." instance=ExtResource("10_mwl45")]
+position = Vector2(475, 167)
+tipo_rec = 1
+Cant_recompensa = 1
+
+[node name="Cofre3" parent="." instance=ExtResource("10_mwl45")]
+position = Vector2(446, 167)
+tipo_rec = 2
+Cant_recompensa = 1
+
+[editable path="Agua_deteccion"]

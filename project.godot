@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.292442, 0, 0.0228105, 1)
 boot_splash/image="res://Recursos/xd.png"
-config/icon="res://Recursos/Rec. juego/Icono_juego.png"
+config/icon="res://Recursos/Rec. juego/Icono.png"
 
 [autoload]
 
@@ -26,7 +26,7 @@ cambiar_escena="*res://Escenas/transicion.tscn"
 pausa="*res://Escenas/2D/pausa.tscn"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Ids="*res://Scripts/Global/Ids.gd"
-Misiones="*res://Escenas/mision_hud.tscn"
+Misiones="*res://Scripts/Utilidades/misiones.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
@@ -38,13 +38,15 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "Cinematica_castillo_2": "res://Timelines/Cinematicas/Cinematica_castillo_2.dtl",
+"Comprar objeto": "res://Timelines/Comprar objeto.dtl",
 "Demo_fin": "res://Timelines/Demo_fin.dtl",
 "Inicio del juego": "res://Timelines/Inicio del juego.dtl",
 "Npc_1": "res://Timelines/Npc_1.dtl",
 "Npc_cueva": "res://Timelines/Npc_cueva.dtl",
 "Rey_goku_encuentro": "res://Timelines/Rey_goku_encuentro.dtl",
 "cinematica_castillo": "res://Timelines/cinematica_castillo.dtl",
-"cofres": "res://Timelines/cofres.dtl"
+"cofres": "res://Timelines/cofres.dtl",
+"debug_timeline": "res://Timelines/debug_timeline.dtl"
 }
 text/letter_speed=0.02
 text/initial_text_reveal_skippable=false
@@ -64,11 +66,13 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/input_action="usar"
 text/autopauses={}
-layout/style_list=["res://Estilos_dialogic/Estilo_3.tres", "res://Estilos_dialogic/estilo_1.tres"]
-layout/default_style="res://Estilos_dialogic/Estilo_3.tres"
+layout/style_list=["res://Estilos_dialogic/Estilo_2.tres"]
+layout/default_style="res://Estilos_dialogic/Estilo_2.tres"
 glossary/default_case_sensitive=true
 variables={
-"Cant_loot": 0
+"Cant_loot": 0,
+"Precio": 0,
+"Tipo_loot": ""
 }
 translation/enabled=false
 translation/original_locale="es"

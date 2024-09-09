@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7xmc4yxc5x2y"]
+
+[ext_resource type="Texture2D" uid="uid://bwg6etfec1qo2" path="res://Recursos/Sprites/Prota/Inventario_forma.png" id="1_4cdsp"]
+[ext_resource type="Texture2D" uid="uid://bgoni6s3w6jmy" path="res://Recursos/Sprites/Prota/Player Spritesheet.png" id="2_yj8g7"]
+[ext_resource type="PackedScene" uid="uid://cssodavd2u0nb" path="res://Escenas/VFX/fuego_proyectil.tscn" id="3_d83wx"]
+[ext_resource type="Texture2D" uid="uid://be6aqvijd4vq5" path="res://Recursos/Sprites/Prota/epada.png" id="4_mc8jc"]
+[ext_resource type="Script" path="res://Scripts/Varios/mision_hud.gd" id="5_7b7ij"]
+[ext_resource type="FontFile" uid="uid://8khbwkhjgd2r" path="res://Recursos/Fuentes de texto/FSEX300.ttf" id="6_ckbt8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xw7jj"]
+bg_color = Color(0, 0, 0, 0.756863)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_qxn0m"]
+font = ExtResource("6_ckbt8")
+font_size = 20
+font_color = Color(1, 1, 0.219608, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0fxmh"]
+font = ExtResource("6_ckbt8")
+font_size = 15
+
+[node name="Inventario" type="CanvasLayer"]
+
+[node name="InventarioForma" type="Sprite2D" parent="."]
+texture = ExtResource("1_4cdsp")
+centered = false
+
+[node name="PlayerSpritesheet" type="Sprite2D" parent="."]
+position = Vector2(56, 131)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_yj8g7")
+region_enabled = true
+region_rect = Rect2(17, 4, 15, 32)
+
+[node name="Fuego_proyectil" parent="." instance=ExtResource("3_d83wx")]
+position = Vector2(33, 47)
+rotation = 1.5708
+
+[node name="Epada" type="Sprite2D" parent="."]
+position = Vector2(71, 52)
+texture = ExtResource("4_mc8jc")
+
+[node name="Mision_hud" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -46.0
+offset_top = 88.0
+offset_right = -46.0
+offset_bottom = 88.0
+script = ExtResource("5_7b7ij")
+
+[node name="mision_resumen" type="Panel" parent="Mision_hud"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 22.0
+offset_right = 551.0
+offset_bottom = 171.0
+scale = Vector2(0.35, 0.35)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xw7jj")
+
+[node name="Nombre_mision_resumen" type="Control" parent="Mision_hud"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 93.0
+offset_top = 12.0
+offset_right = 93.0
+offset_bottom = 12.0
+grow_horizontal = 2
+scale = Vector2(0.35, 0.35)
+size_flags_horizontal = 0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Mision_hud/Nombre_mision_resumen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 428.571
+offset_top = 34.2857
+offset_right = 571.571
+offset_bottom = 57.2857
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nombre Mision"
+label_settings = SubResource("LabelSettings_qxn0m")
+uppercase = true
+
+[node name="Resumen_mision" type="Control" parent="Mision_hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 107.0
+offset_top = -62.0
+offset_right = 144.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+mouse_filter = 2
+
+[node name="Label2" type="Label" parent="Mision_hud/Resumen_mision"]
+layout_mode = 0
+offset_left = 391.429
+offset_top = 271.429
+offset_right = 575.429
+offset_bottom = 359.429
+text = "Descripcion mision
+"
+label_settings = SubResource("LabelSettings_0fxmh")
+autowrap_mode = 3

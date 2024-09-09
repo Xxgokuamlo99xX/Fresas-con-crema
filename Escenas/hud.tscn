@@ -1,12 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bwdmbdwfnah6q"]
+[gd_scene load_steps=18 format=3 uid="uid://bwdmbdwfnah6q"]
 
-[ext_resource type="Texture2D" uid="uid://flbwwemqugw" path="res://Recursos/Sprites/Misc/Corazon_vacio_ui.png" id="2_gx73d"]
-[ext_resource type="LabelSettings" uid="uid://bfbkkbnsj01vt" path="res://Recursos/Fuentes de texto/hud.tres" id="2_k2tf8"]
 [ext_resource type="Texture2D" uid="uid://c57accc2xur6i" path="res://Recursos/Sprites/Misc/Eter.png" id="2_yhoym"]
 [ext_resource type="Script" path="res://Scripts/Jugador/Stats.gd" id="3_6x4kx"]
-[ext_resource type="Texture2D" uid="uid://btksvn75hpt7t" path="res://Recursos/Sprites/Misc/Corazon_lleno_ui.png" id="3_jm7qv"]
 [ext_resource type="Texture2D" uid="uid://cpfrueqmyf6gj" path="res://Recursos/Sprites/Misc/barra_mana1.png" id="5_atj2d"]
 [ext_resource type="Texture2D" uid="uid://hq8lvky81roo" path="res://Recursos/Sprites/Misc/barra_mana2.png" id="6_ea065"]
+[ext_resource type="FontFile" uid="uid://8khbwkhjgd2r" path="res://Recursos/Fuentes de texto/FSEX300.ttf" id="6_kcbag"]
+[ext_resource type="PackedScene" uid="uid://kuvvv62x1for" path="res://Escenas/mision_hud.tscn" id="6_ll17u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_al5i6"]
 atlas = ExtResource("2_yhoym")
@@ -36,6 +35,15 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="LabelSettings" id="LabelSettings_67ful"]
+font = ExtResource("6_kcbag")
+
+[sub_resource type="LabelSettings" id="LabelSettings_rodu2"]
+font = ExtResource("6_kcbag")
+
+[sub_resource type="LabelSettings" id="LabelSettings_swooc"]
+font = ExtResource("6_kcbag")
 
 [sub_resource type="Animation" id="Animation_5my2t"]
 length = 0.001
@@ -122,23 +130,23 @@ offset_bottom = 573.0
 scale = Vector2(2.63084, 2.75866)
 text = "Fps: "
 
-[node name="Eter" type="Label" parent="Stats"]
-z_index = 100
-layout_mode = 0
-offset_left = -440.0
-offset_top = -215.0
-offset_right = -351.0
-offset_bottom = -192.0
-scale = Vector2(2.30412, 2.4409)
-text = "Eter:"
-label_settings = ExtResource("2_k2tf8")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stats/Eter"]
-position = Vector2(23.4362, -12.2905)
-scale = Vector2(2.27002, 2.30166)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stats"]
+position = Vector2(-386, -240)
+scale = Vector2(5.2304, 5.61812)
 sprite_frames = SubResource("SpriteFrames_ctayr")
 autoplay = "default"
 frame_progress = 0.590427
+
+[node name="Eter" type="Label" parent="Stats"]
+z_index = 100
+layout_mode = 0
+offset_left = -430.0
+offset_top = -210.0
+offset_right = -390.0
+offset_bottom = -194.0
+scale = Vector2(2.859, 3.029)
+text = "Eter:"
+label_settings = SubResource("LabelSettings_67ful")
 
 [node name="vida" type="Control" parent="."]
 layout_mode = 3
@@ -149,36 +157,32 @@ offset_right = 6.0
 offset_bottom = 2.0
 scale = Vector2(0.5, 0.5)
 
-[node name="Vida_vacia" type="TextureRect" parent="vida"]
-layout_mode = 1
-offset_top = 18.6588
-offset_right = 100.0
-offset_bottom = 37.6588
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("2_gx73d")
-expand_mode = 1
-stretch_mode = 1
-
-[node name="Vida_llena" type="TextureRect" parent="vida"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="vida"]
+modulate = Color(1, 0, 0, 1)
 layout_mode = 0
-offset_top = 18.6588
-offset_bottom = 18.6588
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("3_jm7qv")
-expand_mode = 1
-stretch_mode = 1
+offset_left = 116.0
+offset_top = -8.0
+offset_right = 156.0
+offset_bottom = 32.0
+rotation = 1.5708
+scale = Vector2(2.36, 3.465)
+value = 52.0
+fill_mode = 3
+texture_over = ExtResource("5_atj2d")
+texture_progress = ExtResource("6_ea065")
 
 [node name="Label" type="Label" parent="vida"]
 texture_filter = 1
 layout_direction = 1
 layout_mode = 0
-offset_left = 38.2295
-offset_top = -3.18202
-offset_right = 82.2295
-offset_bottom = 19.818
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 106.0
+offset_bottom = 19.0
+scale = Vector2(1.2, 1.2)
 size_flags_horizontal = 4
-text = "Vida"
-label_settings = ExtResource("2_k2tf8")
+text = "Vida 60/60"
+label_settings = SubResource("LabelSettings_rodu2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -192,6 +196,7 @@ offset_bottom = 39.0
 scale = Vector2(0.4, 0.345)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="mana"]
+modulate = Color(0, 0, 1, 1)
 layout_mode = 0
 offset_left = 131.049
 offset_top = -8.95874
@@ -206,14 +211,19 @@ texture_progress = ExtResource("6_ea065")
 
 [node name="Label" type="Label" parent="mana"]
 layout_mode = 0
-offset_left = 31.8767
-offset_right = 75.8767
-offset_bottom = 23.0
-scale = Vector2(1.4, 1.4)
+offset_left = 37.5
+offset_top = 5.7971
+offset_right = 69.5
+offset_bottom = 21.7971
+scale = Vector2(1.69, 1.69)
 text = "Mana"
-label_settings = ExtResource("2_k2tf8")
+label_settings = SubResource("LabelSettings_swooc")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="daño_vida" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_v7p1m")
 }
+
+[node name="Mision_hud" parent="." instance=ExtResource("6_ll17u")]

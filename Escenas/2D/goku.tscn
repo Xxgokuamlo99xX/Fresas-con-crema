@@ -1,10 +1,11 @@
-[gd_scene load_steps=72 format=3 uid="uid://bg2ufmmb0wokf"]
+[gd_scene load_steps=76 format=3 uid="uid://bg2ufmmb0wokf"]
 
 [ext_resource type="Script" path="res://Scripts/Jugador/Jugador.gd" id="1_cjokg"]
 [ext_resource type="AudioStream" uid="uid://clduykdkia2fk" path="res://Recursos/Sonidos/SFX/bola de fuego.wav" id="2_3yuse"]
 [ext_resource type="Texture2D" uid="uid://bgoni6s3w6jmy" path="res://Recursos/Sprites/Prota/Player Spritesheet.png" id="2_osc50"]
 [ext_resource type="Script" path="res://addons/Fire Bullets/scripts/Gun.gd" id="6_5738t"]
 [ext_resource type="Script" path="res://Scripts/Varios/Camera_things.gd" id="6_dqhve"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="6_g27pg"]
 [ext_resource type="PackedScene" uid="uid://ctq215tdn0uon" path="res://armas/Bola_de_fuego.tscn" id="6_mvyox"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_4rtqi"]
 [ext_resource type="AudioStream" uid="uid://b2r4gbatjyq72" path="res://Recursos/Sonidos/SFX/hitHurt.wav" id="8_h7jby"]
@@ -14,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cvn85npnemdxs" path="res://Escenas/vainas/damage_pupo.tscn" id="13_luuqx"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="13_u5vqy"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="14_g6uss"]
+[ext_resource type="Script" path="res://Scripts/Jugador/ataque.gd" id="16_v0vl4"]
+[ext_resource type="Script" path="res://Scripts/Jugador/movimiento.gd" id="17_re2vg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_invyv"]
 size = Vector2(14, 29)
@@ -189,27 +192,13 @@ tracks/0/keys = {
 "update": 1,
 "values": [85, 86, 87, 88, 89]
 }
-tracks/1/type = "method"
+tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("Audio_player")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1665),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"Ataque"
-}]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Audio_player")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -217,7 +206,21 @@ tracks/2/keys = {
 }],
 "times": PackedFloat32Array(0.166667)
 }
-tracks/2/use_blend = true
+tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ataque")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Ataque"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_dd8mn"]
 resource_name = "Caida"
@@ -255,8 +258,9 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_s7m4l"]
 resource_name = "Idle"
-length = 1.6
+length = 2.0
 loop_mode = 1
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -264,7 +268,7 @@ tracks/0/path = NodePath("Voltear/PJ:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.433333, 0.766667, 1.16667),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
@@ -545,6 +549,12 @@ states/morir/position = Vector2(960.384, 130)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_x120j"), "Idle", "Salto_inicio", SubResource("AnimationNodeStateMachineTransition_o8lt6"), "Salto_inicio", "Caida", SubResource("AnimationNodeStateMachineTransition_hidhq"), "Caida", "Idle", SubResource("AnimationNodeStateMachineTransition_7odnv"), "Idle", "Correr", SubResource("AnimationNodeStateMachineTransition_c7ota"), "Correr", "Idle", SubResource("AnimationNodeStateMachineTransition_dnmic"), "Idle", "Ataque_magico", SubResource("AnimationNodeStateMachineTransition_0afsw"), "Ataque_magico", "Idle", SubResource("AnimationNodeStateMachineTransition_ixwed"), "Correr", "Ataque_magico", SubResource("AnimationNodeStateMachineTransition_lyynh"), "Ataque_2", "Correr", SubResource("AnimationNodeStateMachineTransition_8w4ff"), "Ataque_magico", "Correr", SubResource("AnimationNodeStateMachineTransition_v6p8s"), "Idle", "Ataque_1", SubResource("AnimationNodeStateMachineTransition_o5lmd"), "Ataque_1", "Ataque_2", SubResource("AnimationNodeStateMachineTransition_qeqe5"), "Ataque_2", "Ataque_3", SubResource("AnimationNodeStateMachineTransition_sqgev"), "Ataque_1", "Idle", SubResource("AnimationNodeStateMachineTransition_cwokg"), "Ataque_3", "Idle", SubResource("AnimationNodeStateMachineTransition_s44fr"), "Ataque_1", "Correr", SubResource("AnimationNodeStateMachineTransition_sqov3"), "Ataque_3", "Correr", SubResource("AnimationNodeStateMachineTransition_yewm6"), "Ataque_2", "Idle", SubResource("AnimationNodeStateMachineTransition_eyfk6"), "Correr", "Ataque_1", SubResource("AnimationNodeStateMachineTransition_o5u75"), "Idle", "morir", SubResource("AnimationNodeStateMachineTransition_732wk"), "Ataque_magico", "morir", SubResource("AnimationNodeStateMachineTransition_ee658"), "Correr", "morir", SubResource("AnimationNodeStateMachineTransition_pn2x7"), "Ataque_3", "morir", SubResource("AnimationNodeStateMachineTransition_q37uj"), "Ataque_2", "morir", SubResource("AnimationNodeStateMachineTransition_vet7e"), "Ataque_1", "morir", SubResource("AnimationNodeStateMachineTransition_3bijl"), "Caida", "morir", SubResource("AnimationNodeStateMachineTransition_7pxip"), "Salto_inicio", "morir", SubResource("AnimationNodeStateMachineTransition_esgps")]
 graph_offset = Vector2(262.384, 77)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2pqtr"]
+shader = ExtResource("6_g27pg")
+shader_parameter/outline_color = Color(0.838136, 0.00116534, 0.923527, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.002
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfjcq"]
 size = Vector2(28, 30)
 
@@ -577,34 +587,10 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Camera2D/damage_screen:modulate")
+tracks/2/path = NodePath("../Voltear:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0.0901961, 0.0588235, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Camera2D/damage_screen:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Voltear:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -640,7 +626,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Camera2D/damage_screen:modulate")
+tracks/2/path = NodePath("../Camera2D/HUD/damage_screen:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -652,7 +638,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Camera2D/damage_screen:self_modulate")
+tracks/3/path = NodePath("../Camera2D/HUD/damage_screen:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -692,7 +678,7 @@ fill_to = Vector2(0.982906, 0.0042735)
 
 [sub_resource type="Resource" id="Resource_nmpqv"]
 script = ExtResource("14_g6uss")
-duration = 1.0
+duration = 0.3
 transition = 1
 ease = 2
 
@@ -703,6 +689,7 @@ collision_mask = 545
 script = ExtResource("1_cjokg")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_invyv")
 debug_color = Color(0.92549, 0.270588, 0, 0.419608)
@@ -726,6 +713,7 @@ bullet = ExtResource("6_mvyox")
 
 [node name="PJ" type="Sprite2D" parent="Voltear"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_2pqtr")
 position = Vector2(0, -2.5)
 texture = ExtResource("2_osc50")
 hframes = 10
@@ -758,6 +746,7 @@ libraries = {
 stream = ExtResource("8_h7jby")
 volume_db = -4.386
 pitch_scale = 0.6
+bus = &"SFX"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
@@ -773,14 +762,12 @@ script = ExtResource("8_4rtqi")
 [node name="HUD" parent="Camera2D" instance=ExtResource("11_cq534")]
 visible = false
 
-[node name="damage_screen" type="TextureRect" parent="Camera2D"]
+[node name="damage_screen" type="TextureRect" parent="Camera2D/HUD"]
 modulate = Color(1, 0.0901961, 0.0588235, 1)
 self_modulate = Color(1, 1, 1, 0)
 z_index = 100
-offset_left = -224.0
-offset_top = -133.0
-offset_right = 240.0
-offset_bottom = 128.0
+offset_right = 319.0
+offset_bottom = 179.0
 texture = SubResource("GradientTexture2D_paqth")
 
 [node name="Cosas_muerte" parent="Camera2D" instance=ExtResource("12_8d0ns")]
@@ -813,6 +800,14 @@ one_shot = true
 autostart = true
 
 [node name="Audio_player" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
-[connection signal="ataque_magia" from="." to="." method="_on_ataque_magia"]
-[connection signal="area_entered" from="Voltear/Hitbox_arma" to="." method="_on_hitbox_arma_area_entered"]
+[node name="Ataque" type="Node" parent="." node_paths=PackedStringArray("jugador")]
+script = ExtResource("16_v0vl4")
+jugador = NodePath("..")
+
+[node name="Movimiento" type="Node" parent="." node_paths=PackedStringArray("jugador")]
+script = ExtResource("17_re2vg")
+jugador = NodePath("..")
+
+[connection signal="area_entered" from="Voltear/Hitbox_arma" to="Ataque" method="_on_hitbox_arma_area_entered"]

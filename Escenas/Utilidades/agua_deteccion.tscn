@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://l24p3n2khr04"]
+
+[ext_resource type="Script" path="res://Scripts/Utilidades/agua_deteccion.gd" id="1_7s461"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxar0"]
+size = Vector2(299, 94)
+
+[node name="Agua_deteccion" type="Area2D"]
+script = ExtResource("1_7s461")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kxar0")
+debug_color = Color(0, 0.882353, 0, 0.188235)
+
+[connection signal="body_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

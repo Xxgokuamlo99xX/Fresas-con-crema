@@ -1,0 +1,12 @@
+Es un {Tipo_loot}
+Lo quieres comprar por {Precio} de eter?
+- si
+	if GlobalVar.eter >= {Precio}:
+		Compraste {Tipo_loot}
+		[end_timeline]
+	else:
+		No tienes suficiente eter
+		jaja pobre
+		[end_timeline]
+- no
+	[end_timeline]

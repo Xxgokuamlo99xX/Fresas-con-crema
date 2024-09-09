@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cld8iecoty7uh"]
+[gd_scene load_steps=7 format=3 uid="uid://cld8iecoty7uh"]
 
-[ext_resource type="Script" path="res://Scripts/Varios/moneida.gd" id="1_thn8p"]
 [ext_resource type="Texture2D" uid="uid://c57accc2xur6i" path="res://Recursos/Sprites/Misc/Eter.png" id="2_p13cl"]
+[ext_resource type="PackedScene" uid="uid://6y2xclnktvrc" path="res://Escenas/Utilidades/Item_hitbox.tscn" id="2_shdea"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hiico"]
 atlas = ExtResource("2_p13cl")
@@ -32,19 +32,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnnuj"]
-
 [node name="moneida" type="Node2D"]
-script = ExtResource("1_thn8p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3a1iu")
 autoplay = "default"
 frame_progress = 0.977716
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_xnnuj")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="Item_hiboc" parent="." instance=ExtResource("2_shdea")]
+Id_item = 3

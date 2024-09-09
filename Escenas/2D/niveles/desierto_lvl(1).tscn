@@ -626,13 +626,15 @@ tile_set = ExtResource("11_3vh4k")
 
 [node name="Puertas" type="Node2D" parent="."]
 
-[node name="Zona_teletransporte" parent="Puertas" instance=ExtResource("11_p0dlr")]
+[node name="nieve" parent="Puertas" instance=ExtResource("11_p0dlr")]
 position = Vector2(1604, -897)
 scale = Vector2(3.17, 3.17)
+escena_cambio = &"res://Escenas/2D/niveles/nieve_lvl(1).tscn"
 
-[node name="Zona_teletransporte2" parent="Puertas" instance=ExtResource("11_p0dlr")]
+[node name="Zona_teletransporte" parent="Puertas" instance=ExtResource("11_p0dlr")]
 position = Vector2(3862, -575)
 scale = Vector2(1, 5)
+escena_cambio = &"res://Escenas/2D/niveles/desierto_lvl(2).tscn"
 
 [node name="Markers_pos" type="Node2D" parent="."]
 
