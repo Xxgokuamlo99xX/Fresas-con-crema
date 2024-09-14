@@ -43,6 +43,7 @@ position = Vector2(66, -18)
 
 [node name="Mejora_vida_compra" parent="Productos" instance=ExtResource("5_bg780")]
 position = Vector2(447, -26)
+nombre_obj = "Mejora de vida(+20)"
 
 [node name="Mana" type="Node2D" parent="Productos" node_paths=PackedStringArray("area2d", "noti_de_uso")]
 position = Vector2(530, -26)
@@ -50,6 +51,7 @@ script = ExtResource("6_6wh3k")
 Timeline_ = ExtResource("7_hqtkw")
 area2d = NodePath("Area2D")
 noti_de_uso = NodePath("TeclaZ")
+nombre_obj = "Mejora de mana"
 tipo_rec = 2
 Obj_tienda = true
 precio = 350
@@ -73,6 +75,7 @@ script = ExtResource("6_6wh3k")
 Timeline_ = ExtResource("7_hqtkw")
 area2d = NodePath("Area2D")
 noti_de_uso = NodePath("TeclaZ")
+nombre_obj = "Mejora de la espada"
 tipo_rec = 3
 Obj_tienda = true
 precio = 500

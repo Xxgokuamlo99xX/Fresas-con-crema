@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 #TODO Agregar colisiones a los ataques, hacer enemigos y ya 
+var inmortal : bool = false
 
 @export var SPEED : int = 150
 @export var GRAVITY : float = 9.8
@@ -23,7 +24,7 @@ signal morixd
 var arma_actual : int = 0
 var bola_fuego = preload("res://armas/Bola_de_fuego.tscn")
 var bola_fuego_azul = preload("res://armas/bola_fuego_azul.tscn")
-
+var pantalla_de_muerte = preload("res://Scripts/Jugador/cosas_muerte.gd").new()
 
 var armas : Array
 
@@ -88,8 +89,8 @@ func animaciones():
 				GlobalVar.puede_moverse = false
 				await $AnimationTree.animation_finished
 				GlobalVar.puede_moverse = true
-		print(damage)
 	damage = 5 * GlobalVar.multi_damage
+
 func flip():
 	if dir.x == -1:
 		$Voltear.scale = Vector2(-1,1)
@@ -99,14 +100,15 @@ func flip():
 		rotacion = 0
 
 func _damage():
-	if $Invulnerable.is_stopped():
+	if $Invulnerable.is_stopped() and not inmortal:
 		$Invulnerable.start()
 		GlobalVar.vida_jugador -= GlobalVar.player_damage_taken
 		$Invulnerable/AnimationPlayer.play("invul_time")
 		$"Daño_pupap"._pupa()
 		if GlobalVar.vida_jugador <= 0:
+			inmortal = true
 			GlobalVar.puede_moverse = false
 			state_machine.travel("morir")
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			await $animaciones.animation_finished
-			queue_free()
+			

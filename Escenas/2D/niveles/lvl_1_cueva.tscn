@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dammpxkaiqtmg"]
+[gd_scene load_steps=15 format=4 uid="uid://dammpxkaiqtmg"]
 
 [ext_resource type="TileSet" uid="uid://dft7t6ld8fcjw" path="res://Recursos/Tile maps 2D/cueva.tres" id="1_mud3s"]
 [ext_resource type="Script" path="res://Scripts/posicion_manager.gd" id="1_wk8sh"]
@@ -13,44 +13,14 @@
 [ext_resource type="Resource" path="res://Timelines/Npc_cueva.dtl" id="9_d6x3u"]
 [ext_resource type="PackedScene" uid="uid://5mswetk8tvjp" path="res://Escenas/Utilidades/void_out.tscn" id="11_kmjyo"]
 
-[sub_resource type="Gradient" id="Gradient_ild8e"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_rg4b5"]
+offsets = PackedFloat32Array(0.085, 0.22, 0.63, 1)
+colors = PackedColorArray(0, 0, 0, 0.858824, 0, 0, 0, 0.741176, 0, 0, 0, 0.459477, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_q2lk3"]
-gradient = SubResource("Gradient_ild8e")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
-metadata/_snap_enabled = true
-
-[sub_resource type="Gradient" id="Gradient_ckyhp"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_bkyqg"]
-gradient = SubResource("Gradient_ckyhp")
-
-[sub_resource type="Gradient" id="Gradient_ycca1"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_gr88c"]
-gradient = SubResource("Gradient_ycca1")
-fill = 1
-fill_from = Vector2(0.876068, 0.478632)
-fill_to = Vector2(0.149573, 0.465812)
-
-[sub_resource type="Gradient" id="Gradient_eobxx"]
-offsets = PackedFloat32Array(0.298113, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_10pam"]
-gradient = SubResource("Gradient_eobxx")
-
-[sub_resource type="Gradient" id="Gradient_wf2nt"]
-offsets = PackedFloat32Array(0.362264, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_g5chh"]
-gradient = SubResource("Gradient_wf2nt")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vbgdi"]
+gradient = SubResource("Gradient_rg4b5")
+fill_from = Vector2(0.534188, 0.636752)
+fill_to = Vector2(0.538462, 0.025641)
 
 [node name="lvl_1-cueva" type="Node"]
 script = ExtResource("1_wk8sh")
@@ -60,17 +30,23 @@ position = Vector2(226, -19)
 
 [node name="Cofre" parent="Cofres" instance=ExtResource("5_tyky2")]
 position = Vector2(3563, 1098)
-recompensa = 500
+nombre_obj = "Eter"
+Cant_recompensa = 500
 
 [node name="Cofre2" parent="Cofres" instance=ExtResource("5_tyky2")]
 position = Vector2(2392, 1323)
-recompensa = 100
+nombre_obj = "Eter"
+Cant_recompensa = 150
 
 [node name="Cofre3" parent="Cofres" instance=ExtResource("5_tyky2")]
 position = Vector2(1790, 684)
+nombre_obj = "Eter"
+Cant_recompensa = 50
 
 [node name="Cofre4" parent="Cofres" instance=ExtResource("5_tyky2")]
 position = Vector2(1356, 765)
+nombre_obj = "Eter"
+Cant_recompensa = 25
 
 [node name="Goku" parent="." instance=ExtResource("5_ovuit")]
 position = Vector2(3881, 1059)
@@ -95,20 +71,6 @@ repeat_times = 20
 
 [node name="Sprite2D" type="Sprite2D" parent="Goku/Parallac/Fondo 2"]
 texture = ExtResource("4_qpii0")
-
-[node name="PointLight2D" type="PointLight2D" parent="Goku"]
-scale = Vector2(2, 2)
-energy = 8.0
-texture = SubResource("GradientTexture2D_q2lk3")
-
-[node name="ColorRect" type="ColorRect" parent="Goku"]
-z_index = 10
-offset_left = -381.0
-offset_top = -439.0
-offset_right = -341.0
-offset_bottom = -399.0
-scale = Vector2(38.1473, 22.8135)
-color = Color(0, 0, 0, 0.946)
 
 [node name="Tilemaps" type="Node2D" parent="."]
 
@@ -144,49 +106,6 @@ escena_cambio = &"res://Escenas/2D/niveles/castillo.tscn"
 position = Vector2(3727, 1069)
 Timeline_ = ExtResource("9_d6x3u")
 
-[node name="PointLight2D2" type="PointLight2D" parent="Npc_1"]
-scale = Vector2(5, 5)
-energy = 8.0
-texture = SubResource("GradientTexture2D_q2lk3")
-
-[node name="luz" type="Node2D" parent="."]
-
-[node name="PointLight2D" type="PointLight2D" parent="luz"]
-position = Vector2(26, -34)
-scale = Vector2(1.32399, 445)
-energy = 30.0
-texture = SubResource("GradientTexture1D_bkyqg")
-
-[node name="PointLight2D5" type="PointLight2D" parent="luz"]
-position = Vector2(4027, 1051)
-scale = Vector2(6.90532, 6.89063)
-energy = 30.0
-texture = SubResource("GradientTexture2D_gr88c")
-
-[node name="PointLight2D2" type="PointLight2D" parent="luz"]
-position = Vector2(853.763, 728.471)
-rotation = 1.5708
-scale = Vector2(1.32399, 1012.1)
-energy = 1.4
-blend_mode = 1
-texture = SubResource("GradientTexture1D_10pam")
-
-[node name="PointLight2D3" type="PointLight2D" parent="luz"]
-position = Vector2(856.178, 390.471)
-rotation = -1.5708
-scale = Vector2(1.32399, 1009.27)
-energy = 1.4
-blend_mode = 1
-texture = SubResource("GradientTexture1D_g5chh")
-
-[node name="PointLight2D4" type="PointLight2D" parent="luz"]
-position = Vector2(2191.96, 1211)
-rotation = -1.5708
-scale = Vector2(1.6384, 3673.51)
-energy = 1.4
-blend_mode = 1
-texture = SubResource("GradientTexture1D_g5chh")
-
 [node name="Void_out" parent="." node_paths=PackedStringArray("Posicion_rec") instance=ExtResource("11_kmjyo")]
 position = Vector2(1486, 1280)
 Posicion_rec = NodePath("../Markers_pos/Void_marker")
@@ -201,5 +120,12 @@ position = Vector2(1570, 1009)
 
 [node name="lvl_1 Pos" type="Marker2D" parent="Markers_pos"]
 position = Vector2(176, -16)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 275.0
+offset_top = 776.0
+offset_right = 4362.0
+offset_bottom = 1476.0
+texture = SubResource("GradientTexture2D_vbgdi")
 
 [editable path="Void_out"]

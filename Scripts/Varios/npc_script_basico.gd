@@ -4,6 +4,7 @@ extends Node2D
 @export var Timeline_ : DialogicTimeline
 @export var area2d : Area2D
 @export var noti_de_uso : Sprite2D
+@export var nombre_obj : String
 
 @export_category("cofre")
 @export var cofre : bool
@@ -13,6 +14,7 @@ extends Node2D
 @export_category("Objeto de tienda")
 @export var Obj_tienda : bool
 @export var precio : int
+
 
 enum loot_posible {eter,contenerdor_corazon,mas_mana,mejora_damage}
 
@@ -27,14 +29,14 @@ func _process(delta: float) -> void:
 				hablar()
 				if cofre:
 					Dialogic.VAR.Cant_loot = Cant_recompensa
-					Dialogic.VAR.Tipo_loot = str(loot_posible)
+					Dialogic.VAR.Tipo_loot = nombre_obj
 					await Dialogic.timeline_ended 
 					recompesa()
 					GlobalVar.puede_moverse = true
 					queue_free()
 					
 				if Obj_tienda:
-					Dialogic.VAR.Tipo_loot = str(loot_posible)
+					Dialogic.VAR.Tipo_loot = nombre_obj
 					Dialogic.VAR.Precio = precio
 					await Dialogic.timeline_ended
 					if GlobalVar.eter >= precio:
@@ -55,7 +57,7 @@ func hablar():
 	Dialogic.start(Timeline_)
 	hablando = true
 	await Dialogic.timeline_ended  
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.7).timeout
 	hablando = false
 	GlobalVar.puede_moverse = true
 	
@@ -66,9 +68,11 @@ func recompesa(): # ("eter", "contenedor_corazon", "Mana_max")
 			
 		loot_posible.contenerdor_corazon:
 			GlobalVar.vida_max += 20
+			GlobalVar.vida_jugador = GlobalVar.vida_max
 			
 		loot_posible.mas_mana:
-			GlobalVar.mana_max += 40
+			GlobalVar.mana_max += 50
+			GlobalVar.mana = GlobalVar.mana_max	
 			
 		loot_posible.mejora_damage:
 			GlobalVar.multi_damage += 0.5

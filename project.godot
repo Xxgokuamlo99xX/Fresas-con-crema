@@ -50,12 +50,12 @@ directories/dtl_directory={
 }
 text/letter_speed=0.02
 text/initial_text_reveal_skippable=false
-text/text_reveal_skip_delay=1.0
+text/text_reveal_skip_delay=0.5
 text/advance_delay=0.1
 text/autoadvance_per_character_delay=0.1
 text/autoadvance_ignored_characters_enabled=true
-animations/join_default_length=0.5
-animations/leave_default_length=0.5
+animations/join_default_length=0.3
+animations/leave_default_length=0.3
 animations/leave_default_wait=true
 animations/join_default_wait=true
 choices/autofocus_first=true
@@ -66,8 +66,8 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/input_action="usar"
 text/autopauses={}
-layout/style_list=["res://Estilos_dialogic/Estilo_2.tres"]
-layout/default_style="res://Estilos_dialogic/Estilo_2.tres"
+layout/style_list=["res://Estilos_dialogic/aszasasasasas/ya bsata.tres"]
+layout/default_style="res://Estilos_dialogic/aszasasasasas/ya bsata.tres"
 glossary/default_case_sensitive=true
 variables={
 "Cant_loot": 0,
@@ -80,6 +80,12 @@ translation/file_mode=1
 translation/translation_folder=""
 translation/save_mode=0
 translation/add_separator=false
+extensions_folder="res://addons/dialogic_additions"
+animations/cross_fade_default_length=0.5
+text/autoadvance_fixed_delay=0.5
+animations/join_default="Fade In Up"
+animations/leave_default="Fade Out Down"
+portraits/default_portrait=""
 
 [display]
 
@@ -220,12 +226,9 @@ dialogic_default_action={
 2d_physics/layer_9="Plataformas_bajables"
 2d_physics/layer_10="Interacciones"
 
-[physics]
-
-common/physics_interpolation=true
-
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 viewport/hdr_2d=true

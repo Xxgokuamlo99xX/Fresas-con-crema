@@ -17,5 +17,6 @@ func _physics_process(delta):
 	$vida/TextureProgressBar.max_value = GlobalVar.vida_max
 	
 	#MANA
+	$mana/Label.text = "Mana: " + str(GlobalVar.mana) + "/" + str(GlobalVar.mana_max)
 	$mana/TextureProgressBar.value = GlobalVar.mana
 	$mana/TextureProgressBar.max_value = GlobalVar.mana_max

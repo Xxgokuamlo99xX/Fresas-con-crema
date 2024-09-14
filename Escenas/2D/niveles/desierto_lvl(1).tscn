@@ -641,6 +641,9 @@ escena_cambio = &"res://Escenas/2D/niveles/desierto_lvl(2).tscn"
 [node name="Castillo_plaza Pos" type="Marker2D" parent="Markers_pos"]
 position = Vector2(36, 4)
 
+[node name="snowland_1 Pos" type="Marker2D" parent="Markers_pos"]
+position = Vector2(1678, -826)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-7, -31)
 scale = Vector2(0.4, 0.4)

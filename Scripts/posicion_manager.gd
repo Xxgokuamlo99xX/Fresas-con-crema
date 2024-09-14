@@ -4,6 +4,10 @@ extends Node
 
 func _ready():
 	if GlobalVar.nivel_anterior != null:
-		get_node("Goku").set_position(get_node("Markers_pos").get_node(GlobalVar.nivel_anterior + " Pos").position)
-
+		if get_tree().current_scene.name != GlobalVar.nivel_anterior:
+			get_node("Goku").set_position(get_node("Markers_pos").get_node(GlobalVar.nivel_anterior + " Pos").position)
+		else: 
+			return
+	else:
+		return
 	GlobalVar.puede_moverse = true

@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://brjugeonmbmq4"]
+[gd_scene load_steps=7 format=3 uid="uid://brjugeonmbmq4"]
 
 [ext_resource type="Script" path="res://Scripts/Varios/pausa.gd" id="1_00pje"]
+[ext_resource type="FontFile" uid="uid://8khbwkhjgd2r" path="res://Recursos/Fuentes de texto/FSEX300.ttf" id="2_u63wx"]
 [ext_resource type="Script" path="res://Scripts/Varios/Volume_bar.gd" id="4_6evri"]
 [ext_resource type="Script" path="res://Scripts/Utilidades/debug.gd" id="4_htb8i"]
 [ext_resource type="LabelSettings" uid="uid://bfbkkbnsj01vt" path="res://Recursos/Fuentes de texto/hud.tres" id="5_jtq72"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8pyb2"]
+font = ExtResource("2_u63wx")
+font_size = 32
 
 [node name="pausa" type="CanvasLayer"]
 process_mode = 3
@@ -21,15 +26,15 @@ texture_filter = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -37.0
-offset_top = 19.0
-offset_right = 18.0
-offset_bottom = 42.0
+offset_left = -40.0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 48.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "PAUSA"
-label_settings = ExtResource("5_jtq72")
+label_settings = SubResource("LabelSettings_8pyb2")
 
 [node name="Volumenscrols" type="Node2D" parent="."]
 position = Vector2(5, 5)
@@ -54,6 +59,7 @@ offset_bottom = -12.0
 scale = Vector2(1.545, 1.545)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_u63wx")
 text = "Master"
 horizontal_alignment = 1
 
@@ -76,6 +82,7 @@ offset_bottom = -12.0
 scale = Vector2(1.545, 1.545)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_u63wx")
 text = "Musica"
 horizontal_alignment = 1
 
@@ -98,6 +105,7 @@ offset_bottom = -12.0
 scale = Vector2(1.545, 1.545)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_u63wx")
 text = "SFX"
 horizontal_alignment = 1
 
@@ -110,9 +118,9 @@ scale = Vector2(2.195, 2.195)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "Volumen"
+label_settings = ExtResource("5_jtq72")
 
 [node name="botones" type="Node2D" parent="."]
-position = Vector2(-25, -10)
 scale = Vector2(0.3, 0.3)
 
 [node name="Fullscreen" type="CheckButton" parent="botones"]
@@ -121,29 +129,34 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 858.0
-offset_top = 260.0
-offset_right = 1059.0
-offset_bottom = 326.0
+offset_left = 800.0
+offset_top = 266.667
+offset_right = 1008.0
+offset_bottom = 332.667
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_u63wx")
+theme_override_font_sizes/font_size = 32
 text = "Fullscreen"
 alignment = 1
 
-[node name="Button2" type="Button" parent="botones"]
+[node name="Salir" type="Button" parent="botones"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 545.0
-offset_top = 327.0
-offset_right = 587.0
-offset_bottom = 358.0
+offset_left = 453.333
+offset_top = 266.667
+offset_right = 526.333
+offset_bottom = 320.667
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.5, 2.5)
-text = "Salir
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_u63wx")
+text = "Guardar
+y Salir
 "
 
 [node name="debug" type="Control" parent="."]
@@ -158,10 +171,10 @@ script = ExtResource("4_htb8i")
 
 [node name="bebug" type="Label" parent="debug"]
 layout_mode = 0
-offset_left = 873.0
-offset_top = 353.0
-offset_right = 928.0
-offset_bottom = 376.0
+offset_left = 1009.67
+offset_top = 416.667
+offset_right = 1064.67
+offset_bottom = 439.667
 text = "Debug"
 label_settings = ExtResource("5_jtq72")
 
@@ -172,28 +185,29 @@ offset_bottom = 40.0
 
 [node name="eter" type="Label" parent="debug/eter"]
 layout_mode = 0
-offset_left = 760.0
-offset_top = 443.333
-offset_right = 859.0
-offset_bottom = 466.333
+offset_left = 896.667
+offset_top = 507.0
+offset_right = 995.667
+offset_bottom = 530.0
 text = "Eter"
 label_settings = ExtResource("5_jtq72")
 
 [node name="cambio mision boton2" type="Button" parent="debug/eter"]
 layout_mode = 0
-offset_left = 750.0
-offset_top = 503.333
-offset_right = 819.0
-offset_bottom = 534.333
+offset_left = 886.667
+offset_top = 567.0
+offset_right = 955.667
+offset_bottom = 598.0
+theme_override_fonts/font = ExtResource("2_u63wx")
 text = "Aceptar
 "
 
 [node name="LineEdit" type="LineEdit" parent="debug/eter"]
 layout_mode = 0
-offset_left = 750.0
-offset_top = 466.667
-offset_right = 817.063
-offset_bottom = 497.667
+offset_left = 886.667
+offset_top = 530.334
+offset_right = 953.729
+offset_bottom = 561.334
 
 [node name="mision" type="Control" parent="debug"]
 anchors_preset = 0
@@ -202,35 +216,36 @@ offset_bottom = 40.0
 
 [node name="Id_msion" type="Label" parent="debug/mision"]
 layout_mode = 0
-offset_left = 858.0
-offset_top = 439.0
-offset_right = 957.0
-offset_bottom = 462.0
+offset_left = 994.667
+offset_top = 502.667
+offset_right = 1093.67
+offset_bottom = 525.667
 text = "Mision Id"
 label_settings = ExtResource("5_jtq72")
 
 [node name="cambio mision boton" type="Button" parent="debug/mision"]
 layout_mode = 0
-offset_left = 870.0
-offset_top = 501.0
-offset_right = 939.0
-offset_bottom = 532.0
+offset_left = 1006.67
+offset_top = 564.667
+offset_right = 1075.67
+offset_bottom = 595.667
+theme_override_fonts/font = ExtResource("2_u63wx")
 text = "Aceptar
 "
 
 [node name="LineEdit" type="LineEdit" parent="debug/mision"]
 layout_mode = 0
-offset_left = 871.0
-offset_top = 465.0
-offset_right = 938.063
-offset_bottom = 496.0
+offset_left = 1007.67
+offset_top = 528.667
+offset_right = 1074.73
+offset_bottom = 559.667
 
 [connection signal="value_changed" from="Volumenscrols/Master" to="Volumenscrols/Master" method="_on_value_changed"]
 [connection signal="value_changed" from="Volumenscrols/Musica" to="Volumenscrols/Musica" method="_on_value_changed"]
 [connection signal="value_changed" from="Volumenscrols/SFX" to="Volumenscrols/SFX" method="_on_value_changed"]
 [connection signal="toggled" from="botones/Fullscreen" to="." method="_on_fullscreen_toggled"]
-[connection signal="mouse_entered" from="botones/Button2" to="." method="_on_button_2_mouse_entered"]
-[connection signal="mouse_exited" from="botones/Button2" to="." method="_on_button_2_mouse_exited"]
-[connection signal="pressed" from="botones/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="mouse_entered" from="botones/Salir" to="." method="_on_button_2_mouse_entered"]
+[connection signal="mouse_exited" from="botones/Salir" to="." method="_on_button_2_mouse_exited"]
+[connection signal="pressed" from="botones/Salir" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="debug/eter/cambio mision boton2" to="debug" method="_on_cambio_mision_boton_2_pressed"]
 [connection signal="pressed" from="debug/mision/cambio mision boton" to="debug" method="_on_apply_button_pressed"]

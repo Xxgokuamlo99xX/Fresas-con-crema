@@ -29,11 +29,5 @@ func _on_fullscreen_toggled(toggled_on):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 func _on_button_2_pressed() -> void:
+	GlobalVar.guardar_partida()
 	get_tree().quit()
-
-
-func _on_button_2_mouse_entered() -> void:
-	$botones/Button2.text = "Miedo o que"
-
-func _on_button_2_mouse_exited() -> void:
-	$botones/Button2.text = "Salir"

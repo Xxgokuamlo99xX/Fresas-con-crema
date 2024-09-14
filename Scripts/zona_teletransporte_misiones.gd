@@ -2,7 +2,10 @@ extends Node2D
 
 
 func _process(delta: float) -> void:
-	deteccion()
+	if not Ids.mision_act_id >= 3:
+		return
+	else:
+		deteccion()
 	
 func deteccion():
 	for body in $Area2D.get_overlapping_bodies():

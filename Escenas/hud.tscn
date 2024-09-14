@@ -1,11 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://bwdmbdwfnah6q"]
+[gd_scene load_steps=20 format=3 uid="uid://bwdmbdwfnah6q"]
 
 [ext_resource type="Texture2D" uid="uid://c57accc2xur6i" path="res://Recursos/Sprites/Misc/Eter.png" id="2_yhoym"]
 [ext_resource type="Script" path="res://Scripts/Jugador/Stats.gd" id="3_6x4kx"]
-[ext_resource type="Texture2D" uid="uid://cpfrueqmyf6gj" path="res://Recursos/Sprites/Misc/barra_mana1.png" id="5_atj2d"]
-[ext_resource type="Texture2D" uid="uid://hq8lvky81roo" path="res://Recursos/Sprites/Misc/barra_mana2.png" id="6_ea065"]
+[ext_resource type="Texture2D" uid="uid://t8u61gjqpvut" path="res://Recursos/Sprites/Prota/barras1.png" id="4_s68lm"]
+[ext_resource type="Texture2D" uid="uid://c0xf2fv8n310m" path="res://Recursos/Sprites/Prota/barras4.png" id="5_jl4dm"]
+[ext_resource type="Texture2D" uid="uid://vewjg605skio" path="res://Recursos/Sprites/Prota/barras2.png" id="6_e10qm"]
 [ext_resource type="FontFile" uid="uid://8khbwkhjgd2r" path="res://Recursos/Fuentes de texto/FSEX300.ttf" id="6_kcbag"]
 [ext_resource type="PackedScene" uid="uid://kuvvv62x1for" path="res://Escenas/mision_hud.tscn" id="6_ll17u"]
+[ext_resource type="Texture2D" uid="uid://cblgnxptgcqxi" path="res://Recursos/Sprites/Prota/barras3.png" id="7_on2ap"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_67ful"]
+font = ExtResource("6_kcbag")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_al5i6"]
 atlas = ExtResource("2_yhoym")
@@ -35,9 +40,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="LabelSettings" id="LabelSettings_67ful"]
-font = ExtResource("6_kcbag")
 
 [sub_resource type="LabelSettings" id="LabelSettings_rodu2"]
 font = ExtResource("6_kcbag")
@@ -102,15 +104,6 @@ _data = {
 process_mode = 3
 script = ExtResource("3_6x4kx")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-show_behind_parent = true
-z_index = -1
-offset_right = 320.0
-offset_bottom = 18.0
-scale = Vector2(1.00219, 1.34801)
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
 [node name="Stats" type="Control" parent="."]
 process_mode = 1
 layout_mode = 3
@@ -123,63 +116,58 @@ scale = Vector2(0.2, 0.2)
 
 [node name="Fps" type="Label" parent="Stats"]
 layout_mode = 0
-offset_left = -1148.0
-offset_top = 550.0
-offset_right = -1113.0
-offset_bottom = 573.0
+offset_left = 200.0
+offset_top = 560.0
+offset_right = 235.0
+offset_bottom = 583.0
 scale = Vector2(2.63084, 2.75866)
 text = "Fps: "
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stats"]
-position = Vector2(-386, -240)
-scale = Vector2(5.2304, 5.61812)
-sprite_frames = SubResource("SpriteFrames_ctayr")
-autoplay = "default"
-frame_progress = 0.590427
-
 [node name="Eter" type="Label" parent="Stats"]
-z_index = 100
 layout_mode = 0
-offset_left = -430.0
-offset_top = -210.0
-offset_right = -390.0
-offset_bottom = -194.0
+offset_left = -1170.0
+offset_top = 560.0
+offset_right = -1130.0
+offset_bottom = 576.0
 scale = Vector2(2.859, 3.029)
 text = "Eter:"
 label_settings = SubResource("LabelSettings_67ful")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Stats/Eter"]
+position = Vector2(15.39, -9.90426)
+scale = Vector2(1.82945, 1.85478)
+sprite_frames = SubResource("SpriteFrames_ctayr")
+autoplay = "default"
+frame_progress = 0.590427
+
 [node name="vida" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 6.0
-offset_top = 2.0
-offset_right = 6.0
-offset_bottom = 2.0
-scale = Vector2(0.5, 0.5)
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 8.0
+offset_bottom = 4.0
+scale = Vector2(1.2, 1.2)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="vida"]
-modulate = Color(1, 0, 0, 1)
 layout_mode = 0
-offset_left = 116.0
-offset_top = -8.0
-offset_right = 156.0
-offset_bottom = 32.0
-rotation = 1.5708
-scale = Vector2(2.36, 3.465)
-value = 52.0
-fill_mode = 3
-texture_over = ExtResource("5_atj2d")
-texture_progress = ExtResource("6_ea065")
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 63.0
+offset_bottom = 18.0
+value = 100.0
+texture_under = ExtResource("4_s68lm")
+texture_progress = ExtResource("5_jl4dm")
 
 [node name="Label" type="Label" parent="vida"]
 texture_filter = 1
 layout_direction = 1
 layout_mode = 0
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 106.0
-offset_bottom = 19.0
-scale = Vector2(1.2, 1.2)
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 120.0
+offset_bottom = 29.0
+scale = Vector2(0.4, 0.4)
 size_flags_horizontal = 4
 text = "Vida 60/60"
 label_settings = SubResource("LabelSettings_rodu2")
@@ -189,34 +177,30 @@ vertical_alignment = 1
 [node name="mana" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 80.0
-offset_top = -1.0
-offset_right = 120.0
-offset_bottom = 39.0
-scale = Vector2(0.4, 0.345)
+offset_left = -88.0
+offset_top = 18.0
+offset_right = -48.0
+offset_bottom = 58.0
+scale = Vector2(1.2, 1.2)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="mana"]
-modulate = Color(0, 0, 1, 1)
 layout_mode = 0
-offset_left = 131.049
-offset_top = -8.95874
-offset_right = 171.049
-offset_bottom = 31.0413
-rotation = 1.5708
-scale = Vector2(3.70126, 4.1203)
-value = 52.0
-fill_mode = 3
-texture_over = ExtResource("5_atj2d")
-texture_progress = ExtResource("6_ea065")
+offset_left = 80.0
+offset_top = 4.0
+offset_right = 144.0
+offset_bottom = 36.0
+value = 100.0
+texture_under = ExtResource("6_e10qm")
+texture_progress = ExtResource("7_on2ap")
 
 [node name="Label" type="Label" parent="mana"]
 layout_mode = 0
-offset_left = 37.5
-offset_top = 5.7971
-offset_right = 69.5
-offset_bottom = 21.7971
-scale = Vector2(1.69, 1.69)
-text = "Mana"
+offset_left = 94.0
+offset_top = 9.0
+offset_right = 126.0
+offset_bottom = 25.0
+scale = Vector2(0.4, 0.4)
+text = "Mana 100/100"
 label_settings = SubResource("LabelSettings_swooc")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -227,3 +211,5 @@ libraries = {
 }
 
 [node name="Mision_hud" parent="." instance=ExtResource("6_ll17u")]
+offset_top = -16.0
+offset_bottom = -16.0

@@ -310,7 +310,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [24]
+"values": [25]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ya0pl"]
@@ -939,7 +939,7 @@ autoplay = "Cinematica_inicio"
 position = Vector2(0, 30)
 texture = ExtResource("5_nindk")
 hframes = 10
-vframes = 11
+vframes = 12
 
 [node name="Camera2D" type="Camera2D" parent="Sprite2D"]
 position = Vector2(5, 0)
@@ -1007,12 +1007,10 @@ flip_h = true
 [node name="Guardia4" type="Sprite2D" parent="Guerdias"]
 position = Vector2(87, 1)
 texture = ExtResource("15_pup7f")
-flip_h = true
 
 [node name="Guardia5" type="Sprite2D" parent="Guerdias"]
 position = Vector2(111, 0)
 texture = ExtResource("15_pup7f")
-flip_h = true
 
 [node name="Guardia6" type="Sprite2D" parent="Guerdias"]
 position = Vector2(-655, -736)

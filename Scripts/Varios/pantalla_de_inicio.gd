@@ -1,9 +1,6 @@
-extends Node2D
+extends Node
 
 @warning_ignore("unused_parameter")
-
-func _ready() -> void:
-	cambiar_escena.hide()
 
 func _process(delta: float) -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -22,3 +19,7 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	elif toggled_on == false:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_cargar_pressed() -> void:
+	GlobalVar.cargar_partida()

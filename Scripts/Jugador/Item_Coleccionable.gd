@@ -1,9 +1,9 @@
-extends Node2D
+extends Area2D
 
 @export_category("Tipos de item")
 ## 1 -> corazon, 2 -> mana, 3 -> eter 
 @export var Id_item : int 
-
+@export var respawneable : bool
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Jugador"):
@@ -18,4 +18,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			3:
 				GlobalVar.eter += 5
 				
-		get_parent().queue_free()
+		if respawneable:
+			get_parent().hide()
+			position.y = 10000
+			await get_tree().create_timer(15).timeout
+			position.y = 0
+			get_parent().show()
+
+		else:
+			get_parent().queue_free()

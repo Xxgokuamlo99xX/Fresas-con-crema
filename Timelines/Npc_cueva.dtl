@@ -1,12 +1,12 @@
 if Ids.mision_act_id == 1:
-	Samantha: Tu otra vez?!!?
+	Samantha (Enojada): Tu otra vez?!!?
 	Npc_1: Como que yo otra vez
-	Samantha: .......
+	Samantha (Sarcasmo): .......
 	Npc_1: Esque el que hizo esto no tiene para mas personajes
 	Npc_1: De cualquier forma
 	Npc_1: Deberias tomar lo que esta en este cofre
 	Npc_1: Si es que aun no lo has hecho ._.
-	Samantha: \:v
+	Samantha (Normal): \:v
 	Npc_1: Talvez eso te ayude para...
 	Npc_1: despues.
 	do Misiones.completar_mision()

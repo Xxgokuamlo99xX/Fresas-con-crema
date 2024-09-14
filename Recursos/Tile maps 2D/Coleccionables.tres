@@ -1,0 +1,13 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cvhd1wgefj0yv"]
+
+[ext_resource type="PackedScene" uid="uid://v536h5v5gas1" path="res://Escenas/vainas/corazon.tscn" id="1_lq7ks"]
+[ext_resource type="PackedScene" uid="uid://c5pdkcplnpi61" path="res://Escenas/vainas/frasco_mana.tscn" id="2_taqp6"]
+[ext_resource type="PackedScene" uid="uid://cld8iecoty7uh" path="res://Escenas/vainas/moneida.tscn" id="3_v5f82"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_na6pt"]
+scenes/1/scene = ExtResource("1_lq7ks")
+scenes/2/scene = ExtResource("2_taqp6")
+scenes/3/scene = ExtResource("3_v5f82")
+
+[resource]
+sources/0 = SubResource("TileSetScenesCollectionSource_na6pt")

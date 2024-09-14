@@ -25,6 +25,7 @@ anchors_preset = 0
 script = ExtResource("1_438w4")
 
 [node name="mision_resumen" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 240.0
 offset_top = 24.0
 offset_right = 456.0

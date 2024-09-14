@@ -4,23 +4,23 @@ if Ids.mision_act_id == 0:
 		Npc_1: Si eso es lo que dije
 	Npc_1: Deberias avanzar hacia la cueva y ver que encuentras.
 	Npc_1: Talvez el final....
-	Samantha: Espera, porque me dices esto?
+	Samantha (Sorprendida): Espera, porque me dices esto?
 	Npc_1: Nose asi es el juego.
 	Npc_1: alguna otra pregunta?
 	label Pregunta
 	- Es enserio que eres goku?
 		Npc_1: Si ya te lo habia dicho, eres sorda o algo?
-		Samantha: Waos
+		Samantha (Sarcasmo): Waos
 		jump Algo mas
 	- Cual cueva?
 		Npc_1: Pues la que tienes enfrente...
 		Npc_1: De verdad estas segura que no eres ciega?
-		Samantha: La verdad que no se, la pantalla no llega esta alla  \:(
+		Samantha (Normal): La verdad que no se, la pantalla no llega esta alla  \:(
 		jump Algo mas
 	- Tienes algun consejo?
 		Npc_1: eeeeeeeeeeeeeeeeeeem, si.
 		Npc_1: Sabias que si te atacan tu vida bajara o que puedes atacar con "X" y "C"
-		Samantha: Wow no me digas .-.
+		Samantha (Sarcasmo): Wow no me digas .-.
 		jump Algo mas
 	- Nop.
 		Npc_1: Ok, bay

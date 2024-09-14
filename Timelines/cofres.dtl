@@ -1,9 +1,9 @@
-Samantha: Es un Cofre...
-Lo quieres abrir?
+Samantha (Sorprendida): Es un Cofre...
 label pregunta
+Lo quieres abrir?
 - Si
 	Has encontrado {Cant_loot} de {Tipo_loot}
 	[end_timeline]
 - No
-	Samantha: Pero porque?
+	Samantha (Enojada): Pero porque?
 	jump pregunta

@@ -1,19 +1,23 @@
-[gd_scene load_steps=16 format=4 uid="uid://dqk5rhqer4xic"]
+[gd_scene load_steps=18 format=4 uid="uid://dqk5rhqer4xic"]
 
 [ext_resource type="TileSet" uid="uid://criqbdoht4sry" path="res://Recursos/Tile maps 2D/Castillo.tres" id="1_auw8m"]
 [ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="1_syc5n"]
 [ext_resource type="Script" path="res://Scripts/posicion_manager.gd" id="1_yja0t"]
-[ext_resource type="PackedScene" uid="uid://bmveltrbhvqn8" path="res://Escenas/2D/Personajes/npc_1.tscn" id="2_dgt8j"]
 [ext_resource type="Texture2D" uid="uid://dyxsbk6hwugpa" path="res://Recursos/Sprites/Npcs/Guardia.png" id="2_ei7vj"]
 [ext_resource type="PackedScene" uid="uid://c3t1avw4c0qgi" path="res://Escenas/2D/puerta.tscn" id="2_ulpfi"]
-[ext_resource type="Resource" path="res://Timelines/Demo_fin.dtl" id="3_48opw"]
 [ext_resource type="Texture2D" uid="uid://dhalx2w583q8c" path="res://Recursos/Tile maps 2D/GrassLand/Terrain/Grassland_Terrain_Tileset.png" id="4_6ugjn"]
 [ext_resource type="TileSet" uid="uid://nsajdd0o08hd" path="res://Recursos/Tile maps 2D/Castilo_decos.tres" id="8_re5nj"]
 [ext_resource type="Script" path="res://Scripts/zona_teletransporte_misiones.gd" id="10_lkh46"]
-[ext_resource type="LabelSettings" uid="uid://bfbkkbnsj01vt" path="res://Recursos/Fuentes de texto/hud.tres" id="11_ogugu"]
+[ext_resource type="Texture2D" uid="uid://4y43cgrpp50" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_1.png" id="12_307hp"]
+[ext_resource type="Texture2D" uid="uid://clyv3116ggtpy" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_3.png" id="13_wwkbt"]
+[ext_resource type="Texture2D" uid="uid://d3m4dgfowt0td" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_4.png" id="14_lv4mj"]
+[ext_resource type="Texture2D" uid="uid://ddk33jxlnlvwc" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_5.png" id="15_uevbw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0rqj"]
 size = Vector2(120, 377.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djw17"]
+size = Vector2(120, 558.75)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4svpa"]
 texture = ExtResource("4_6ugjn")
@@ -146,8 +150,8 @@ texture = ExtResource("4_6ugjn")
 [sub_resource type="TileSet" id="TileSet_el5qu"]
 sources/0 = SubResource("TileSetAtlasSource_4svpa")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0gqy"]
-size = Vector2(20, 60)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10fp0"]
+size = Vector2(20, 210)
 
 [node name="Castillo_plaza" type="Node"]
 script = ExtResource("1_yja0t")
@@ -160,12 +164,12 @@ scale = Vector2(0.4, 0.4)
 position = Vector2(-3492.5, -132.5)
 shape = SubResource("RectangleShape2D_p0rqj")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(5177.5, -213.125)
+shape = SubResource("RectangleShape2D_djw17")
+
 [node name="Npcs" type="Node2D" parent="."]
 position = Vector2(507, 6)
-
-[node name="Npc_1" parent="Npcs" instance=ExtResource("2_dgt8j")]
-position = Vector2(1827, -66)
-Timeline_ = ExtResource("3_48opw")
 
 [node name="Guardia" type="Sprite2D" parent="Npcs"]
 position = Vector2(68, -1)
@@ -232,14 +236,50 @@ script = ExtResource("10_lkh46")
 [node name="Area2D" type="Area2D" parent="Puertas/Zona_teletransporte"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Puertas/Zona_teletransporte/Area2D"]
-shape = SubResource("RectangleShape2D_h0gqy")
+position = Vector2(0, -75)
+shape = SubResource("RectangleShape2D_10fp0")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 2548.0
-offset_top = -94.0
-offset_right = 3010.0
-offset_bottom = -45.0
-text = "Pasa solo si tu mision es la 3 mamahuevaso
-estas advertido"
-label_settings = ExtResource("11_ogugu")
-horizontal_alignment = 1
+[node name="ParallaxBackground" type="Node2D" parent="."]
+z_index = -100
+position = Vector2(0, -21)
+
+[node name="cielo" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(1.05, 0)
+repeat_size = Vector2(368, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/cielo"]
+texture = ExtResource("12_307hp")
+centered = false
+
+[node name="pasto" type="Parallax2D" parent="ParallaxBackground"]
+scale = Vector2(1.2, 1.2)
+scroll_scale = Vector2(1.08, 0)
+repeat_size = Vector2(416, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/pasto"]
+position = Vector2(0, -26.6667)
+texture = ExtResource("13_wwkbt")
+centered = false
+
+[node name="pasto2" type="Parallax2D" parent="ParallaxBackground"]
+scale = Vector2(0.8, 0.8)
+scroll_scale = Vector2(1.1, 0)
+repeat_size = Vector2(448, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/pasto2"]
+position = Vector2(0, 42.5)
+texture = ExtResource("14_lv4mj")
+centered = false
+
+[node name="arboles" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(1.2, 0)
+repeat_size = Vector2(368, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/arboles"]
+position = Vector2(0, 6)
+texture = ExtResource("15_uevbw")
+centered = false

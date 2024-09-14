@@ -1,5 +1,6 @@
-[gd_scene load_steps=92 format=4 uid="uid://b44ekyxblmjjh"]
+[gd_scene load_steps=96 format=4 uid="uid://b44ekyxblmjjh"]
 
+[ext_resource type="Script" path="res://Scripts/posicion_manager.gd" id="1_2w7kf"]
 [ext_resource type="PackedScene" uid="uid://l24p3n2khr04" path="res://Escenas/Utilidades/agua_deteccion.tscn" id="1_efj0w"]
 [ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="1_stt5m"]
 [ext_resource type="TileSet" uid="uid://d1mkqxq3spowu" path="res://Recursos/Tile maps 2D/Tile_map_universal.tres" id="2_6ox8v"]
@@ -17,7 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://b0fjub8sy4axo" path="res://Recursos/Tile maps 2D/Mios/fogata.tscn" id="10_nmfvd"]
 [ext_resource type="Texture2D" uid="uid://deqks8e7a3yjs" path="res://Recursos/Tile maps 2D/SnowLand/Background/SnowLand_Background_3.png" id="11_7ngft"]
 [ext_resource type="Texture2D" uid="uid://ehdla1frnpfi" path="res://Recursos/Tile maps 2D/SnowLand/Background/SnowLand_Background_4.png" id="12_8qb01"]
+[ext_resource type="Script" path="res://Scripts/zona_teletransporte.gd" id="13_jy3h8"]
 [ext_resource type="Texture2D" uid="uid://byefyld303umh" path="res://Recursos/Tile maps 2D/SnowLand/Background/SnowLand_Background_5.png" id="13_p6xap"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yskec"]
+size = Vector2(20, 210)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_e21os"]
 noise_type = 5
@@ -328,6 +333,9 @@ sources/4 = SubResource("TileSetAtlasSource_goqgs")
 sources/5 = SubResource("TileSetAtlasSource_c85ex")
 sources/6 = SubResource("TileSetAtlasSource_5q2sn")
 sources/8 = SubResource("TileSetScenesCollectionSource_lce6q")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dodq"]
+size = Vector2(20, 130)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_apvgm"]
 atlas = ExtResource("2_g1r0a")
@@ -758,6 +766,14 @@ animations = [{
 }]
 
 [node name="snowland_1" type="Node"]
+script = ExtResource("1_2w7kf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(449, 167)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-962, -84)
+shape = SubResource("RectangleShape2D_yskec")
 
 [node name="Agua_deteccion" parent="." instance=ExtResource("1_efj0w")]
 z_index = 1
@@ -805,7 +821,21 @@ tile_set = SubResource("TileSet_3pmas")
 
 [node name="Markers_pos" type="Node2D" parent="."]
 
+[node name="Desierto_lvl(1) Pos" type="Marker2D" parent="Markers_pos"]
+position = Vector2(449, 167)
+
 [node name="Puertas" type="Node2D" parent="."]
+
+[node name="Zona_teletransporte" type="Node2D" parent="Puertas"]
+position = Vector2(490, 155)
+script = ExtResource("13_jy3h8")
+escena_cambio = &"res://Escenas/2D/niveles/desierto_lvl(1).tscn"
+
+[node name="Area2D" type="Area2D" parent="Puertas/Zona_teletransporte"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puertas/Zona_teletransporte/Area2D"]
+position = Vector2(0, -35)
+shape = SubResource("RectangleShape2D_5dodq")
 
 [node name="Parallax" type="Node2D" parent="."]
 modulate = Color(0.548963, 0.548963, 0.548963, 1)
