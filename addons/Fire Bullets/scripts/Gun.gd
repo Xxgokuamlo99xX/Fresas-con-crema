@@ -86,44 +86,40 @@ func get_firing_arc() -> int:
 
 
 
-func can_shoot():
-	if GlobalVar.mana == 0: 
-		return
-	else:
-		return timer.is_stopped()
 
 ## Shoots the Bullet ( see [member Gun.Bullet] )[br]speed is the speed of the bullet in pixels per second[br]angle is the angle in which the bullet will be fired at, in degrees. [i/If set to -1, the guns rotations_degrees will be the bullets angle[/i]
-func shoot(speed:float=200,costo_mana:int=10,angle:float=0.0):
+func shoot(angle:float=0.0):
 	assert(bullet != null and bullet.get_class() != "Bullet", "Put a bullet scene first and it must be a BULLET Node")
-	if can_shoot():
-		if NBS == 1:
-			var new_bullet = bullet.instantiate()
-			new_bullet.global_position = spawn_point_node.global_position
-			new_bullet.speed = speed
-			GlobalVar.mana -= costo_mana
-			if angle != -1:
-				new_bullet.angle = angle + randi_range(-Angle_Variance,Angle_Variance)
-			else:
-				new_bullet.angle = rotation_degrees + randi_range(-Angle_Variance,Angle_Variance)
+	if NBS == 1:
+		var recurso_padre = get_parent().get_parent().hcz_res
+		var new_bullet = recurso_padre.bala_base.instantiate()
+		new_bullet.global_position = spawn_point_node.global_position
+		
+		new_bullet.speed = recurso_padre.Velocidad
+		new_bullet.mana_cost = recurso_padre.mana_cost
+		new_bullet.damage = recurso_padre.damage
+		new_bullet.sprites = recurso_padre.sprite_frambuesa
+		
+		if angle != -1:
+			new_bullet.angle = angle + randi_range(-Angle_Variance,Angle_Variance)
+		else:
+			new_bullet.angle = rotation_degrees + randi_range(-Angle_Variance,Angle_Variance)
+		add_child(new_bullet)
+	elif NBS >= 2:
+		var angleIncrement = Firing_Arc / (NBS - 1)
+		var startAngle
+		if angle != -1:
+			startAngle = angle-(Firing_Arc / 2)
+		else:
+			startAngle = rotation_degrees-(Firing_Arc / 2)
+		for b in NBS:
+			var new_bullet = bullet.duplicate()
+			new_bullet.global_position = spawn_point_node.global_position# + global_position)
+			new_bullet.top_level = true
+			new_bullet.angle = (startAngle + (angleIncrement * b)) + randi_range(-Angle_Variance,Angle_Variance)
 			add_child(new_bullet)
-		elif NBS >= 2:
-			var angleIncrement = Firing_Arc / (NBS - 1)
-			var startAngle
-			if angle != -1:
-				startAngle = angle-(Firing_Arc / 2)
-			else:
-				startAngle = rotation_degrees-(Firing_Arc / 2)
-			for b in NBS:
-				var new_bullet = bullet.instantiate()
-				new_bullet.global_position = spawn_point_node.global_position# + global_position)
-				new_bullet.top_level = true
-				new_bullet.speed = speed
-				GlobalVar.mana -= costo_mana
-				new_bullet.angle = (startAngle + (angleIncrement * b)) + randi_range(-Angle_Variance,Angle_Variance)
-				add_child(new_bullet)
 		timer.start()
-			
-
+		
 func _ready():
 	if !Engine.is_editor_hint():
 		var cd_timer = Timer.new()
@@ -138,6 +134,7 @@ func _ready():
 		add_child(sp)
 		pass
 
+	
 func _process(delta):
 	if !Engine.is_editor_hint():
 		pass

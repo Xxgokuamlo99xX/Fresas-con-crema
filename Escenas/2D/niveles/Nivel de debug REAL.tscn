@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ddaduwb6wq6l2"]
+[gd_scene load_steps=13 format=4 uid="uid://ddaduwb6wq6l2"]
 
 [ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="1_8xn4t"]
 [ext_resource type="PackedScene" uid="uid://l24p3n2khr04" path="res://Escenas/Utilidades/agua_deteccion.tscn" id="2_03luj"]
@@ -11,10 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://bmveltrbhvqn8" path="res://Escenas/2D/Personajes/npc_1.tscn" id="10_vcdm1"]
 [ext_resource type="Resource" path="res://Timelines/debug_timeline.dtl" id="11_20uls"]
 
+[sub_resource type="GDScript" id="GDScript_7q87a"]
+script/source = "extends Node
+
+func _ready() -> void:
+	GlobalVar.bola_de_fuego_DEBSQ = true
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kbas"]
 size = Vector2(81, 73)
 
 [node name="Debug" type="Node"]
+script = SubResource("GDScript_7q87a")
 
 [node name="Agua_deteccion" parent="." instance=ExtResource("2_03luj")]
 position = Vector2(-109, 223)
@@ -77,6 +85,6 @@ tipo_rec = 3
 Cant_recompensa = 1
 
 [node name="Goku" parent="." instance=ExtResource("1_8xn4t")]
-position = Vector2(380, 153)
+position = Vector2(379, 154)
 
 [editable path="Agua_deteccion"]

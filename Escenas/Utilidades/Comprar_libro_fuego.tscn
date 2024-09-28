@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bd2qxg5gnljjc"]
+
+[ext_resource type="Script" path="res://Scripts/Varios/npc_script_basico.gd" id="1_7nvp8"]
+[ext_resource type="Resource" path="res://Timelines/Comprar objeto.dtl" id="2_pcm5x"]
+[ext_resource type="Texture2D" uid="uid://wi361a0w41v" path="res://Recursos/Sprites/Prota/libro_fuego.png" id="3_gfjsl"]
+[ext_resource type="Texture2D" uid="uid://b53io3yxqcnjh" path="res://Imagens_personajes/Tecla Z.png" id="4_tgghb"]
+[ext_resource type="PackedScene" uid="uid://bfsi3h6ek5qby" path="res://Escenas/vainas/desbloqueables.tscn" id="5_30g84"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjk65"]
+size = Vector2(20, 81)
+
+[node name="libro" type="Node2D" node_paths=PackedStringArray("area2d", "noti_de_uso", "unlocks")]
+script = ExtResource("1_7nvp8")
+Timeline_ = ExtResource("2_pcm5x")
+area2d = NodePath("Area2D")
+noti_de_uso = NodePath("TeclaZ")
+unlocks = NodePath("Desbloqueables")
+tipo_rec = 4
+Obj_tienda = true
+precio = 200
+
+[node name="CorazonLlenoUi" type="Sprite2D" parent="."]
+texture = ExtResource("3_gfjsl")
+
+[node name="TeclaZ" type="Sprite2D" parent="."]
+position = Vector2(0, -27)
+texture = ExtResource("4_tgghb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 30.5)
+shape = SubResource("RectangleShape2D_xjk65")
+
+[node name="Desbloqueables" parent="." instance=ExtResource("5_30g84")]
+obj_unlock = "bola_de_fuego"

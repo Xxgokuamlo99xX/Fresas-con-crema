@@ -77,7 +77,7 @@ tween_resource = SubResource("Resource_x7kyh")
 draw_limits = true
 
 [node name="Goku" parent="." instance=ExtResource("1_mc2sa")]
-position = Vector2(305, 30)
+position = Vector2(-43, 158)
 
 [node name="Tilemap" type="Node2D" parent="."]
 
@@ -121,12 +121,11 @@ texture = ExtResource("11_n3dno")
 [node name="Markers_pos" type="Node2D" parent="."]
 
 [node name="desierto_lvl(1) Pos" type="Marker2D" parent="Markers_pos"]
-position = Vector2(0, 158)
+position = Vector2(-41, 169)
 
 [node name="Puertas" type="Node2D" parent="."]
 
 [node name="cambiador de camara" type="Area2D" parent="." node_paths=PackedStringArray("parallax", "camara_target")]
-visible = false
 position = Vector2(687, 65)
 script = ExtResource("8_bpeo0")
 parallax = NodePath("../ParallaxBackground")
@@ -138,7 +137,7 @@ shape = SubResource("RectangleShape2D_7e24y")
 debug_color = Color(1, 0, 0.14902, 0.109804)
 
 [node name="Slime_electrico_boss" parent="." instance=ExtResource("9_sl483")]
-position = Vector2(886, 155)
+position = Vector2(886, 158)
 scale = Vector2(3, 3)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

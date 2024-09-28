@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b11wsrbxy2ly1"]
+
+[ext_resource type="Script" path="res://barra_de_vida_enemigo.gd" id="1_cg21c"]
+[ext_resource type="Texture2D" uid="uid://t8u61gjqpvut" path="res://Recursos/Sprites/Prota/barras1.png" id="2_cikv2"]
+[ext_resource type="Texture2D" uid="uid://c0xf2fv8n310m" path="res://Recursos/Sprites/Prota/barras4.png" id="3_w004k"]
+
+[node name="Barra de VIDA" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cg21c")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 27.0
+value = 74.0
+allow_greater = true
+texture_under = ExtResource("2_cikv2")
+texture_progress = ExtResource("3_w004k")

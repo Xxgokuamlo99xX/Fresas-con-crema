@@ -68,13 +68,13 @@ func enemigo_hit():
 func soltar_loot():
 	var lut_soltado
 	if probabilidad == 2:
-		if GlobalVar.vida_jugador == GlobalVar.vida_max:
-			lut_soltado = loot[0].instantiate()
+		if GlobalVar.vida_jugador != GlobalVar.vida_max:
+			lut_soltado = loot[1].instantiate()
 			
 		else:
 			match randi_range(1,2):
 				1:
-					lut_soltado = loot[1].instantiate()
+					lut_soltado = loot[0].instantiate()
 				2:
 					lut_soltado = loot[2].instantiate()
 				

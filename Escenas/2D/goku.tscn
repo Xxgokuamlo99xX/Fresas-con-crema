@@ -1,16 +1,18 @@
-[gd_scene load_steps=76 format=3 uid="uid://bg2ufmmb0wokf"]
+[gd_scene load_steps=78 format=3 uid="uid://bg2ufmmb0wokf"]
 
 [ext_resource type="Script" path="res://Scripts/Jugador/Jugador.gd" id="1_cjokg"]
 [ext_resource type="AudioStream" uid="uid://clduykdkia2fk" path="res://Recursos/Sonidos/SFX/bola de fuego.wav" id="2_3yuse"]
 [ext_resource type="Texture2D" uid="uid://bgoni6s3w6jmy" path="res://Recursos/Sprites/Prota/Player Spritesheet.png" id="2_osc50"]
+[ext_resource type="Resource" uid="uid://djnjhg4kdf47y" path="res://Recursos/literalmente recursos/bola_du_fogo.tres" id="2_ph8r0"]
+[ext_resource type="PackedScene" uid="uid://bfk0x1xgumt8h" path="res://armas/hechizo_base.tscn" id="4_bemd2"]
 [ext_resource type="Script" path="res://addons/Fire Bullets/scripts/Gun.gd" id="6_5738t"]
 [ext_resource type="Script" path="res://Scripts/Varios/Camera_things.gd" id="6_dqhve"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="6_g27pg"]
-[ext_resource type="PackedScene" uid="uid://ctq215tdn0uon" path="res://armas/Bola_de_fuego.tscn" id="6_mvyox"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_4rtqi"]
 [ext_resource type="AudioStream" uid="uid://b2r4gbatjyq72" path="res://Recursos/Sonidos/SFX/hitHurt.wav" id="8_h7jby"]
 [ext_resource type="PackedScene" uid="uid://bwdmbdwfnah6q" path="res://Escenas/hud.tscn" id="11_cq534"]
 [ext_resource type="PackedScene" uid="uid://c4go60ufvmid7" path="res://Recursos/Sprites/Prota/cosas_muerte.tscn" id="12_8d0ns"]
+[ext_resource type="PackedScene" uid="uid://brjugeonmbmq4" path="res://Escenas/2D/pausa.tscn" id="12_f1fth"]
 [ext_resource type="Script" path="res://Scripts/Jugador/pupass.gd" id="12_kqqtw"]
 [ext_resource type="PackedScene" uid="uid://cvn85npnemdxs" path="res://Escenas/vainas/damage_pupo.tscn" id="13_luuqx"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="13_u5vqy"]
@@ -51,26 +53,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Voltear/Hitbox_arma/CollisionShape2D:shape:size")
+tracks/2/path = NodePath("Voltear/Hitbox_arma/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(28, 30)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Voltear/Hitbox_arma/CollisionShape2D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(12, 1.5)]
+"values": [Vector2(12, -6)]
 }
 
 [sub_resource type="Animation" id="Animation_12d70"]
@@ -91,38 +81,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Voltear/Hitbox_arma/CollisionShape2D:position")
+tracks/1/path = NodePath("Voltear/Hitbox_arma:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(12, 1.5)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Voltear/Hitbox_arma/CollisionShape2D:shape:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(28, 30)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Voltear/Hitbox_arma:monitoring")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Voltear/Hitbox_arma/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(12, 1.5)]
 }
 
 [sub_resource type="Animation" id="Animation_rq0d4"]
@@ -163,18 +141,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(12, 1.5)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Voltear/Hitbox_arma/CollisionShape2D:shape:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(28, 30)]
 }
 
 [sub_resource type="Animation" id="Animation_d1it3"]
@@ -568,7 +534,7 @@ shader_parameter/progress = 1.0
 shader_parameter/width = 0.002
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfjcq"]
-size = Vector2(28, 30)
+size = Vector2(33.25, 41)
 
 [sub_resource type="Animation" id="Animation_eeyhf"]
 length = 0.001
@@ -696,10 +662,10 @@ ease = 2
 
 [node name="Goku" type="CharacterBody2D" groups=["Jugador"]]
 process_mode = 1
-z_index = 120
 collision_layer = 549
 collision_mask = 545
 script = ExtResource("1_cjokg")
+hcz_res = ExtResource("2_ph8r0")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 visible = false
@@ -711,6 +677,7 @@ debug_color = Color(0.92549, 0.270588, 0, 0.419608)
 libraries = {
 "": SubResource("AnimationLibrary_o8n4h")
 }
+speed_scale = 1.5
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
@@ -720,8 +687,10 @@ anim_player = NodePath("../animaciones")
 [node name="Voltear" type="Node2D" parent="."]
 
 [node name="Hechizo" type="Node2D" parent="Voltear"]
+use_parent_material = true
 script = ExtResource("6_5738t")
-bullet = ExtResource("6_mvyox")
+bullet = ExtResource("4_bemd2")
+Spawn_Point = Vector2(16, 0)
 
 [node name="PJ" type="Sprite2D" parent="Voltear"]
 texture_filter = 1
@@ -736,11 +705,10 @@ region_rect = Rect2(16, 18, 16, 29)
 position = Vector2(0, 0.5)
 collision_layer = 0
 collision_mask = 16
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Voltear/Hitbox_arma"]
 z_index = 1
-position = Vector2(12, 1.5)
+position = Vector2(12, -6)
 shape = SubResource("RectangleShape2D_hfjcq")
 debug_color = Color(0, 0.642121, 0.323097, 0.42)
 
@@ -763,6 +731,7 @@ bus = &"SFX"
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 visibility_layer = 5
+use_parent_material = true
 position = Vector2(0, -25)
 zoom = Vector2(0.85, 0.85)
 editor_draw_drag_margin = true
@@ -772,6 +741,7 @@ script = ExtResource("6_dqhve")
 script = ExtResource("8_4rtqi")
 
 [node name="HUD" parent="Camera2D" instance=ExtResource("11_cq534")]
+visible = false
 
 [node name="damage_screen" type="TextureRect" parent="Camera2D/HUD"]
 modulate = Color(1, 0.0901961, 0.0588235, 1)
@@ -789,6 +759,10 @@ color = Color(1, 0, 0, 0)
 
 [node name="Cosas_muerte" parent="Camera2D" instance=ExtResource("12_8d0ns")]
 process_mode = 3
+visible = false
+
+[node name="pausa" parent="Camera2D" instance=ExtResource("12_f1fth")]
+layer = 60
 visible = false
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]

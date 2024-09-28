@@ -1,0 +1,18 @@
+Npc_1: Hola, puedes usar Z para seguir la conversacion.
+Samantha: Hola!
+Npc_1: Puedes usar las flechas para escoger opciones
+- Ok
+- Este random
+	Samantha (Sarcasmo): ????????
+- No
+	Npc_1: ???????
+label menso
+Puedes Guardar y salir en cualquier momento.
+Ten en cuenta que tendras que hacer todo el nivel de nuevo si te quedas a la mitad.
+Entendiste lo que te dije?
+- No
+	jump menso
+- Si
+set {GlobalVar.bola_de_fuego} = false
+do cambiar_escena.cambio_escena("res://Escenas/cinematica_inicial.tscn")
+[end_timeline]

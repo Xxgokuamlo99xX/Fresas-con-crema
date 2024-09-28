@@ -20,3 +20,9 @@ func _physics_process(delta):
 	$mana/Label.text = "Mana: " + str(GlobalVar.mana) + "/" + str(GlobalVar.mana_max)
 	$mana/TextureProgressBar.value = GlobalVar.mana
 	$mana/TextureProgressBar.max_value = GlobalVar.mana_max
+
+
+	if not GlobalVar.tiene_magia:
+		$mana.hide()
+	else:
+		$mana.show()

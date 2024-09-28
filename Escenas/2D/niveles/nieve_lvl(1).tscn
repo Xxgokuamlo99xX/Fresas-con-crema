@@ -821,7 +821,7 @@ tile_set = SubResource("TileSet_3pmas")
 
 [node name="Markers_pos" type="Node2D" parent="."]
 
-[node name="Desierto_lvl(1) Pos" type="Marker2D" parent="Markers_pos"]
+[node name="desierto_lvl(1) Pos" type="Marker2D" parent="Markers_pos"]
 position = Vector2(449, 167)
 
 [node name="Puertas" type="Node2D" parent="."]

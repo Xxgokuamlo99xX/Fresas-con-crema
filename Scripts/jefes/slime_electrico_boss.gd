@@ -4,7 +4,7 @@ extends "res://Scripts/jefes/boss_estatico.gd"
 var rayo = preload("res://Escenas/2D/Enemigos/trueno.tscn").instantiate()
 var bola_alectrica = preload("res://armas/esfera_electrica.tscn").instantiate()
 
-
+@export var vida_max : int
 @onready var jugador = get_parent().get_node("Goku")
 @onready var state_machine = $AnimationPlayer
 
@@ -64,7 +64,6 @@ func ataque_4(atak_cant : int, velocidad : int):
 		
 		await get_tree().create_timer(1).timeout
 	
-
 func _on_hurbo_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Jugador'):
 		GlobalVar.player_damage_taken = damage

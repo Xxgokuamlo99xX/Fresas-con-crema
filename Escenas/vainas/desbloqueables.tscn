@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfsi3h6ek5qby"]
+
+[ext_resource type="Script" path="res://Scripts/Jugador/unlock_de_objs.gd" id="1_uid05"]
+
+[node name="Desbloqueables" type="Node"]
+script = ExtResource("1_uid05")

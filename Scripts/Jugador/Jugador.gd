@@ -20,23 +20,22 @@ signal recive_damage
 signal curarse 
 signal morixd
 
-
-var arma_actual : int = 0
-var bola_fuego = preload("res://armas/Bola_de_fuego.tscn")
-var bola_fuego_azul = preload("res://armas/bola_fuego_azul.tscn")
 var pantalla_de_muerte = preload("res://Scripts/Jugador/cosas_muerte.gd").new()
+@export var hcz_res : Hechizos
 
-var armas : Array
 
 func _physics_process(delta):
 	flip()
 	$Movimiento.recividor_inputs()
-	
+	if Input.is_action_just_pressed("habilida_1"):
+		cambio_hecz(GlobalVar.bola_fuego)
+	elif Input.is_action_just_pressed("habilida_2"):
+		cambio_hecz(GlobalVar.bola_electrica)
+		
 func _ready():
-	
+	cambio_hecz(hcz_res)
 	$AnimationTree.active = true
 	state_machine = $AnimationTree.get("parameters/playback")
-	armas = [bola_fuego, bola_fuego_azul]
 	
 func animaciones():
 	#Correr
@@ -53,14 +52,7 @@ func animaciones():
 		else:
 			state_machine.travel("Caida")
 		
-	#Ataque_magico
-	if InputBuffer.is_action_press_buffered("Ataque_magico") && GlobalVar.mana != 0 && is_on_floor():
-		await get_tree().create_timer(0.01).timeout
-		state_machine.travel("Ataque_magico")
-		GlobalVar.puede_moverse = false
-		await $AnimationTree.animation_finished
-		GlobalVar.puede_moverse = true
-		
+	checar_ataque()
 	#Ataque_melee - Ataques consecutivos
 	if InputBuffer.is_action_press_buffered("Ataque_melee") && is_on_floor():
 		
@@ -112,3 +104,27 @@ func _damage():
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			await $animaciones.animation_finished
 			
+func ataques_magicos_anim():
+		#Ataque_magico
+		if InputBuffer.is_action_press_buffered("Ataque_magico") && GlobalVar.mana != 0 && is_on_floor():
+			if GlobalVar.mana >= hcz_res.mana_cost:
+				GlobalVar.mana -= hcz_res.mana_cost
+				await get_tree().create_timer(0.01).timeout
+				state_machine.travel("Ataque_magico")
+				GlobalVar.puede_moverse = false
+				await $AnimationTree.animation_finished
+				GlobalVar.puede_moverse = true
+			else:
+				return
+		else:
+			return
+
+func checar_ataque():
+	if GlobalVar.tiene_magia:
+		ataques_magicos_anim()
+	else:
+		return
+
+func cambio_hecz(hechizo_cambio : Resource):
+	hcz_res = hechizo_cambio
+	hechizo.bullet = hcz_res.bala_base

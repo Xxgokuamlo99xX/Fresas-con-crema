@@ -5,6 +5,7 @@ extends Node2D
 @export var area2d : Area2D
 @export var noti_de_uso : Sprite2D
 @export var nombre_obj : String
+@export var unlocks : Node
 
 @export_category("cofre")
 @export var cofre : bool
@@ -16,7 +17,7 @@ extends Node2D
 @export var precio : int
 
 
-enum loot_posible {eter,contenerdor_corazon,mas_mana,mejora_damage}
+enum loot_posible {eter,contenerdor_corazon,mas_mana,mejora_damage,hechizo}
 
 var hablando : bool = false
 
@@ -76,3 +77,6 @@ func recompesa(): # ("eter", "contenedor_corazon", "Mana_max")
 			
 		loot_posible.mejora_damage:
 			GlobalVar.multi_damage += 0.5
+			
+		loot_posible.hechizo:
+			unlocks.desbloqueo()

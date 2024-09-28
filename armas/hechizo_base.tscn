@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfk0x1xgumt8h"]
+
+[ext_resource type="Script" path="res://Scripts/Armas-objetos/Bala_clase.gd" id="1_sknmn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icg38"]
+size = Vector2(14.2857, 8.57143)
+
+[node name="hechizo_base" type="Area2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 80
+script = ExtResource("1_sknmn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3)
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(0.7, 0.7)
+shape = SubResource("RectangleShape2D_icg38")
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

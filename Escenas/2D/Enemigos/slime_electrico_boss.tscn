@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsj6d3vqnioan"]
+[gd_scene load_steps=20 format=3 uid="uid://dsj6d3vqnioan"]
 
 [ext_resource type="Script" path="res://Scripts/jefes/slime_electrico_boss.gd" id="1_b4iua"]
 [ext_resource type="Texture2D" uid="uid://bujtlo86861v4" path="res://Recursos/Sprites/Enemigo/Slime_electrico_boss_spriteseheet.png" id="2_is1b4"]
 [ext_resource type="AudioStream" uid="uid://cpqdub3t128nh" path="res://Recursos/Sonidos/SFX/slime_hit.wav" id="5_5sx0o"]
 [ext_resource type="AudioStream" uid="uid://b8uyw8nqcywll" path="res://Recursos/Sonidos/SFX/slime_muerte.wav" id="6_tgeh5"]
 [ext_resource type="Script" path="res://Scripts/Jugador/pupass.gd" id="7_g5vir"]
+[ext_resource type="PackedScene" uid="uid://b11wsrbxy2ly1" path="res://Escenas/barra_de_vida.tscn" id="7_plmjn"]
 [ext_resource type="PackedScene" uid="uid://neqju1hdl3fc" path="res://Escenas/vainas/damage_pupo_enemigos.tscn" id="8_0rmks"]
 
 [sub_resource type="Animation" id="Animation_2gy13"]
@@ -359,6 +360,7 @@ radius = 7.0
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_b4iua")
+vida_max = 500
 marker = NodePath("Marker2D")
 invul = NodePath("invul")
 hurbo = NodePath("hurbo")
@@ -412,12 +414,20 @@ script = ExtResource("7_g5vir")
 damage_node = ExtResource("8_0rmks")
 
 [node name="invul" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.1
 one_shot = true
 
 [node name="Audio_player" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[node name="Barra de VIDA" parent="." node_paths=PackedStringArray("target") instance=ExtResource("7_plmjn")]
+offset_left = -29.0
+offset_top = 13.0
+offset_right = -29.0
+offset_bottom = 13.0
+scale = Vector2(0.9, 0.9)
+target = NodePath("..")
 
 [connection signal="body_entered" from="hurbo" to="." method="_on_hurbo_body_entered"]

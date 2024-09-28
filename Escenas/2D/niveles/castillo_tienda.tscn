@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dftucn3xhlnav"]
+[gd_scene load_steps=14 format=4 uid="uid://dftucn3xhlnav"]
 
 [ext_resource type="TileSet" uid="uid://criqbdoht4sry" path="res://Recursos/Tile maps 2D/Castillo.tres" id="1_83rcc"]
 [ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="1_hegxg"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dungevywje6qa" path="res://Recursos/Sprites/Misc/Frasco_mana.png" id="8_jxgno"]
 [ext_resource type="Texture2D" uid="uid://b53io3yxqcnjh" path="res://Imagens_personajes/Tecla Z.png" id="9_2rsje"]
 [ext_resource type="Texture2D" uid="uid://be6aqvijd4vq5" path="res://Recursos/Sprites/Prota/epada.png" id="10_sqrfr"]
+[ext_resource type="PackedScene" uid="uid://bd2qxg5gnljjc" path="res://Escenas/Utilidades/Comprar_libro_fuego.tscn" id="11_dccmo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjk65"]
 size = Vector2(20, 81)
@@ -93,6 +94,11 @@ texture = ExtResource("9_2rsje")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Productos/espada/Area2D"]
 position = Vector2(0, 30.5)
 shape = SubResource("RectangleShape2D_xjk65")
+
+[node name="Libro" parent="Productos" instance=ExtResource("11_dccmo")]
+position = Vector2(697, -24)
+nombre_obj = "Hechizo de bolas de fuego"
+precio = 100
 
 [node name="Markers_pos" type="Node2D" parent="."]
 

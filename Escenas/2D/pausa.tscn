@@ -1,14 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://brjugeonmbmq4"]
+[gd_scene load_steps=9 format=3 uid="uid://brjugeonmbmq4"]
 
 [ext_resource type="Script" path="res://Scripts/Varios/pausa.gd" id="1_00pje"]
 [ext_resource type="FontFile" uid="uid://8khbwkhjgd2r" path="res://Recursos/Fuentes de texto/FSEX300.ttf" id="2_u63wx"]
 [ext_resource type="Script" path="res://Scripts/Varios/Volume_bar.gd" id="4_6evri"]
 [ext_resource type="Script" path="res://Scripts/Utilidades/debug.gd" id="4_htb8i"]
+[ext_resource type="Theme" uid="uid://cj476usgqnggb" path="res://Style_boxes/Theme del juego.tres" id="4_prewa"]
 [ext_resource type="LabelSettings" uid="uid://bfbkkbnsj01vt" path="res://Recursos/Fuentes de texto/hud.tres" id="5_jtq72"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8pyb2"]
 font = ExtResource("2_u63wx")
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_vw4wa"]
+font = ExtResource("2_u63wx")
 
 [node name="pausa" type="CanvasLayer"]
 process_mode = 3
@@ -23,14 +27,17 @@ color = Color(0, 0, 0, 0.517647)
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -40.0
-offset_top = 16.0
+offset_top = -80.0
 offset_right = 40.0
-offset_bottom = 48.0
+offset_bottom = -48.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "PAUSA"
@@ -110,15 +117,15 @@ text = "SFX"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="Volumenscrols"]
-offset_left = 136.0
-offset_top = 216.0
+offset_left = 150.0
+offset_top = 230.0
 offset_right = 206.0
-offset_bottom = 240.0
+offset_bottom = 246.0
 scale = Vector2(2.195, 2.195)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "Volumen"
-label_settings = ExtResource("5_jtq72")
+label_settings = SubResource("LabelSettings_vw4wa")
 
 [node name="botones" type="Node2D" parent="."]
 scale = Vector2(0.3, 0.3)
@@ -129,12 +136,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 800.0
-offset_top = 266.667
-offset_right = 1008.0
-offset_bottom = 332.667
+offset_left = 826.667
+offset_top = 293.333
+offset_right = 1034.67
+offset_bottom = 359.333
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_prewa")
 theme_override_fonts/font = ExtResource("2_u63wx")
 theme_override_font_sizes/font_size = 32
 text = "Fullscreen"
@@ -146,14 +154,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 453.333
-offset_top = 266.667
-offset_right = 526.333
-offset_bottom = 320.667
+offset_left = 440.0
+offset_top = 263.333
+offset_right = 513.0
+offset_bottom = 317.333
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.5, 2.5)
 size_flags_horizontal = 4
+theme = ExtResource("4_prewa")
 theme_override_fonts/font = ExtResource("2_u63wx")
 text = "Guardar
 y Salir
@@ -171,10 +180,10 @@ script = ExtResource("4_htb8i")
 
 [node name="bebug" type="Label" parent="debug"]
 layout_mode = 0
-offset_left = 1009.67
-offset_top = 416.667
-offset_right = 1064.67
-offset_bottom = 439.667
+offset_left = 953.333
+offset_top = 443.333
+offset_right = 1008.33
+offset_bottom = 466.333
 text = "Debug"
 label_settings = ExtResource("5_jtq72")
 
@@ -186,28 +195,28 @@ offset_bottom = 40.0
 [node name="eter" type="Label" parent="debug/eter"]
 layout_mode = 0
 offset_left = 896.667
-offset_top = 507.0
+offset_top = 503.667
 offset_right = 995.667
-offset_bottom = 530.0
+offset_bottom = 526.667
 text = "Eter"
 label_settings = ExtResource("5_jtq72")
 
 [node name="cambio mision boton2" type="Button" parent="debug/eter"]
 layout_mode = 0
 offset_left = 886.667
-offset_top = 567.0
+offset_top = 563.667
 offset_right = 955.667
-offset_bottom = 598.0
-theme_override_fonts/font = ExtResource("2_u63wx")
+offset_bottom = 594.667
+theme = ExtResource("4_prewa")
 text = "Aceptar
 "
 
 [node name="LineEdit" type="LineEdit" parent="debug/eter"]
 layout_mode = 0
 offset_left = 886.667
-offset_top = 530.334
+offset_top = 527.001
 offset_right = 953.729
-offset_bottom = 561.334
+offset_bottom = 558.001
 
 [node name="mision" type="Control" parent="debug"]
 anchors_preset = 0
@@ -229,7 +238,7 @@ offset_left = 1006.67
 offset_top = 564.667
 offset_right = 1075.67
 offset_bottom = 595.667
-theme_override_fonts/font = ExtResource("2_u63wx")
+theme = ExtResource("4_prewa")
 text = "Aceptar
 "
 

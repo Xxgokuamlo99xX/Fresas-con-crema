@@ -23,7 +23,6 @@ config/icon="res://Recursos/Rec. juego/Icono.png"
 InputBuffer="*res://Scripts/input_buffer.gd"
 GlobalVar="*res://Scripts/Varios/Global_var.gd"
 cambiar_escena="*res://Escenas/transicion.tscn"
-pausa="*res://Escenas/2D/pausa.tscn"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Ids="*res://Scripts/Global/Ids.gd"
 Misiones="*res://Scripts/Utilidades/misiones.gd"
@@ -38,12 +37,13 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "Cinematica_castillo_2": "res://Timelines/Cinematicas/Cinematica_castillo_2.dtl",
+"Cinematicas/Inicio del juego": "res://Timelines/Cinematicas/Inicio del juego.dtl",
 "Comprar objeto": "res://Timelines/Comprar objeto.dtl",
 "Demo_fin": "res://Timelines/Demo_fin.dtl",
-"Inicio del juego": "res://Timelines/Inicio del juego.dtl",
 "Npc_1": "res://Timelines/Npc_1.dtl",
 "Npc_cueva": "res://Timelines/Npc_cueva.dtl",
 "Rey_goku_encuentro": "res://Timelines/Rey_goku_encuentro.dtl",
+"Tutorial": "res://Timelines/Tutorial.dtl",
 "cinematica_castillo": "res://Timelines/cinematica_castillo.dtl",
 "cofres": "res://Timelines/cofres.dtl",
 "debug_timeline": "res://Timelines/debug_timeline.dtl"
@@ -211,6 +211,16 @@ dialogic_default_action={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":90,"physical_keycode":0,"key_label":0,"unicode":122,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":true,"script":null)
+]
+}
+habilida_1={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":49,"location":0,"echo":false,"script":null)
+]
+}
+habilida_2={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":50,"key_label":0,"unicode":50,"location":0,"echo":false,"script":null)
 ]
 }
 

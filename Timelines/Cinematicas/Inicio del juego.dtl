@@ -1,0 +1,15 @@
+Que paso? porque esta todo en negro?
+Esque se apago sola?
+...
+Rayos.
+Se le acabo la bateria.
+Y apenas habia comenzado a jugar.
+Maldita gameboy.
+[wait time="2.0" hide_text="true"]
+[signal arg="iniciar_cinematica"]
+[wait time="2.0" hide_text="true"]
+Samantha (Sarcasmo): En fin, supongo que tendre que regresar a la ciudadela para comprar pilas.
+Samantha (Sarcasmo): Tendre que buscar algun tesoro porque tampoco tengo dinero....
+[wait time="1.5" hide_text="false"]
+do cambiar_escena.cambio_escena("res://Escenas/2D/niveles/lvl_1(prueba).tscn")
+[end_timeline]

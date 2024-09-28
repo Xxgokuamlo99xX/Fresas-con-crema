@@ -537,7 +537,7 @@ animations = [{
 "speed": 45.0
 }]
 
-[node name="Desierto_lvl(1)" type="Node"]
+[node name="desierto_lvl(1)" type="Node"]
 script = ExtResource("1_1q1r2")
 
 [node name="Cinematica_cosas" type="Node" parent="."]
@@ -551,6 +551,7 @@ libraries = {
 position = Vector2(138, -64)
 script = ExtResource("2_kq3pu")
 tween_resource = SubResource("Resource_2j43n")
+draw_limits = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Cinematica_cosas"]
 

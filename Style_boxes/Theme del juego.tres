@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cj476usgqnggb"]
+
+[ext_resource type="FontFile" uid="uid://8khbwkhjgd2r" path="res://Recursos/Fuentes de texto/FSEX300.ttf" id="1_w1kg2"]
+[ext_resource type="StyleBox" uid="uid://dkvpvt5p464hw" path="res://Style_boxes/boton_hover.tres" id="2_w0uve"]
+[ext_resource type="StyleBox" uid="uid://bqmkoorwu3g85" path="res://Style_boxes/botones.tres" id="3_n5rey"]
+[ext_resource type="StyleBox" uid="uid://g4mg5tlfwflh" path="res://Style_boxes/boton_pressed.tres" id="4_xlirn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7bg3a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm3e"]
+bg_color = Color(0.0213911, 0.0795634, 0.339764, 0.698039)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_size = 1
+shadow_offset = Vector2(2.45, 1.735)
+anti_aliasing_size = 0.01
+
+[resource]
+Button/colors/font_outline_color = Color(0.730401, 0.2169, 0.317505, 1)
+Button/constants/outline_size = 1
+Button/fonts/font = ExtResource("1_w1kg2")
+Button/styles/focus = SubResource("StyleBoxTexture_7bg3a")
+Button/styles/hover = ExtResource("2_w0uve")
+Button/styles/normal = ExtResource("3_n5rey")
+Button/styles/pressed = ExtResource("4_xlirn")
+CheckButton/styles/hover_pressed = ExtResource("2_w0uve")
+Panel/styles/panel = SubResource("StyleBoxFlat_0xm3e")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="bolasxd" load_steps=2 format=3 uid="uid://c75vmp7pm6h4n"]
+
+[ext_resource type="Script" path="res://Scripts/clases/hechizo_res.gd" id="1_fsmwn"]
+
+[resource]
+script = ExtResource("1_fsmwn")
+damage = 0
+Velocidad = 0
+cant = 0
+angulo = 0

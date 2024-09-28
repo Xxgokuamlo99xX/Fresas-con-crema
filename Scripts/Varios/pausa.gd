@@ -11,12 +11,10 @@ func _physics_process(delta):
 func _pausa():
 	if GlobalVar.pausa == false:
 		$".".show()
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().paused = true
 		
 	elif GlobalVar.pausa == true:
 		$".".hide()
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		get_tree().paused = false
 		
 			
@@ -30,4 +28,5 @@ func _on_fullscreen_toggled(toggled_on):
 
 func _on_button_2_pressed() -> void:
 	GlobalVar.guardar_partida()
-	get_tree().quit()
+	get_tree().paused = false
+	cambiar_escena.cambio_escena("res://Escenas/pantalla_de_inicio.tscn")

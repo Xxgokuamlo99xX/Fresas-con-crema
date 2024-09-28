@@ -428,7 +428,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 60.0
+"speed": 40.0
 }]
 
 [node name="AnimatedSprite2D" type="Sprite2D"]
@@ -436,8 +436,8 @@ position = Vector2(0, -8)
 texture = ExtResource("1_5yn8y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = -1
-position = Vector2(1, -12)
+show_behind_parent = true
+position = Vector2(1, -13)
 sprite_frames = SubResource("SpriteFrames_5dl4m")
 autoplay = "default"
-frame_progress = 0.545671
+frame_progress = 0.384822

@@ -1,41 +1,546 @@
-[gd_scene load_steps=8 format=4 uid="uid://c6p7msp1bq6xj"]
+[gd_scene load_steps=41 format=4 uid="uid://c6p7msp1bq6xj"]
 
 [ext_resource type="Script" path="res://Scripts/Varios/pantalla_de_inicio.gd" id="1_7uykf"]
-[ext_resource type="Texture2D" uid="uid://c7muoygh5bo5t" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_Guide.png" id="2_1ntbg"]
-[ext_resource type="TileSet" uid="uid://bqnl5uywfyg13" path="res://Recursos/Tile maps 2D/Prados.tres" id="3_r3pve"]
+[ext_resource type="Texture2D" uid="uid://c1ljbas045281" path="res://Recursos/Tile maps 2D/Stronghold/Background/Stronghold_Background_Guide.png" id="2_xywf8"]
+[ext_resource type="Texture2D" uid="uid://4y43cgrpp50" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_1.png" id="3_ljj6q"]
+[ext_resource type="Texture2D" uid="uid://cr3xjp2modjka" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_2.png" id="4_dy57d"]
+[ext_resource type="TileSet" uid="uid://d1mkqxq3spowu" path="res://Recursos/Tile maps 2D/Tile_map_universal.tres" id="4_jqlmd"]
 [ext_resource type="TileSet" uid="uid://cxn7dw8g4db6s" path="res://Recursos/Tile maps 2D/Agua.tres" id="4_xhom1"]
 [ext_resource type="Texture2D" uid="uid://bgoni6s3w6jmy" path="res://Recursos/Sprites/Prota/Player Spritesheet.png" id="5_11a0w"]
+[ext_resource type="Texture2D" uid="uid://clyv3116ggtpy" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_3.png" id="5_g3t4s"]
+[ext_resource type="Texture2D" uid="uid://d3m4dgfowt0td" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_4.png" id="6_23hrc"]
 [ext_resource type="FontFile" uid="uid://8khbwkhjgd2r" path="res://Recursos/Fuentes de texto/FSEX300.ttf" id="6_ie0on"]
+[ext_resource type="Theme" uid="uid://cj476usgqnggb" path="res://Style_boxes/Theme del juego.tres" id="7_dbx3y"]
+[ext_resource type="Texture2D" uid="uid://ddk33jxlnlvwc" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_5.png" id="7_dg6gb"]
+[ext_resource type="Texture2D" uid="uid://dlngm5brqdsxe" path="res://Recursos/Sprites/cosas/tacho_basura.png" id="7_m8hrj"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="12_3m7qb"]
+[ext_resource type="Texture2D" uid="uid://bcexm0d7qujwb" path="res://Recursos/Sprites/Enemigo/murciegalo.png" id="13_nhvai"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="13_sxkdg"]
+[ext_resource type="Texture2D" uid="uid://k80ftkt3l2w1" path="res://Recursos/Sprites/Enemigo/Slime_pj_spriteseheet.png" id="14_lndqw"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="14_trjn7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm3e"]
+bg_color = Color(0.0213911, 0.0795634, 0.339764, 0.698039)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_size = 1
+shadow_offset = Vector2(2.45, 1.735)
+anti_aliasing_size = 0.01
+
+[sub_resource type="LabelSettings" id="LabelSettings_q8mkv"]
+font = ExtResource("6_ie0on")
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3jo61"]
 font = ExtResource("6_ie0on")
-outline_size = 9
+outline_size = 8
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmr6r"]
+atlas = ExtResource("5_11a0w")
+region = Rect2(0, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_261bk"]
+atlas = ExtResource("5_11a0w")
+region = Rect2(50, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg0iw"]
+atlas = ExtResource("5_11a0w")
+region = Rect2(100, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ewpu"]
+atlas = ExtResource("5_11a0w")
+region = Rect2(150, 0, 50, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f61r5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmr6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_261bk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg0iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ewpu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_givgf"]
+atlas = ExtResource("13_nhvai")
+region = Rect2(16, 0, 15, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4dry"]
+atlas = ExtResource("13_nhvai")
+region = Rect2(32, 0, 15, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vk6my"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_givgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4dry")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tckev"]
+atlas = ExtResource("14_lndqw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uwu7"]
+atlas = ExtResource("14_lndqw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3046r"]
+atlas = ExtResource("14_lndqw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7g55"]
+atlas = ExtResource("14_lndqw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eppau"]
+atlas = ExtResource("14_lndqw")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov5uh"]
+atlas = ExtResource("14_lndqw")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pugt0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tckev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uwu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3046r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7g55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eppau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov5uh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_1wkp4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Charactert3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(360, 72)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Charactert3:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Charactert5:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(608, 138)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Charactert5:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Charactert4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(656, 48)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Charactert4:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_j3c7x"]
+resource_name = "seleccion"
+length = 17.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Charactert3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.5, 7.5, 11),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(360, 72), Vector2(384, 32), Vector2(416, 72), Vector2(392, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Charactert4:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(656, 48), Vector2(608, 96), Vector2(640, 120)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Charactert5:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(608, 138), Vector2(402, 138)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Charactert3:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Charactert5:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Charactert4:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yu3d0"]
+_data = {
+"RESET": SubResource("Animation_1wkp4"),
+"seleccion": SubResource("Animation_j3c7x")
+}
+
+[sub_resource type="Resource" id="Resource_u1e2a"]
+script = ExtResource("13_sxkdg")
+duration = 1.0
+transition = 5
+ease = 2
 
 [node name="Pantalla de inicio" type="Node"]
 script = ExtResource("1_7uykf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(156, 94)
-texture = ExtResource("2_1ntbg")
+[node name="Fondos" type="Node" parent="."]
 
-[node name="Charactert" type="Sprite2D" parent="."]
-position = Vector2(70, 128)
-texture = ExtResource("5_11a0w")
+[node name="StrongholdBackgroundGuide" type="Sprite2D" parent="Fondos"]
+position = Vector2(510.095, 96)
+texture = ExtResource("2_xywf8")
 region_enabled = true
-region_rect = Rect2(15, 5, 17, 31)
+region_rect = Rect2(37, 0, 326, 208)
 
-[node name="suelo" type="TileMapLayer" parent="."]
-position = Vector2(-32, -32)
-tile_map_data = PackedByteArray("AAAAAAsAAAACAAAAAAABAAsAAAABAAAAAAACAAsAAAACAAAAAAADAAsAAAABAAAAAAAEAAsAAAACAAAAAAAFAAsAAAABAAAAAAAGAAsAAAACAAAAAAAHAAsAAAABAAAAAAAIAAsAAAACAAAAAAAJAAsAAAABAAAAAAAKAAsAAAACAAAAAAALAAsAAAABAAAAAAAMAAsAAAACAAAAAAANAAsAAAABAAAAAAAOAAsAAAACAAAAAAAPAAsAAAABAAAAAAAQAAsAAAADAAAAAAAVAAsAAAAAAAAAAAAWAAsAAAACAAAAAAAXAAsAAAABAAAAAAAAAAwAAAABAAEAAAAAAA0AAAABAAEAAAABAA0AAAABAAEAAAACAA0AAAABAAEAAAACAAwAAAABAAEAAAABAAwAAAABAAEAAAADAAwAAAABAAEAAAADAA0AAAABAAEAAAAEAAwAAAABAAEAAAAEAA0AAAABAAEAAAAFAAwAAAABAAEAAAAFAA0AAAABAAEAAAAGAAwAAAABAAEAAAAGAA0AAAABAAEAAAAHAAwAAAABAAEAAAAHAA0AAAABAAEAAAAIAAwAAAABAAEAAAAIAA0AAAABAAEAAAAJAAwAAAABAAEAAAAJAA0AAAABAAEAAAAKAAwAAAABAAEAAAAKAA0AAAABAAEAAAALAAwAAAABAAEAAAALAA0AAAABAAEAAAAMAAwAAAABAAEAAAAMAA0AAAABAAEAAAANAAwAAAABAAEAAAANAA0AAAABAAEAAAAOAAwAAAABAAEAAAAOAA0AAAABAAEAAAAPAAwAAAABAAEAAAAPAA0AAAABAAEAAAAQAAwAAAAFAAAAAAAQAA0AAAABAAEAAAARAA0AAAAFAAAAAAASAA0AAAACAAAAAAATAA0AAAACAAAAAAAUAAwAAAAAAAAAAAAUAA0AAAAEAAAAAAAVAAwAAAAEAAAAAAAVAA0AAAABAAEAAAAWAAwAAAABAAEAAAAWAA0AAAABAAEAAAAXAAwAAAABAAEAAAAXAA0AAAABAAEAAAD9/wsAAAABAAAAAAD9/wwAAAABAAEAAAD9/w0AAAABAAEAAAD+/wsAAAACAAAAAAD+/wwAAAABAAEAAAD+/w0AAAABAAEAAAD//wsAAAABAAAAAAD//wwAAAABAAEAAAD//w0AAAABAAEAAAAYAAsAAAACAAAAAAAYAAwAAAABAAEAAAAYAA0AAAABAAEAAAAZAAsAAAABAAAAAAAZAAwAAAABAAEAAAAZAA0AAAABAAEAAAAaAAsAAAACAAAAAAAaAAwAAAABAAEAAAAaAA0AAAABAAEAAAARAAwAAAADAAAAAAA=")
-tile_set = ExtResource("3_r3pve")
+[node name="Prado fondo" type="Node2D" parent="Fondos"]
+z_index = -1
+position = Vector2(16, 0)
+scale = Vector2(0.82, 0.82)
 
-[node name="suelo2" type="TileMapLayer" parent="."]
+[node name="cielo" type="Parallax2D" parent="Fondos/Prado fondo"]
+scroll_scale = Vector2(1.05, 0)
+repeat_size = Vector2(368, 0)
+autoscroll = Vector2(-5, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Fondos/Prado fondo/cielo"]
+texture = ExtResource("3_ljj6q")
+centered = false
+
+[node name="cosas raras" type="Parallax2D" parent="Fondos/Prado fondo"]
+scroll_scale = Vector2(1.05, 0)
+repeat_size = Vector2(368, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Fondos/Prado fondo/cosas raras"]
+position = Vector2(0, -13.4146)
+texture = ExtResource("4_dy57d")
+centered = false
+
+[node name="pasto" type="Parallax2D" parent="Fondos/Prado fondo"]
+scale = Vector2(1.2, 1.2)
+scroll_scale = Vector2(1.08, 0)
+repeat_size = Vector2(416, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Fondos/Prado fondo/pasto"]
+position = Vector2(-16.2602, -24.3902)
+texture = ExtResource("5_g3t4s")
+centered = false
+
+[node name="pasto2" type="Parallax2D" parent="Fondos/Prado fondo"]
+scale = Vector2(0.8, 0.8)
+scroll_scale = Vector2(1.1, 0)
+repeat_size = Vector2(448, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Fondos/Prado fondo/pasto2"]
+position = Vector2(0, 36.5854)
+texture = ExtResource("6_23hrc")
+centered = false
+
+[node name="arboles" type="Parallax2D" parent="Fondos/Prado fondo"]
+scroll_scale = Vector2(1.2, 0)
+repeat_size = Vector2(368, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Fondos/Prado fondo/arboles"]
+position = Vector2(0, 9.7561)
+texture = ExtResource("7_dg6gb")
+centered = false
+
+[node name="Tiles" type="Node" parent="."]
+
+[node name="suelo" type="TileMapLayer" parent="Tiles"]
 position = Vector2(-32, -32)
-tile_map_data = PackedByteArray("AAACAAYAAAADAAAAABACAAcAAAADAAEAABACAAgAAAADAAIAABACAAkAAAADAAMAABADAAYAAAACAAAAABADAAcAAAACAAEAABADAAgAAAACAAIAABADAAkAAAACAAMAABADAAoAAAACAAQAABAEAAYAAAABAAAAABAEAAcAAAABAAEAABAEAAgAAAABAAIAABAEAAkAAAABAAMAABAEAAoAAAABAAQAABAFAAYAAAAAAAAAABAFAAcAAAAAAAEAABAFAAgAAAAAAAIAABAFAAkAAAAAAAMAABAXAAYAAAADAAAAAAAWAAYAAAACAAAAAAAVAAYAAAABAAAAAAAUAAYAAAAAAAAAAAAXAAcAAAADAAEAAAAWAAcAAAACAAEAAAAVAAcAAAABAAEAAAAUAAcAAAAAAAEAAAAXAAgAAAADAAIAAAAWAAgAAAACAAIAAAAVAAgAAAABAAIAAAAUAAgAAAAAAAIAAAAXAAkAAAADAAMAAAAWAAkAAAACAAMAAAAVAAkAAAABAAMAAAAUAAkAAAAAAAMAAAAWAAoAAAACAAQAAAAVAAoAAAABAAQAAAARAAsAAQAAAAAAAwASAAsAAQAAAAAAAwATAAsAAQAAAAAAAwAUAAsAAQAAAAAAAwASAAwAAQAAAAAAAwATAAwAAQAAAAAAAwA=")
+tile_map_data = PackedByteArray("AAAAAAsABQABAAAAAAABAAsABQACAAAAAAACAAsABQABAAAAAAADAAsABQACAAAAAAAEAAsABQABAAAAAAAFAAsABQACAAAAAAAGAAsABQABAAAAAAAHAAsABQACAAAAAAAIAAsABQABAAAAAAAJAAsABQACAAAAAAAKAAsABQABAAAAAAALAAsABQACAAAAAAAMAAsABQABAAAAAAANAAsABQACAAAAAAAOAAsABQABAAAAAAAPAAsABQACAAAAAAAQAAsABQADAAAAAAAVAAsABQAAAAAAAAAWAAsABQACAAAAAAAXAAsABgACAAAAAAAAAAwAAAABAAEAAAAAAA0AAAABAAEAAAABAA0AAAABAAEAAAACAA0AAAABAAEAAAACAAwAAAABAAEAAAABAAwAAAABAAEAAAADAAwAAAABAAEAAAADAA0AAAABAAEAAAAEAAwAAAABAAEAAAAEAA0AAAABAAEAAAAFAAwAAAABAAEAAAAFAA0AAAABAAEAAAAGAAwAAAABAAEAAAAGAA0AAAABAAEAAAAHAAwAAAABAAEAAAAHAA0AAAABAAEAAAAIAAwAAAABAAEAAAAIAA0AAAABAAEAAAAJAAwAAAABAAEAAAAJAA0AAAABAAEAAAAKAAwAAAABAAEAAAAKAA0AAAABAAEAAAALAAwAAAABAAEAAAALAA0AAAABAAEAAAAMAAwAAAABAAEAAAAMAA0AAAABAAEAAAANAAwAAAABAAEAAAANAA0AAAABAAEAAAAOAAwAAAABAAEAAAAOAA0AAAABAAEAAAAPAAwAAAABAAEAAAAPAA0AAAABAAEAAAAQAAwABQAFAAAAAAAQAA0AAAABAAEAAAARAA0ABQAFAAAAAAASAA0ABQABAAAAAAATAA0ABQACAAAAAAAUAAwABQAAAAAAAAAUAA0ABQAEAAAAAAAVAAwABQAEAAAAAAAVAA0AAAABAAEAAAAWAAwAAAABAAEAAAAWAA0AAAABAAEAAAAXAAwAAAABAAEAAAAXAA0AAAABAAEAAAD9/wsABQABAAAAAAD9/wwAAAABAAEAAAD9/w0AAAABAAEAAAD+/wsABQACAAAAAAD+/wwAAAABAAEAAAD+/w0AAAABAAEAAAD//wsABQACAAAAAAD//wwAAAABAAEAAAD//w0AAAABAAEAAAAYAAsABgACAAAAAAAYAAwAAAABAAEAAAAYAA0AAAABAAEAAAAZAAsABgACAAAAAAAZAAwAAAABAAEAAAAZAA0AAAABAAEAAAAaAAsABgACAAAAAAAaAAwAAAABAAEAAAAaAA0AAAABAAEAAAARAAwABQADAAAAAAAbAAsABgACAAAAAAAcAAsABgACAAAAAAAdAAsABgACAAAAAAAeAAsABgACAAAAAAAfAAsABgACAAAAAAAgAAsABgACAAAAAAAhAAsABgACAAAAAAAiAAsABgACAAAAAAAjAAsABgACAAAAAAAkAAsABgACAAAAAAAlAAsABgACAAAAAAAmAAsABgACAAAAAAAnAAsABgACAAAAAAAoAAsABgACAAAAAAApAAsABgACAAAAAAAqAAsABgACAAAAAAArAAsABgACAAAAAAAsAAsABgACAAAAAAAXAA4AAAABAAEAAAAYAA4AAAABAAEAAAAZAA4AAAABAAEAAAAaAA4AAAABAAEAAAAbAA4AAAABAAEAAAAcAA4AAAABAAEAAAAdAA4AAAABAAEAAAAeAA4AAAABAAEAAAAfAA4AAAABAAEAAAAgAA4AAAABAAEAAAAhAA4AAAABAAEAAAAiAA4AAAABAAEAAAAjAA4AAAABAAEAAAAkAA4AAAABAAEAAAAlAA4AAAABAAEAAAAmAA4AAAABAAEAAAAnAA4AAAABAAEAAAAoAA4AAAABAAEAAAApAA4AAAABAAEAAAAqAA4AAAABAAEAAAArAA4AAAABAAEAAAAsAA4AAAABAAEAAAAsAAwAAAABAAEAAAAsAA0AAAABAAEAAAArAAwAAAABAAEAAAAqAAwAAAABAAEAAAApAAwAAAABAAEAAAAoAAwAAAABAAEAAAAnAAwAAAABAAEAAAAmAAwAAAABAAEAAAAlAAwAAAABAAEAAAAkAAwAAAABAAEAAAAjAAwAAAABAAEAAAAiAAwAAAABAAEAAAAhAAwAAAABAAEAAAAgAAwAAAABAAEAAAAfAAwAAAABAAEAAAAeAAwAAAABAAEAAAAdAAwAAAABAAEAAAAcAAwAAAABAAEAAAAbAAwAAAABAAEAAAAbAA0AAAABAAEAAAAcAA0AAAABAAEAAAAdAA0AAAABAAEAAAAeAA0AAAABAAEAAAAfAA0AAAABAAEAAAAgAA0AAAABAAEAAAAhAA0AAAABAAEAAAAiAA0AAAABAAEAAAAjAA0AAAABAAEAAAAkAA0AAAABAAEAAAAlAA0AAAABAAEAAAAmAA0AAAABAAEAAAAnAA0AAAABAAEAAAAoAA0AAAABAAEAAAApAA0AAAABAAEAAAAqAA0AAAABAAEAAAArAA0AAAABAAEAAAA=")
+tile_set = ExtResource("4_jqlmd")
+
+[node name="decos" type="TileMapLayer" parent="Tiles"]
+position = Vector2(-32, -32)
+tile_map_data = PackedByteArray("AAACAAYAAAADAAAAABACAAcAAAADAAEAABACAAgAAAADAAIAABACAAkAAAADAAMAABADAAYAAAACAAAAABADAAcAAAACAAEAABADAAgAAAACAAIAABADAAkAAAACAAMAABADAAoAAAACAAQAABAEAAYAAAABAAAAABAEAAcAAAABAAEAABAEAAgAAAABAAIAABAEAAkAAAABAAMAABAEAAoAAAABAAQAABAFAAYAAAAAAAAAABAFAAcAAAAAAAEAABAFAAgAAAAAAAIAABAFAAkAAAAAAAMAABAXAAYAAAADAAAAAAAWAAYAAAACAAAAAAAVAAYAAAABAAAAAAAUAAYAAAAAAAAAAAAXAAcAAAADAAEAAAAWAAcAAAACAAEAAAAVAAcAAAABAAEAAAAUAAcAAAAAAAEAAAAXAAgAAAADAAIAAAAWAAgAAAACAAIAAAAVAAgAAAABAAIAAAAUAAgAAAAAAAIAAAAXAAkAAAADAAMAAAAWAAkAAAACAAMAAAAVAAkAAAABAAMAAAAUAAkAAAAAAAMAAAAWAAoAAAACAAQAAAAVAAoAAAABAAQAAAARAAsAAQAAAAAAAwASAAsAAQAAAAAAAwATAAsAAQAAAAAAAwAUAAsAAQAAAAAAAwASAAwAAQAAAAAAAwATAAwAAQAAAAAAAwAGAAoAAQAAAAAABAAJAAoAAAAHAAIAAAAOAAoAAAAHAAIAABACAAoAAAAEAAAAABAIAAoAAAAEAAEAAAAQAAoAAAAIAAIAAAA=")
 tile_set = ExtResource("4_xhom1")
 
-[node name="Label" type="Label" parent="."]
+[node name="Color rects" type="Node" parent="."]
+
+[node name="ColorRect" type="Panel" parent="Color rects"]
+offset_left = 425.0
+offset_top = 17.0
+offset_right = 597.0
+offset_bottom = 137.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xm3e")
+
+[node name="Botones" type="Node" parent="."]
+
+[node name="Partidas" type="Node" parent="Botones"]
+
+[node name="Borrar partidas botones" type="Node" parent="Botones/Partidas"]
+
+[node name="borrar1" type="Button" parent="Botones/Partidas/Borrar partidas botones"]
+offset_left = 576.0
+offset_top = 45.0
+offset_right = 592.0
+offset_bottom = 61.0
+theme = ExtResource("7_dbx3y")
+icon = ExtResource("7_m8hrj")
+
+[node name="borrar2" type="Button" parent="Botones/Partidas/Borrar partidas botones"]
+offset_left = 576.0
+offset_top = 80.0
+offset_right = 592.0
+offset_bottom = 96.0
+theme = ExtResource("7_dbx3y")
+icon = ExtResource("7_m8hrj")
+
+[node name="borrar3" type="Button" parent="Botones/Partidas/Borrar partidas botones"]
+offset_left = 576.0
+offset_top = 114.0
+offset_right = 592.0
+offset_bottom = 130.0
+theme = ExtResource("7_dbx3y")
+icon = ExtResource("7_m8hrj")
+
+[node name="Label" type="Label" parent="Botones/Partidas"]
+offset_left = 447.0
+offset_top = 21.0
+offset_right = 575.0
+offset_bottom = 37.0
+text = "Elige tu partida"
+label_settings = SubResource("LabelSettings_q8mkv")
+
+[node name="Partida_1" type="Button" parent="Botones/Partidas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 348.0
+offset_top = -49.0
+offset_right = 428.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme = ExtResource("7_dbx3y")
+theme_override_fonts/font = ExtResource("6_ie0on")
+text = "Partida 1"
+
+[node name="Par1" type="Label" parent="Botones/Partidas/Partida_1"]
+layout_mode = 0
+offset_left = -87.4999
+offset_top = 7.5
+offset_right = -15.4999
+offset_bottom = 23.5
+text = "Partida 1"
+label_settings = SubResource("LabelSettings_q8mkv")
+
+[node name="Partida_2" type="Button" parent="Botones/Partidas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 348.0
+offset_top = -14.0
+offset_right = 428.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme = ExtResource("7_dbx3y")
+theme_override_fonts/font = ExtResource("6_ie0on")
+text = "Partida 2"
+
+[node name="par2" type="Label" parent="Botones/Partidas/Partida_2"]
+layout_mode = 0
+offset_left = -87.5001
+offset_top = 6.49999
+offset_right = -15.5001
+offset_bottom = 22.5
+text = "Partida 2
+"
+label_settings = SubResource("LabelSettings_q8mkv")
+
+[node name="Partida_3" type="Button" parent="Botones/Partidas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 348.0
+offset_top = 20.0
+offset_right = 428.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme = ExtResource("7_dbx3y")
+theme_override_fonts/font = ExtResource("6_ie0on")
+text = "Partida 3
+"
+
+[node name="par3" type="Label" parent="Botones/Partidas/Partida_3"]
+layout_mode = 0
+offset_left = -87.4999
+offset_top = 7.49998
+offset_right = -15.4999
+offset_bottom = 23.5
+text = "Partida 3"
+label_settings = SubResource("LabelSettings_q8mkv")
+
+[node name="Regresar" type="Button" parent="Botones/Partidas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 450.0
+offset_top = 67.0
+offset_right = 522.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme = ExtResource("7_dbx3y")
+theme_override_fonts/font = ExtResource("6_ie0on")
+text = "Regresar"
+
+[node name="Inicio" type="Node" parent="Botones"]
+
+[node name="Titulo" type="Label" parent="Botones/Inicio"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -47,75 +552,111 @@ offset_right = 159.5
 offset_bottom = -16.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Fresas con Crema: 
+text = "Fresas con Crema
 La venganza
                            "
 label_settings = SubResource("LabelSettings_3jo61")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Nueva_partida" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -23.5
-offset_right = 70.0
-offset_bottom = 7.50001
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.8, 0.8)
-theme_override_fonts/font = ExtResource("6_ie0on")
-text = "Nueva Partida"
-
-[node name="Cargar" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = 5.50001
-offset_right = 35.0
-offset_bottom = 36.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.8, 0.8)
-theme_override_fonts/font = ExtResource("6_ie0on")
-text = "Cargar"
-
-[node name="Salir" type="Button" parent="."]
-offset_left = 140.0
-offset_top = 126.0
-offset_right = 188.0
-offset_bottom = 157.0
-scale = Vector2(0.8, 0.8)
+[node name="Salir" type="Button" parent="Botones/Inicio"]
+offset_left = 136.0
+offset_top = 112.0
+offset_right = 184.0
+offset_bottom = 136.0
+theme = ExtResource("7_dbx3y")
 theme_override_fonts/font = ExtResource("6_ie0on")
 text = "Salir
 "
 
-[node name="CheckButton" type="CheckButton" parent="."]
-offset_left = -1.0
-offset_top = 155.0
-offset_right = 198.0
-offset_bottom = 218.0
+[node name="Jugar" type="Button" parent="Botones/Inicio"]
+offset_left = 136.0
+offset_top = 72.0
+offset_right = 184.0
+offset_bottom = 96.0
+theme = ExtResource("7_dbx3y")
+theme_override_fonts/font = ExtResource("6_ie0on")
+text = "Jugar"
+
+[node name="Pantalla_completa" type="CheckButton" parent="Botones/Inicio"]
+offset_left = 3.0
+offset_top = 165.0
+offset_right = 175.0
+offset_bottom = 189.0
 scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_dbx3y")
 theme_override_fonts/font = ExtResource("6_ie0on")
 text = "Pantalla completa"
 
-[node name="ColorRect" type="ColorRect" parent="CheckButton"]
-show_behind_parent = true
-layout_mode = 0
-offset_top = 18.0
-offset_right = 193.0
-offset_bottom = 50.0
-mouse_filter = 2
-mouse_force_pass_scroll_events = false
-color = Color(0, 0, 0, 0.556863)
+[node name="Sprites" type="Node" parent="."]
 
-[connection signal="pressed" from="Nueva_partida" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Cargar" to="." method="_on_cargar_pressed"]
-[connection signal="pressed" from="Salir" to="." method="_on_button_2_pressed"]
-[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[node name="Charactert" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(43, 126.53)
+sprite_frames = SubResource("SpriteFrames_f61r5")
+autoplay = "default"
+frame_progress = 0.254243
+
+[node name="Charactert2" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(654, 126.53)
+sprite_frames = SubResource("SpriteFrames_f61r5")
+autoplay = "default"
+frame_progress = 0.54817
+flip_h = true
+
+[node name="Charactert3" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(360, 72)
+sprite_frames = SubResource("SpriteFrames_vk6my")
+autoplay = "default"
+frame_progress = 0.738597
+
+[node name="Charactert4" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(656, 48)
+sprite_frames = SubResource("SpriteFrames_vk6my")
+autoplay = "default"
+frame_progress = 0.774105
+flip_h = true
+
+[node name="Charactert5" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(608, 138)
+sprite_frames = SubResource("SpriteFrames_pugt0")
+autoplay = "default"
+frame_progress = 0.133145
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites"]
+libraries = {
+"": SubResource("AnimationLibrary_yu3d0")
+}
+autoplay = "seleccion"
+
+[node name="Cameras" type="Node" parent="."]
+
+[node name="Inicio" type="Node2D" parent="Cameras"]
+position = Vector2(160, 90)
+script = ExtResource("12_3m7qb")
+priority = 1
+tween_resource = SubResource("Resource_u1e2a")
+draw_limits = true
+
+[node name="Partidas" type="Node2D" parent="Cameras"]
+position = Vector2(510, 90)
+script = ExtResource("12_3m7qb")
+tween_resource = SubResource("Resource_u1e2a")
+draw_limits = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 2
+position = Vector2(160, 90)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("14_trjn7")
+
+[connection signal="pressed" from="Botones/Partidas/Borrar partidas botones/borrar1" to="." method="_on_borrar_1_pressed"]
+[connection signal="pressed" from="Botones/Partidas/Borrar partidas botones/borrar2" to="." method="_on_borrar_2_pressed"]
+[connection signal="pressed" from="Botones/Partidas/Borrar partidas botones/borrar3" to="." method="_on_borrar_3_pressed"]
+[connection signal="pressed" from="Botones/Partidas/Partida_1" to="." method="_on_partida_1_pressed"]
+[connection signal="pressed" from="Botones/Partidas/Partida_2" to="." method="_on_partida_2_pressed"]
+[connection signal="pressed" from="Botones/Partidas/Partida_3" to="." method="_on_partida_3_pressed"]
+[connection signal="pressed" from="Botones/Partidas/Regresar" to="." method="_on_regresar_pressed"]
+[connection signal="pressed" from="Botones/Inicio/Salir" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Botones/Inicio/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="toggled" from="Botones/Inicio/Pantalla_completa" to="." method="_on_check_button_toggled"]

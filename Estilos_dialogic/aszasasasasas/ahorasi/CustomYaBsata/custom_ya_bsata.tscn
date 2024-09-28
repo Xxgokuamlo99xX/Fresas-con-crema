@@ -26,7 +26,10 @@ offset_top = 125.0
 offset_right = 99.0
 offset_bottom = 125.0
 scale = Vector2(0.35, 0.35)
+text_custom_size = 20
 name_label_color_mode = 1
+name_label_use_global_size = false
+name_label_custom_size = 23
 apply_overrides_on_ready = true
 
 [node name="Glossary" parent="." instance=ExtResource("8_ld7y8")]
@@ -43,6 +46,10 @@ anchor_bottom = 0.5
 scale = Vector2(0.41, 0.41)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+boxes_stylebox_normal = "res://Style_boxes/botones.tres"
+boxes_stylebox_hovered = "res://Style_boxes/boton_hover.tres"
+boxes_stylebox_pressed = "res://Style_boxes/boton_pressed.tres"
+boxes_stylebox_focused = "res://Style_boxes/botones_focus.tres"
 
 [node name="TextInputLayer" parent="." instance=ExtResource("12_62d60")]
 visible = false

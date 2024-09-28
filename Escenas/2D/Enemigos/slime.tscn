@@ -204,7 +204,7 @@ script = ExtResource("3_ui4pc")
 damage_node = ExtResource("4_edc4q")
 
 [node name="invul" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.1
 one_shot = true
 
 [node name="Audio_player" type="AudioStreamPlayer" parent="."]
