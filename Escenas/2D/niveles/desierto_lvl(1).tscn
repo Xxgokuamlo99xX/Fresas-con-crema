@@ -1,7 +1,8 @@
-[gd_scene load_steps=80 format=4 uid="uid://bdlbsqgyxpac1"]
+[gd_scene load_steps=81 format=4 uid="uid://bdlbsqgyxpac1"]
 
 [ext_resource type="Script" path="res://Scripts/posicion_manager.gd" id="1_1q1r2"]
 [ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="2_3fbyt"]
+[ext_resource type="PackedScene" uid="uid://eihjq7rney81" path="res://Escenas/vainas/musica_manager.tscn" id="2_ba7qf"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_kq3pu"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_fl5re"]
 [ext_resource type="LabelSettings" uid="uid://bfbkkbnsj01vt" path="res://Recursos/Fuentes de texto/hud.tres" id="4_pnpwy"]
@@ -539,6 +540,9 @@ animations = [{
 
 [node name="desierto_lvl(1)" type="Node"]
 script = ExtResource("1_1q1r2")
+
+[node name="Musica" parent="." instance=ExtResource("2_ba7qf")]
+musica_cambio = "Desierto"
 
 [node name="Cinematica_cosas" type="Node" parent="."]
 

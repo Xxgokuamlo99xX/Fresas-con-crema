@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ccehq7d7786hx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_py1si"]
+load_path = "res://.godot/imported/Nurse_Default.png-60eedc7a9c9526625f195fd95a4ca06f.ctex"
+
+[resource]
+atlas = SubResource("CompressedTexture2D_py1si")
+region = Rect2(2, 2, 32, 52)

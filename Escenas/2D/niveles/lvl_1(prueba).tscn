@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://cty1718foaxhp"]
+[gd_scene load_steps=16 format=4 uid="uid://cty1718foaxhp"]
 
 [ext_resource type="Script" path="res://Scripts/posicion_manager.gd" id="1_2e6lr"]
 [ext_resource type="TileSet" uid="uid://bqnl5uywfyg13" path="res://Recursos/Tile maps 2D/Prados.tres" id="1_n6lnh"]
+[ext_resource type="PackedScene" uid="uid://eihjq7rney81" path="res://Escenas/vainas/musica_manager.tscn" id="2_3wpv8"]
 [ext_resource type="TileSet" uid="uid://cxn7dw8g4db6s" path="res://Recursos/Tile maps 2D/Agua.tres" id="2_ycfho"]
 [ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="3_dxhip"]
 [ext_resource type="Texture2D" uid="uid://4y43cgrpp50" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_1.png" id="3_utnaw"]
@@ -22,6 +23,9 @@ gradient = SubResource("Gradient_f35jr")
 
 [node name="lvl_1" type="Node"]
 script = ExtResource("1_2e6lr")
+
+[node name="Musica" parent="." instance=ExtResource("2_3wpv8")]
+musica_cambio = "Prados"
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
 z_index = -100

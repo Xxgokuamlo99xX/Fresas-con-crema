@@ -6,7 +6,6 @@ extends Node
 @onready var boton_2 : Button = $Botones/Partidas/Partida_2
 @onready var boton_3 : Button = $Botones/Partidas/Partida_3
 
-
 #seccion del inicio
 func borrar_partida(slot : int):
 	if FileAccess.file_exists("user://Archivo de guardado"+str(slot)+".json"):

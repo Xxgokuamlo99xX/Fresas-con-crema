@@ -58,7 +58,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_nuuxr"]
 resource_name = "hit"
-length = 0.4
+length = 0.2025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -66,7 +66,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.233333, 0.333333),
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [13, 14, 13, 14]
@@ -93,10 +93,22 @@ tracks/2/path = NodePath("hit_:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.333333),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(-1.49012e-08, 0.0333337, 0.0999993, 0.166667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_wjwam"]
@@ -200,11 +212,12 @@ target_position = Vector2(0, 12)
 collision_mask = 8
 
 [node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -16)
 script = ExtResource("3_ui4pc")
 damage_node = ExtResource("4_edc4q")
 
 [node name="invul" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true
 
 [node name="Audio_player" type="AudioStreamPlayer" parent="."]

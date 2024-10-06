@@ -1,5 +1,6 @@
-[gd_scene load_steps=33 format=4 uid="uid://bx5aa1axbqr7i"]
+[gd_scene load_steps=34 format=4 uid="uid://bx5aa1axbqr7i"]
 
+[ext_resource type="PackedScene" uid="uid://eihjq7rney81" path="res://Escenas/vainas/musica_manager.tscn" id="1_1bvob"]
 [ext_resource type="TileSet" uid="uid://criqbdoht4sry" path="res://Recursos/Tile maps 2D/Castillo.tres" id="1_ftq5u"]
 [ext_resource type="Texture2D" uid="uid://hsv8a0a4ea60" path="res://Recursos/Tile maps 2D/Stronghold/Props/Stronghold_Details.png" id="2_1ort5"]
 [ext_resource type="TileSet" uid="uid://dft7t6ld8fcjw" path="res://Recursos/Tile maps 2D/cueva.tres" id="2_3myf7"]
@@ -893,6 +894,10 @@ _data = {
 }
 
 [node name="Castillo_cinematica_entrada" type="Node"]
+
+[node name="Musica" parent="." instance=ExtResource("1_1bvob")]
+musica_cambio = "Prados"
+fade_duration = 2
 
 [node name="tilemaps" type="Node2D" parent="."]
 

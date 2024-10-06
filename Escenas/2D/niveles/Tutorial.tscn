@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://bs8sijb0qyxoo"]
+[gd_scene load_steps=16 format=4 uid="uid://bs8sijb0qyxoo"]
 
 [ext_resource type="TileSet" uid="uid://d1mkqxq3spowu" path="res://Recursos/Tile maps 2D/Tile_map_universal.tres" id="1_5acu7"]
 [ext_resource type="Script" path="res://Scripts/posicion_manager.gd" id="1_5vixx"]
 [ext_resource type="TileSet" uid="uid://djoirjiu4wccu" path="res://Recursos/Tile maps 2D/Enemigos.tres" id="2_8ewx3"]
+[ext_resource type="PackedScene" uid="uid://eihjq7rney81" path="res://Escenas/vainas/musica_manager.tscn" id="2_jwm5a"]
 [ext_resource type="TileSet" uid="uid://cvhd1wgefj0yv" path="res://Recursos/Tile maps 2D/Coleccionables.tres" id="3_yw273"]
 [ext_resource type="Theme" uid="uid://cj476usgqnggb" path="res://Style_boxes/Theme del juego.tres" id="4_27des"]
 [ext_resource type="FontFile" uid="uid://8khbwkhjgd2r" path="res://Recursos/Fuentes de texto/FSEX300.ttf" id="5_v277n"]
@@ -16,7 +17,7 @@
 script/source = "extends Node
 
 func _ready() -> void:
-	GlobalVar.bola_de_fuego = true
+	GlobalVar.bola_de_fuego_DEBSQ = true
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_iqwwy"]
@@ -32,6 +33,10 @@ shader_parameter/shift_color = Color(0.356863, 1, 0.411765, 1)
 
 [node name="Tutorial" type="Node"]
 script = ExtResource("1_5vixx")
+
+[node name="Musica" parent="." instance=ExtResource("2_jwm5a")]
+musica_cambio = "Tutorial"
+fade_duration = 2
 
 [node name="sexo" type="Node" parent="."]
 script = SubResource("GDScript_2mdf7")

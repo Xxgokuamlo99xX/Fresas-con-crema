@@ -14,8 +14,8 @@ config/name="Fresas con crema"
 run/main_scene="res://Escenas/pantalla_de_inicio.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
-boot_splash/bg_color=Color(0.292442, 0, 0.0228105, 1)
-boot_splash/image="res://Recursos/xd.png"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://Recursos/Rec. juego/Icono.png"
 
 [autoload]
@@ -27,10 +27,13 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 Ids="*res://Scripts/Global/Ids.gd"
 Misiones="*res://Scripts/Utilidades/misiones.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+GlobalAudio="*res://Escenas/vainas/audio_stream_player.tscn"
+Inventario="*res://Escenas/Utilidades/inventario.tscn"
 
 [dialogic]
 
 directories/dch_directory={
+"Enfermera": "res://Personajes_Dialogic/Enfermera.dch",
 "Guardia_npc_generico": "res://Personajes_Dialogic/Guardia_npc_generico.dch",
 "Npc_1": "res://Personajes_Dialogic/Npc_1.dch",
 "Samantha": "res://Personajes_Dialogic/Samantha.dch"
@@ -40,6 +43,7 @@ directories/dtl_directory={
 "Cinematicas/Inicio del juego": "res://Timelines/Cinematicas/Inicio del juego.dtl",
 "Comprar objeto": "res://Timelines/Comprar objeto.dtl",
 "Demo_fin": "res://Timelines/Demo_fin.dtl",
+"Enfermera": "res://Timelines/Enfermera.dtl",
 "Npc_1": "res://Timelines/Npc_1.dtl",
 "Npc_cueva": "res://Timelines/Npc_cueva.dtl",
 "Rey_goku_encuentro": "res://Timelines/Rey_goku_encuentro.dtl",
@@ -182,8 +186,7 @@ Ataque_melee={
 }
 atras={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":true,"script":null)
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
 arma_siguiente={
@@ -221,6 +224,11 @@ habilida_1={
 habilida_2={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":50,"key_label":0,"unicode":50,"location":0,"echo":false,"script":null)
+]
+}
+Inventario={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

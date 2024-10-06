@@ -7,11 +7,12 @@ var inmortal : bool = false
 @export var GRAVITY : float = 9.8
 @export var JUMP_FORCE : int = 250  
 var ataque_num : int = 3
-@export var damage : int = 5 * GlobalVar.multi_damage
+@export var damage : int = 2 * GlobalVar.multi_damage
 
-@onready var hechizo = $Voltear/Hechizo
-@onready var hitobx_arma = $Voltear/Hitbox_arma
-@onready var state_machine_2 = $AnimationTree
+@onready var hechizo := $Voltear/Hechizo
+@onready var hitobx_arma := $Voltear/Hitbox_arma
+@onready var state_machine_2 := $AnimationTree
+@onready var ataq_coldwn := $Ataque_cooldown
 var dir = Vector2.ZERO
 var state_machine
 var fps
@@ -54,7 +55,7 @@ func animaciones():
 		
 	checar_ataque()
 	#Ataque_melee - Ataques consecutivos
-	if InputBuffer.is_action_press_buffered("Ataque_melee") && is_on_floor():
+	if InputBuffer.is_action_press_buffered("Ataque_melee") && is_on_floor() && ataq_coldwn.is_stopped():
 		
 		await get_tree().create_timer(0.01).timeout
 		match ataque_num:
@@ -64,6 +65,7 @@ func animaciones():
 				state_machine.travel("Ataque_1")
 				GlobalVar.puede_moverse = false
 				await $AnimationTree.animation_finished
+				ataq_coldwn.start()
 				GlobalVar.puede_moverse = true
 				
 			2:
@@ -72,6 +74,7 @@ func animaciones():
 				state_machine.travel("Ataque_2")
 				GlobalVar.puede_moverse = false
 				await $AnimationTree.animation_finished
+				ataq_coldwn.start()
 				GlobalVar.puede_moverse = true
 				
 			1:
@@ -80,8 +83,9 @@ func animaciones():
 				state_machine.travel("Ataque_3")
 				GlobalVar.puede_moverse = false
 				await $AnimationTree.animation_finished
+				ataq_coldwn.start()
 				GlobalVar.puede_moverse = true
-	damage = 5 * GlobalVar.multi_damage
+	damage = 2 * GlobalVar.multi_damage
 
 func flip():
 	if dir.x == -1:

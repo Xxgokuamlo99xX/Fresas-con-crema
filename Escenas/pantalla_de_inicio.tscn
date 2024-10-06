@@ -1,6 +1,7 @@
-[gd_scene load_steps=41 format=4 uid="uid://c6p7msp1bq6xj"]
+[gd_scene load_steps=51 format=4 uid="uid://c6p7msp1bq6xj"]
 
 [ext_resource type="Script" path="res://Scripts/Varios/pantalla_de_inicio.gd" id="1_7uykf"]
+[ext_resource type="PackedScene" uid="uid://eihjq7rney81" path="res://Escenas/vainas/musica_manager.tscn" id="2_5fwvu"]
 [ext_resource type="Texture2D" uid="uid://c1ljbas045281" path="res://Recursos/Tile maps 2D/Stronghold/Background/Stronghold_Background_Guide.png" id="2_xywf8"]
 [ext_resource type="Texture2D" uid="uid://4y43cgrpp50" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_1.png" id="3_ljj6q"]
 [ext_resource type="Texture2D" uid="uid://cr3xjp2modjka" path="res://Recursos/Tile maps 2D/GrassLand/Background/GrassLand_Background_2.png" id="4_dy57d"]
@@ -17,7 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://bcexm0d7qujwb" path="res://Recursos/Sprites/Enemigo/murciegalo.png" id="13_nhvai"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="13_sxkdg"]
 [ext_resource type="Texture2D" uid="uid://k80ftkt3l2w1" path="res://Recursos/Sprites/Enemigo/Slime_pj_spriteseheet.png" id="14_lndqw"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="14_mbnjr"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="14_trjn7"]
+[ext_resource type="Texture2D" uid="uid://ded7hhs53ccvy" path="res://Imagens_personajes/Goku_ssj_azul.png" id="19_icwb8"]
+[ext_resource type="Texture2D" uid="uid://bkjx7dcjv5je6" path="res://Recursos/Sprites/Misc/Corazon_lleno.png" id="20_gfayr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm3e"]
 bg_color = Color(0.0213911, 0.0795634, 0.339764, 0.698039)
@@ -39,6 +43,12 @@ outline_color = Color(0, 0, 0, 1)
 font = ExtResource("6_ie0on")
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8unl6"]
+shader = ExtResource("14_mbnjr")
+shader_parameter/outline_color = Color(0.863564, 0.000158639, 0.734471, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.002
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmr6r"]
 atlas = ExtResource("5_11a0w")
@@ -309,12 +319,135 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_u1e2a"]
 script = ExtResource("13_sxkdg")
-duration = 1.0
+duration = 2.0
 transition = 5
 ease = 2
 
+[sub_resource type="Resource" id="Resource_7ma5f"]
+script = ExtResource("13_sxkdg")
+duration = 4.0
+transition = 0
+ease = 2
+
+[sub_resource type="Animation" id="Animation_71dw2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/GokuSsjAzul:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Cameras/logo:priority")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Cameras/Inicio:priority")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_m0e3i"]
+resource_name = "inicio"
+length = 7.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/GokuSsjAzul:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5.5, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Cameras/logo:priority")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, -1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Cameras/Inicio:priority")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_248ob"]
+_data = {
+"RESET": SubResource("Animation_71dw2"),
+"inicio": SubResource("Animation_m0e3i")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_a8fkl"]
+font = ExtResource("6_ie0on")
+
 [node name="Pantalla de inicio" type="Node"]
 script = ExtResource("1_7uykf")
+
+[node name="Musica" parent="." instance=ExtResource("2_5fwvu")]
+musica_cambio = "Musica_inicio"
+fade_duration = 4
 
 [node name="Fondos" type="Node" parent="."]
 
@@ -331,11 +464,12 @@ scale = Vector2(0.82, 0.82)
 
 [node name="cielo" type="Parallax2D" parent="Fondos/Prado fondo"]
 scroll_scale = Vector2(1.05, 0)
-repeat_size = Vector2(368, 0)
+repeat_size = Vector2(368, 150)
 autoscroll = Vector2(-5, 0)
-repeat_times = 3
+repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Fondos/Prado fondo/cielo"]
+position = Vector2(0, -150)
 texture = ExtResource("3_ljj6q")
 centered = false
 
@@ -591,12 +725,14 @@ text = "Pantalla completa"
 [node name="Sprites" type="Node" parent="."]
 
 [node name="Charactert" type="AnimatedSprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_8unl6")
 position = Vector2(43, 126.53)
 sprite_frames = SubResource("SpriteFrames_f61r5")
 autoplay = "default"
 frame_progress = 0.254243
 
 [node name="Charactert2" type="AnimatedSprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_8unl6")
 position = Vector2(654, 126.53)
 sprite_frames = SubResource("SpriteFrames_f61r5")
 autoplay = "default"
@@ -633,7 +769,6 @@ autoplay = "seleccion"
 [node name="Inicio" type="Node2D" parent="Cameras"]
 position = Vector2(160, 90)
 script = ExtResource("12_3m7qb")
-priority = 1
 tween_resource = SubResource("Resource_u1e2a")
 draw_limits = true
 
@@ -643,9 +778,53 @@ script = ExtResource("12_3m7qb")
 tween_resource = SubResource("Resource_u1e2a")
 draw_limits = true
 
+[node name="logo" type="Node2D" parent="Cameras"]
+position = Vector2(160, -149)
+script = ExtResource("12_3m7qb")
+priority = 2
+tween_resource = SubResource("Resource_7ma5f")
+draw_limits = true
+
+[node name="logoss" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="logoss"]
+libraries = {
+"": SubResource("AnimationLibrary_248ob")
+}
+autoplay = "inicio"
+
+[node name="ColorRect" type="ColorRect" parent="logoss"]
+offset_top = -240.0
+offset_right = 320.0
+offset_bottom = -56.0
+color = Color(0, 0, 0, 1)
+
+[node name="GokuSsjAzul" type="Sprite2D" parent="logoss/ColorRect"]
+position = Vector2(160, 97)
+texture = ExtResource("19_icwb8")
+
+[node name="Label" type="Label" parent="logoss/ColorRect"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 40.0
+offset_right = 280.0
+offset_bottom = 151.0
+text = "Este juego esta en
+desarrollo, puedes experimentar 
+errores o falta de contenido
+  
+ 
+Disfruta!!"
+label_settings = SubResource("LabelSettings_a8fkl")
+horizontal_alignment = 1
+
+[node name="CorazonLleno" type="Sprite2D" parent="logoss/ColorRect/Label"]
+position = Vector2(125, 120)
+texture = ExtResource("20_gfayr")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 2
-position = Vector2(160, 90)
+position = Vector2(160, -149)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("14_trjn7")

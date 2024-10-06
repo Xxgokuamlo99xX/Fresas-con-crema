@@ -1,6 +1,7 @@
 extends Node
 
 var pausa : bool 
+var inventario : bool = false
 var char_state : String
 var nivel_anterior 
 var slot_actual : int 
@@ -8,7 +9,7 @@ var slot_actual : int
 var puertas_abiertas : Array 
 
 #Jugador
-var vida_jugador : int  = 100
+var vida_jugador : int  = 25
 var vida_max : int = 60
 var player_damage_taken : int
 var disparado_jugador : bool = false
@@ -49,7 +50,9 @@ func _process(delta):
 		tiene_magia = true
 	else:
 		tiene_magia = false
-
+	#Inventario abrir
+	
+	
 func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 

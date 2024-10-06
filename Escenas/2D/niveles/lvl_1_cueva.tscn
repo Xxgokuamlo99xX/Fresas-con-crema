@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://dammpxkaiqtmg"]
+[gd_scene load_steps=16 format=4 uid="uid://dammpxkaiqtmg"]
 
 [ext_resource type="TileSet" uid="uid://dft7t6ld8fcjw" path="res://Recursos/Tile maps 2D/cueva.tres" id="1_mud3s"]
 [ext_resource type="Script" path="res://Scripts/posicion_manager.gd" id="1_wk8sh"]
 [ext_resource type="TileSet" uid="uid://cpocei676q370" path="res://Recursos/Tile maps 2D/cueva_decos.tres" id="2_mt03b"]
+[ext_resource type="PackedScene" uid="uid://eihjq7rney81" path="res://Escenas/vainas/musica_manager.tscn" id="2_vgn2x"]
 [ext_resource type="Texture2D" uid="uid://b4ryxtev225q7" path="res://Recursos/Tile maps 2D/Cave/Background/Cave_Background_1.png" id="3_8toiq"]
 [ext_resource type="PackedScene" uid="uid://bmveltrbhvqn8" path="res://Escenas/2D/Personajes/npc_1.tscn" id="3_aw2wv"]
 [ext_resource type="Texture2D" uid="uid://b7g4lywgachnq" path="res://Recursos/Tile maps 2D/Cave/Background/Cave_Background_2.png" id="4_qpii0"]
@@ -24,6 +25,9 @@ fill_to = Vector2(0.538462, 0.025641)
 
 [node name="lvl_1-cueva" type="Node"]
 script = ExtResource("1_wk8sh")
+
+[node name="Musica" parent="." instance=ExtResource("2_vgn2x")]
+musica_cambio = "Catacumbas"
 
 [node name="Cofres" type="Node2D" parent="."]
 position = Vector2(226, -19)

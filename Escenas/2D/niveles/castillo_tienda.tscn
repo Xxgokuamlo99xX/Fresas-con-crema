@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dftucn3xhlnav"]
+[gd_scene load_steps=15 format=4 uid="uid://dftucn3xhlnav"]
 
 [ext_resource type="TileSet" uid="uid://criqbdoht4sry" path="res://Recursos/Tile maps 2D/Castillo.tres" id="1_83rcc"]
 [ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="1_hegxg"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b53io3yxqcnjh" path="res://Imagens_personajes/Tecla Z.png" id="9_2rsje"]
 [ext_resource type="Texture2D" uid="uid://be6aqvijd4vq5" path="res://Recursos/Sprites/Prota/epada.png" id="10_sqrfr"]
 [ext_resource type="PackedScene" uid="uid://bd2qxg5gnljjc" path="res://Escenas/Utilidades/Comprar_libro_fuego.tscn" id="11_dccmo"]
+[ext_resource type="PackedScene" uid="uid://eihjq7rney81" path="res://Escenas/vainas/musica_manager.tscn" id="13_31ykj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjk65"]
 size = Vector2(20, 81)
@@ -112,3 +113,6 @@ position = Vector2(31, 0)
 [node name="Puerta" parent="Puertas" instance=ExtResource("3_3ovcu")]
 position = Vector2(104, -19)
 escena_cambio = &"res://Escenas/2D/niveles/castillo_plaza.tscn"
+
+[node name="Musica" parent="." instance=ExtResource("13_31ykj")]
+musica_cambio = "Ciudad_interior"

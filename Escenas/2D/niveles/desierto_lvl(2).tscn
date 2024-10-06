@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=4 uid="uid://83jfgerht44m"]
+[gd_scene load_steps=19 format=4 uid="uid://83jfgerht44m"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_fm7ke"]
 [ext_resource type="Script" path="res://Scripts/posicion_manager.gd" id="1_jd1fs"]
 [ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="1_mc2sa"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_cqmid"]
+[ext_resource type="PackedScene" uid="uid://eihjq7rney81" path="res://Escenas/vainas/musica_manager.tscn" id="2_o2rl6"]
 [ext_resource type="TileSet" uid="uid://d1mkqxq3spowu" path="res://Recursos/Tile maps 2D/Tile_map_universal.tres" id="2_od5lo"]
 [ext_resource type="Texture2D" uid="uid://b2bw1tvsqo32i" path="res://Recursos/Tile maps 2D/Desert/Background/Desert_Background_1.png" id="3_8f0lg"]
 [ext_resource type="Texture2D" uid="uid://o3w0obpigexx" path="res://Recursos/Tile maps 2D/Desert/Background/Desert_Background_2.png" id="4_10hsq"]
@@ -34,6 +35,9 @@ size = Vector2(191.75, 38.5)
 
 [node name="desierto_lvl(2)" type="Node"]
 script = ExtResource("1_jd1fs")
+
+[node name="Musica" parent="." instance=ExtResource("2_o2rl6")]
+musica_cambio = "Desierto"
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
 modulate = Color(0.907942, 0.907942, 0.907942, 1)

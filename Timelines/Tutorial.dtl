@@ -13,6 +13,5 @@ Entendiste lo que te dije?
 - No
 	jump menso
 - Si
-set {GlobalVar.bola_de_fuego} = false
 do cambiar_escena.cambio_escena("res://Escenas/cinematica_inicial.tscn")
 [end_timeline]

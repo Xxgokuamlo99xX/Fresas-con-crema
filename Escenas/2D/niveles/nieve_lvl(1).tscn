@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://b44ekyxblmjjh"]
+[gd_scene load_steps=97 format=4 uid="uid://b44ekyxblmjjh"]
 
 [ext_resource type="Script" path="res://Scripts/posicion_manager.gd" id="1_2w7kf"]
 [ext_resource type="PackedScene" uid="uid://l24p3n2khr04" path="res://Escenas/Utilidades/agua_deteccion.tscn" id="1_efj0w"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://d1mkqxq3spowu" path="res://Recursos/Tile maps 2D/Tile_map_universal.tres" id="2_6ox8v"]
 [ext_resource type="Texture2D" uid="uid://b63cvedw4rnua" path="res://Recursos/Sprites/Vfx/Nieve.png" id="2_g1r0a"]
 [ext_resource type="Shader" path="res://shaders/agua.gdshader" id="2_v7wju"]
+[ext_resource type="PackedScene" uid="uid://eihjq7rney81" path="res://Escenas/vainas/musica_manager.tscn" id="2_w08il"]
 [ext_resource type="Texture2D" uid="uid://b0djfn80jkujs" path="res://Recursos/Tile maps 2D/Cave/Props/Cave_Details.png" id="3_doiy4"]
 [ext_resource type="Texture2D" uid="uid://du01onydvkr6s" path="res://Recursos/Tile maps 2D/Desert/Props/Desert_Details.png" id="4_6vpa0"]
 [ext_resource type="Texture2D" uid="uid://bltf430557ku" path="res://Recursos/Tile maps 2D/Dungeon/Props/Dungeon_Details.png" id="5_feofh"]
@@ -767,6 +768,9 @@ animations = [{
 
 [node name="snowland_1" type="Node"]
 script = ExtResource("1_2w7kf")
+
+[node name="Musica" parent="." instance=ExtResource("2_w08il")]
+musica_cambio = "Nieve"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(449, 167)

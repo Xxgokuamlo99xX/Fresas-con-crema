@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://ddaduwb6wq6l2"]
+[gd_scene load_steps=14 format=4 uid="uid://ddaduwb6wq6l2"]
 
 [ext_resource type="PackedScene" uid="uid://bg2ufmmb0wokf" path="res://Escenas/2D/goku.tscn" id="1_8xn4t"]
 [ext_resource type="PackedScene" uid="uid://l24p3n2khr04" path="res://Escenas/Utilidades/agua_deteccion.tscn" id="2_03luj"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://wvl1hitv6lgm" path="res://Escenas/cofre.tscn" id="10_mwl45"]
 [ext_resource type="PackedScene" uid="uid://bmveltrbhvqn8" path="res://Escenas/2D/Personajes/npc_1.tscn" id="10_vcdm1"]
 [ext_resource type="Resource" path="res://Timelines/debug_timeline.dtl" id="11_20uls"]
+[ext_resource type="PackedScene" uid="uid://eihjq7rney81" path="res://Escenas/vainas/musica_manager.tscn" id="11_ocm8w"]
 
 [sub_resource type="GDScript" id="GDScript_7q87a"]
 script/source = "extends Node
@@ -86,5 +87,8 @@ Cant_recompensa = 1
 
 [node name="Goku" parent="." instance=ExtResource("1_8xn4t")]
 position = Vector2(379, 154)
+
+[node name="Musica" parent="." instance=ExtResource("11_ocm8w")]
+musica_cambio = "Castillo_mazmorra"
 
 [editable path="Agua_deteccion"]

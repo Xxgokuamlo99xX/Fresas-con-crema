@@ -1,11 +1,66 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7xmc4yxc5x2y"]
+[gd_scene load_steps=32 format=3 uid="uid://c7xmc4yxc5x2y"]
 
 [ext_resource type="Texture2D" uid="uid://bwg6etfec1qo2" path="res://Recursos/Sprites/Prota/Inventario_forma.png" id="1_4cdsp"]
+[ext_resource type="Shader" path="res://shaders/grayscale.gdshader" id="1_jwxlx"]
 [ext_resource type="Texture2D" uid="uid://bgoni6s3w6jmy" path="res://Recursos/Sprites/Prota/Player Spritesheet.png" id="2_yj8g7"]
-[ext_resource type="PackedScene" uid="uid://cssodavd2u0nb" path="res://Escenas/VFX/fuego_proyectil.tscn" id="3_d83wx"]
+[ext_resource type="Texture2D" uid="uid://c57accc2xur6i" path="res://Recursos/Sprites/Misc/Eter.png" id="4_2vfxq"]
 [ext_resource type="Texture2D" uid="uid://be6aqvijd4vq5" path="res://Recursos/Sprites/Prota/epada.png" id="4_mc8jc"]
 [ext_resource type="Script" path="res://Scripts/Varios/mision_hud.gd" id="5_7b7ij"]
+[ext_resource type="Texture2D" uid="uid://t8u61gjqpvut" path="res://Recursos/Sprites/Prota/barras1.png" id="5_v866b"]
 [ext_resource type="FontFile" uid="uid://8khbwkhjgd2r" path="res://Recursos/Fuentes de texto/FSEX300.ttf" id="6_ckbt8"]
+[ext_resource type="Texture2D" uid="uid://c0xf2fv8n310m" path="res://Recursos/Sprites/Prota/barras4.png" id="6_uaov5"]
+[ext_resource type="Texture2D" uid="uid://vewjg605skio" path="res://Recursos/Sprites/Prota/barras2.png" id="7_py8xb"]
+[ext_resource type="Texture2D" uid="uid://cblgnxptgcqxi" path="res://Recursos/Sprites/Prota/barras3.png" id="8_cawp5"]
+
+[sub_resource type="GDScript" id="GDScript_q1h3g"]
+script/source = "extends CanvasLayer
+
+@onready var mana_bar := $Todo/Stats/mana/TextureProgressBar
+@onready var vida_bar : TextureProgressBar = $Todo/Stats/vida/TextureProgressBar
+@onready var vida : Label = $Todo/Stats/vida/Label
+@onready var mana : Label = $Todo/Stats/mana/Label
+@onready var eter : Label = $Todo/Stats/Stats/Eter
+
+
+@onready var animation_pl := $AnimationPlayer
+
+func activar():
+	if GlobalVar.inventario:
+		GlobalVar.inventario = false
+		get_tree().paused = false
+		animation_pl.play_backwards(\"up\")
+	else:
+		get_tree().paused = true
+		GlobalVar.inventario = true
+		animation_pl.play(\"up\")
+
+func _physics_process(delta):
+	if Input.is_action_just_pressed(\"Inventario\"):
+		activar()
+	#FPS
+	eter.text = \"Eter: \" + str(GlobalVar.eter)
+	
+	#VIDA
+	vida.text = \"Vida: \" + str(GlobalVar.vida_jugador) + \"/\" + str(GlobalVar.vida_max)
+	vida_bar.value = GlobalVar.vida_jugador
+	vida_bar.max_value = GlobalVar.vida_max
+	
+	#MANA
+	mana.text = \"Mana: \" + str(GlobalVar.mana) + \"/\" + str(GlobalVar.mana_max)
+	mana_bar.value = GlobalVar.mana
+	mana_bar.max_value = GlobalVar.mana_max
+
+
+	if not GlobalVar.tiene_magia:
+		$Todo/Stats/mana.hide()
+	else:
+		$Todo/Stats/mana.show()
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dteb5"]
+shader = ExtResource("1_jwxlx")
+shader_parameter/use_grayscale = true
+shader_parameter/shift_color = Color(0.517184, 0.517184, 0.517184, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xw7jj"]
 bg_color = Color(0, 0, 0, 0.756863)
@@ -23,37 +78,176 @@ font_color = Color(1, 1, 0.219608, 1)
 font = ExtResource("6_ckbt8")
 font_size = 15
 
-[node name="Inventario" type="CanvasLayer"]
+[sub_resource type="LabelSettings" id="LabelSettings_3ugg5"]
+font = ExtResource("6_ckbt8")
 
-[node name="InventarioForma" type="Sprite2D" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_al5i6"]
+atlas = ExtResource("4_2vfxq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygrkm"]
+atlas = ExtResource("4_2vfxq")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rcbj"]
+atlas = ExtResource("4_2vfxq")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q2l3w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al5i6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygrkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rcbj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x7w67"]
+font = ExtResource("6_ckbt8")
+
+[sub_resource type="LabelSettings" id="LabelSettings_m8jrl"]
+font = ExtResource("6_ckbt8")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmr6r"]
+atlas = ExtResource("2_yj8g7")
+region = Rect2(0, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_261bk"]
+atlas = ExtResource("2_yj8g7")
+region = Rect2(50, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg0iw"]
+atlas = ExtResource("2_yj8g7")
+region = Rect2(100, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ewpu"]
+atlas = ExtResource("2_yj8g7")
+region = Rect2(150, 0, 50, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2mxfj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmr6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_261bk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg0iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ewpu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="Animation" id="Animation_32p8q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Todo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -184)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Todo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ar5c7"]
+resource_name = "up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Todo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -184), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Todo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yfbej"]
+_data = {
+"RESET": SubResource("Animation_32p8q"),
+"up": SubResource("Animation_ar5c7")
+}
+
+[node name="Inventario" type="CanvasLayer"]
+process_mode = 3
+script = SubResource("GDScript_q1h3g")
+
+[node name="Todo" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Todo"]
+material = SubResource("ShaderMaterial_dteb5")
+layout_mode = 0
+offset_right = 319.0
+offset_bottom = 178.0
+mouse_filter = 2
+color = Color(0.376471, 0.184314, 0, 0.643137)
+
+[node name="InventarioForma" type="Sprite2D" parent="Todo"]
 texture = ExtResource("1_4cdsp")
 centered = false
 
-[node name="PlayerSpritesheet" type="Sprite2D" parent="."]
-position = Vector2(56, 131)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_yj8g7")
-region_enabled = true
-region_rect = Rect2(17, 4, 15, 32)
-
-[node name="Fuego_proyectil" parent="." instance=ExtResource("3_d83wx")]
-position = Vector2(33, 47)
-rotation = 1.5708
-
-[node name="Epada" type="Sprite2D" parent="."]
-position = Vector2(71, 52)
-texture = ExtResource("4_mc8jc")
-
-[node name="Mision_hud" type="Control" parent="."]
+[node name="Mision_hud" type="Control" parent="Todo"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -46.0
 offset_top = 88.0
 offset_right = -46.0
 offset_bottom = 88.0
+mouse_filter = 2
 script = ExtResource("5_7b7ij")
 
-[node name="mision_resumen" type="Panel" parent="Mision_hud"]
+[node name="mision_resumen" type="Panel" parent="Todo/Mision_hud"]
 layout_mode = 0
 offset_left = 239.0
 offset_top = 22.0
@@ -63,7 +257,7 @@ scale = Vector2(0.35, 0.35)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xw7jj")
 
-[node name="Nombre_mision_resumen" type="Control" parent="Mision_hud"]
+[node name="Nombre_mision_resumen" type="Control" parent="Todo/Mision_hud"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -77,7 +271,7 @@ scale = Vector2(0.35, 0.35)
 size_flags_horizontal = 0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="Mision_hud/Nombre_mision_resumen"]
+[node name="Label" type="Label" parent="Todo/Mision_hud/Nombre_mision_resumen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,7 +288,7 @@ text = "Nombre Mision"
 label_settings = SubResource("LabelSettings_qxn0m")
 uppercase = true
 
-[node name="Resumen_mision" type="Control" parent="Mision_hud"]
+[node name="Resumen_mision" type="Control" parent="Todo/Mision_hud"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -110,7 +304,7 @@ grow_vertical = 2
 scale = Vector2(0.35, 0.35)
 mouse_filter = 2
 
-[node name="Label2" type="Label" parent="Mision_hud/Resumen_mision"]
+[node name="Label2" type="Label" parent="Todo/Mision_hud/Resumen_mision"]
 layout_mode = 0
 offset_left = 391.0
 offset_top = 271.0
@@ -120,3 +314,124 @@ text = "Descripcion mision
 "
 label_settings = SubResource("LabelSettings_0fxmh")
 autowrap_mode = 3
+
+[node name="Stats" type="Control" parent="Todo"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 56.0
+offset_top = 131.0
+offset_right = 96.0
+offset_bottom = 171.0
+mouse_filter = 2
+
+[node name="Stats" type="Control" parent="Todo/Stats"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 371.0
+offset_top = -152.0
+offset_right = 371.0
+offset_bottom = -152.0
+scale = Vector2(0.2, 0.2)
+
+[node name="Eter" type="Label" parent="Todo/Stats/Stats"]
+layout_mode = 0
+offset_left = -1170.0
+offset_top = 560.0
+offset_right = -1130.0
+offset_bottom = 576.0
+scale = Vector2(2.859, 3.029)
+text = "Eter:"
+label_settings = SubResource("LabelSettings_3ugg5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Todo/Stats/Stats/Eter"]
+position = Vector2(15.39, -9.90426)
+scale = Vector2(1.82945, 1.85478)
+sprite_frames = SubResource("SpriteFrames_q2l3w")
+autoplay = "default"
+
+[node name="vida" type="Control" parent="Todo/Stats"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 121.0
+offset_top = -117.0
+offset_right = 121.0
+offset_bottom = -117.0
+scale = Vector2(1.2, 1.2)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Todo/Stats/vida"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 63.0
+offset_bottom = 18.0
+value = 100.0
+texture_under = ExtResource("5_v866b")
+texture_progress = ExtResource("6_uaov5")
+
+[node name="Label" type="Label" parent="Todo/Stats/vida"]
+texture_filter = 1
+layout_direction = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 120.0
+offset_bottom = 29.0
+scale = Vector2(0.4, 0.4)
+size_flags_horizontal = 4
+text = "Vida 60/60"
+label_settings = SubResource("LabelSettings_x7w67")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mana" type="Control" parent="Todo/Stats"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 25.0
+offset_top = -101.0
+offset_right = 65.0
+offset_bottom = -61.0
+scale = Vector2(1.2, 1.2)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Todo/Stats/mana"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 4.0
+offset_right = 144.0
+offset_bottom = 36.0
+value = 100.0
+texture_under = ExtResource("7_py8xb")
+texture_progress = ExtResource("8_cawp5")
+
+[node name="Label" type="Label" parent="Todo/Stats/mana"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 9.0
+offset_right = 190.0
+offset_bottom = 25.0
+scale = Vector2(0.4, 0.4)
+text = "Mana 100/100"
+label_settings = SubResource("LabelSettings_m8jrl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Armas" type="Control" parent="Todo"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Epada" type="Sprite2D" parent="Todo/Armas"]
+position = Vector2(71, 52)
+texture = ExtResource("4_mc8jc")
+
+[node name="Charactert" type="AnimatedSprite2D" parent="Todo/Armas"]
+position = Vector2(57, 127)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_2mxfj")
+autoplay = "default"
+frame_progress = 0.215203
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yfbej")
+}

@@ -1,0 +1,25 @@
+if {GlobalVar.vida_jugador} == {GlobalVar.vida_max}:
+	jump Curado
+
+else:
+	jump sin Curar
+
+label sin Curar
+Enfermera (Normal): Hola.
+Enfermera: Son 25 de eter por consulta
+- Ok.
+	if {GlobalVar.eter} >= 25
+		Enfermera: Quedate quieta entonces.
+		set {GlobalVar.vida_jugador} = {GlobalVar.vida_max}
+		set {GlobalVar.eter} -= 25
+	else:
+		Enfermera (Enojada): No trabajo gratis, sabes?
+		Samantha (Normal): porfavooooor, no me quiero ir asi.
+		Enfermera (Enojada): Que no!!!
+- No tengo tanto. | [if {GlobalVar.eter} < 25] [else="hide"]
+	Enfermera (Enojada): Entonces vete, no malgastes mi tiempo.
+[end_timeline]
+label Curado
+Enfermera (Enojada): Que estas viendo?
+Samantha (Sorprendida): Eeeeeeeeeeeem, nada?
+Enfermera (Enojada): Entonces ya vete!!

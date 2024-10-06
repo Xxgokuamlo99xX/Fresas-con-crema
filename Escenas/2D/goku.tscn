@@ -25,7 +25,8 @@ size = Vector2(14, 29)
 
 [sub_resource type="Animation" id="Animation_17dev"]
 resource_name = "Ataque_1"
-length = 0.56667
+length = 0.2707
+step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,10 +34,10 @@ tracks/0/path = NodePath("Voltear/PJ:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [42, 43, 44, 45, 46, 47, 48, 49, 50]
+"values": [42, 43, 44, 45, 46, 47]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -45,7 +46,7 @@ tracks/1/path = NodePath("Voltear/Hitbox_arma:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.433333),
+"times": PackedFloat32Array(0.166667, 0.266667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -65,7 +66,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_12d70"]
 resource_name = "Ataque_2"
-length = 0.35
+length = 0.2355
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -73,7 +74,7 @@ tracks/0/path = NodePath("Voltear/PJ:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0999, 0.1998, 0.2997),
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [49, 50, 51, 52]
@@ -85,7 +86,7 @@ tracks/1/path = NodePath("Voltear/Hitbox_arma:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.3),
+"times": PackedFloat32Array(0.0666667, 0.233333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -105,7 +106,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_rq0d4"]
 resource_name = "Ataque_3"
-length = 0.533337
+length = 0.3208
+step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -113,10 +115,10 @@ tracks/0/path = NodePath("Voltear/PJ:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.000760257, 0.10076, 0.20076, 0.30076, 0.40076, 0.50076),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [54, 55, 56, 57, 58, 59]
+"times": PackedFloat32Array(0.000760257, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [54, 58]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -125,7 +127,7 @@ tracks/1/path = NodePath("Voltear/Hitbox_arma:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.4),
+"times": PackedFloat32Array(0.0833333, 0.316667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -145,7 +147,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_d1it3"]
 resource_name = "Ataque_magico"
-length = 0.4
+length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -153,10 +155,10 @@ tracks/0/path = NodePath("Voltear/PJ:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666, 0.1332, 0.1998, 0.2664),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0666, 0.1332, 0.1998),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [86, 87, 88, 89, 90]
+"values": [86, 87, 88, 89]
 }
 tracks/1/type = "audio"
 tracks/1/imported = false
@@ -677,7 +679,6 @@ debug_color = Color(0.92549, 0.270588, 0, 0.419608)
 libraries = {
 "": SubResource("AnimationLibrary_o8n4h")
 }
-speed_scale = 1.5
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
@@ -690,6 +691,7 @@ anim_player = NodePath("../animaciones")
 use_parent_material = true
 script = ExtResource("6_5738t")
 bullet = ExtResource("4_bemd2")
+CoolDown = 1.0
 Spawn_Point = Vector2(16, 0)
 
 [node name="PJ" type="Sprite2D" parent="Voltear"]
@@ -705,10 +707,11 @@ region_rect = Rect2(16, 18, 16, 29)
 position = Vector2(0, 0.5)
 collision_layer = 0
 collision_mask = 16
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Voltear/Hitbox_arma"]
 z_index = 1
-position = Vector2(12, -6)
+position = Vector2(12, 1.5)
 shape = SubResource("RectangleShape2D_hfjcq")
 debug_color = Color(0, 0.642121, 0.323097, 0.42)
 
@@ -787,10 +790,9 @@ gizmo_extents = 0.0
 script = ExtResource("12_kqqtw")
 damage_node = ExtResource("13_luuqx")
 
-[node name="mana cooldown" type="Timer" parent="."]
-wait_time = 5.0
+[node name="Ataque_cooldown" type="Timer" parent="."]
+wait_time = 0.05
 one_shot = true
-autostart = true
 
 [node name="Audio_player" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"

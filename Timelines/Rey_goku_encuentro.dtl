@@ -1,4 +1,4 @@
-if Ids.mision_act_id == 2:
+if Ids.mision_act_id == 2 or Ids.mision_act_id == 0:
 	Samantha (Sarcasmo): Okey esto ya es exagerado.
 	Npc_1: Que?
 	Samantha (Sarcasmo): De verdad no alguien con quien mas remplazarte?

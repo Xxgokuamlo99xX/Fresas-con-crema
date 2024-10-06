@@ -76,7 +76,7 @@ func recompesa(): # ("eter", "contenedor_corazon", "Mana_max")
 			GlobalVar.mana = GlobalVar.mana_max	
 			
 		loot_posible.mejora_damage:
-			GlobalVar.multi_damage += 0.5
+			GlobalVar.multi_damage += 1
 			
 		loot_posible.hechizo:
 			unlocks.desbloqueo()

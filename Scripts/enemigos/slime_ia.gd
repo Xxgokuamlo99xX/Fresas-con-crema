@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		moverse()
 		cambio_dir()
+
 	
 func moverse():
 	velocity.x = velocidad
@@ -56,15 +57,15 @@ func cambio_dir():
 func enemigo_hit():
 	if invul.is_stopped():
 		puede_moverse = false
-		invul.start()
 		vida -= (GlobalVar.enemigo_damage_taken / defensa)
 		marker._pupa()
 		sprite.play("hit")
 		await $AnimationPlayer.animation_finished
+		invul.start()
 		puede_moverse = true
 		if vida <= 0:
 			soltar_loot()
-		
+	
 func soltar_loot():
 	var lut_soltado
 	if probabilidad == 2:
